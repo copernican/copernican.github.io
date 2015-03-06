@@ -9669,7 +9669,8 @@ Suppose
  Then, we have
 \begin_inset Formula 
 \begin{flalign*}
-\hat{\mu}_{1} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}\\
+\mbox{E}\left[X\right] & =\hat{\mu}_{1}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}X_{i}\\
 \Leftrightarrow\hat{\lambda} & =\bar{x}
 \end{flalign*}
 
@@ -9679,20 +9680,17 @@ and
 \begin_inset Formula 
 \begin{flalign*}
 \mbox{Var}\left(X\right) & =\mbox{E}\left[X^{2}\right]-\mbox{E}\left[X\right]^{2}\\
+ & =\mbox{E}\left[X^{2}\right]-\bar{X}^{2}\\
+ & =\mbox{E}\left[X^{2}\right]-2\bar{X}\bar{X}+\bar{X}^{2}\\
+ & =\mbox{E}\left[X^{2}\right]-2\bar{X}\mbox{E}\left[X\right]+\bar{X}^{2}\\
+ & =\mbox{E}\left[X^{2}\right]-\mbox{E}\left[2\bar{X}X\right]+\mbox{E}\left[\bar{X}^{2}\right]\\
+ & =\mbox{E}\left[X^{2}-2\bar{X}X+\bar{X}^{2}\right]\\
+ & =\mbox{E}\left[X-\bar{X}\right]^{2}\\
 \Leftrightarrow\hat{\lambda} & =\hat{\mu}_{2}-\hat{\mu}_{1}^{2}\\
- & =\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}\right)^{2}\\
- & =\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}\right)\\
- & =\frac{1}{n}\left(\sum_{i=1}^{n}x_{i}^{2}-\bar{x}\sum_{i=1}^{n}x_{i}\right)\\
- & =\frac{1}{n}\left(\sum_{i=1}^{n}x_{i}^{2}-\sum_{i=1}^{n}\bar{x}x_{i}\right)\\
- & =\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}^{2}-\bar{x}x_{i}\right)\\
- & =\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\\
- & =\sum_{i=1}^{n}\frac{x_{i}^{2}}{n}\\
- & =\sum_{i=1}^{n}\frac{1}{n}x_{i}x_{i}\\
- & =\sum_{i}a^{2}-\sum_{i}b\\
- & =\left[a_{1}^{2}+a_{2}^{2}+\cdots a_{n}^{2}\right]-\left[b_{1}+b_{2}+\cdots+b_{n}\right]\\
- & =\left[\left(a_{1}^{2}-b_{1}\right)+\left(a_{2}^{2}-b_{2}\right)+\cdots+\left(a_{n}^{2}-b_{n}\right)\right]\\
- & =\sum_{i}a_{i}^{2}-b_{i}\\
- & =\sum_{i}ab=a_{1}b_{1}+a_{2}b_{2}+\cdots+a_{3}b_{3}
+ & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)^{2}\\
+ & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-2\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)+\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\\
+ & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-2\bar{X}\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)+\bar{X}^{2}\\
+ & =
 \end{flalign*}
 
 \end_inset
