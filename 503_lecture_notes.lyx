@@ -2328,7 +2328,7 @@ par(mar=c(2,2,0.2,2))
 \begin_layout Plain Layout
 
 plot(x,dnorm(x, mean=0, sd=1), type="l", col="blue", ylab="f(x)", cex.lab=0.75,
- cex.axis=0.75)
+ cex.axis=0.75, yaxt="n")
 \end_layout
 
 \begin_layout Plain Layout
@@ -2474,7 +2474,7 @@ par(mar=c(2,2,0.2,2))
 \begin_layout Plain Layout
 
 plot(x,dnorm(x, mean=0, sd=0.75), type="l", col="blue", ylab="f(x)", cex.lab=0.75,
- cex.axis=0.75)
+ cex.axis=0.75, yaxt="n")
 \end_layout
 
 \begin_layout Plain Layout
@@ -4581,6 +4581,13 @@ reference "thm:factorization"
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:suff-stat-poisson"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout --Separator--
@@ -4595,13 +4602,6 @@ status open
 
 [Sufficient statistic for a Bernoulli random variable]
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:ex-suff-stat-bernoulli"
 
 \end_inset
 
@@ -4655,6 +4655,13 @@ reference "thm:factorization"
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:suff-stat-bernoulli"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout --Separator--
@@ -5793,7 +5800,7 @@ A_{2} & =\left\{ \left(1,1\right)\right\} .
 We showed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:ex-suff-stat-bernoulli"
+reference "exa:suff-stat-bernoulli"
 
 \end_inset
 
@@ -5814,7 +5821,7 @@ reference "sub:ex-suff-stat-bernoulli"
  From 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:ex-suff-stat-bernoulli"
+reference "exa:suff-stat-bernoulli"
 
 \end_inset
 
@@ -8341,8 +8348,7 @@ reference "thm:dist-of-sum-of-poisson-rv"
 \begin_inset Formula $X_{1}+X_{2}\sim\mbox{Poisson}\left(\lambda+\lambda\right)=\mbox{Poisson}\left(2\lambda\right)$
 \end_inset
 
-.
- It follows that 
+, that 
 \begin_inset Formula $\left(X_{1}+X_{2}\right)+X_{3}\sim\mbox{Poisson}\left(2\lambda+\lambda\right)=\mbox{Poisson}\left(3\lambda\right)$
 \end_inset
 
@@ -9286,6 +9292,13 @@ where
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:mom-exp-rv"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -9392,6 +9405,13 @@ Suppose we have a population with
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:mom-sampling-replacement"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -9689,8 +9709,10 @@ and
 \Leftrightarrow\hat{\lambda} & =\hat{\mu}_{2}-\hat{\mu}_{1}^{2}\\
  & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)^{2}\\
  & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-2\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)+\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\\
- & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-2\bar{X}\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)+\bar{X}^{2}\\
- & =
+ & =\sum_{i=1}^{n}\frac{1}{n}X_{i}^{2}-\sum_{i=1}^{n}\frac{2\bar{X}}{n}X_{i}+\sum_{i=1}^{n}\frac{\bar{X}}{n}X_{i}\\
+ & =\sum_{i=1}^{n}\left(\frac{1}{n}X_{i}^{2}-\frac{2\bar{X}}{n}X_{i}+\frac{\bar{X}}{n}X_{i}\right)\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}^{2}-2\bar{X}X_{i}+\bar{X}X_{i}\right)\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}^{2}-\bar{X}X_{i}\right)
 \end{flalign*}
 
 \end_inset
@@ -9709,6 +9731,1366 @@ Suppose
 
 , 
 \begin_inset Formula $0<\theta\leq x<\infty$
+\end_inset
+
+.
+ Then,
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}_{\theta}\left[X\right] & =\int_{\theta}^{\infty}x\frac{\theta}{x^{2}}\mbox{d}x\\
+ & =\theta\int_{\theta}^{\infty}\frac{1}{x}\mbox{d}x\\
+ & =\theta\lim_{c\rightarrow\infty}\int_{\theta}^{c}\frac{1}{x}\mbox{d}x\\
+ & =\theta\lim_{c\rightarrow\infty}\left(\ln x\Big\rvert_{\theta}^{c}\right)\\
+ & =\theta\lim_{c\rightarrow\infty}\left(\ln c-\ln\theta\right)\\
+ & =\infty,
+\end{flalign*}
+
+\end_inset
+
+so that 
+\begin_inset Formula $\mu_{1}\left(\theta\right)=\hat{\mu}_{1}$
+\end_inset
+
+ has no solution.
+ If we consider
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}_{\theta}\left[\frac{1}{X}\right] & =\int_{\theta}^{\infty}\frac{\theta}{x^{3}}\mbox{d}x\\
+ & =\lim_{c\rightarrow\infty}\int_{\theta}^{c}\frac{\theta}{x^{3}}\mbox{d}x\\
+ & =\lim_{c\rightarrow\infty}\left(-\theta\frac{1}{2x^{2}}\Bigr\rvert_{\theta}^{c}\right)\\
+ & =\lim_{c\rightarrow\infty}\left(-\theta\frac{1}{2c^{2}}-\left(-\theta\frac{1}{2\theta^{2}}\right)\right)\\
+ & =0+\frac{1}{2\theta}\\
+ & =\frac{1}{2\theta},
+\end{flalign*}
+
+\end_inset
+
+then setting 
+\begin_inset Formula $u_{-1}\left(\theta\right)=\hat{\mu}_{-1}=\left(1/n\right)\sum_{i=1}^{n}1/X_{i}$
+\end_inset
+
+ gives
+\begin_inset Formula 
+\[
+\frac{1}{2\hat{\theta}}=\frac{1}{n}\sum_{i=1}^{n}\frac{1}{X_{i}}\quad\Rightarrow\quad\hat{\theta}=\frac{n}{2\sum_{i=1}^{n}\frac{1}{X_{i}}}.
+\]
+
+\end_inset
+
+If we consider instead
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}_{\theta}\left[X^{1/2}\right] & =\int_{\theta}^{\infty}x^{1/2}\frac{\theta}{x^{2}}\mbox{d}x\\
+ & =\lim_{c\rightarrow\infty}\left[\theta\int_{\theta}^{c}x^{-3/2}\mbox{d}x\right]\\
+ & =\lim_{c\rightarrow\infty}\left[\theta\left(-2x^{-1/2}\Bigr\rvert_{\theta}^{c}\right)\right]\\
+ & =\lim_{c\rightarrow\infty}\left[\theta\left(-2c^{-1/2}-\left(-2\theta^{-1/2}\right)\right)\right]\\
+ & =\theta\left(0+2\theta^{-1/2}\right)\\
+ & =2\sqrt{\theta},
+\end{flalign*}
+
+\end_inset
+
+then setting 
+\begin_inset Formula $\mu_{1/2}\left(\theta\right)=\hat{\mu}_{1/2}$
+\end_inset
+
+ gives
+\begin_inset Formula 
+\[
+2\sqrt{\theta}=\frac{1}{n}\sum_{i=1}^{n}X_{i}^{1/2}\quad\Rightarrow\quad\hat{\theta}=\frac{\left(\sum_{i=1}^{n}X_{i}^{1/2}\right)^{2}}{4n^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Maximum likelihood estimators
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ are independent random variables from 
+\begin_inset Formula $f_{i}\left(x|\theta_{1},\ldots,\theta_{k}\right)$
+\end_inset
+
+, then the likelihood function is given by
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{x}\right)=L\left(\theta_{1},\ldots,\theta_{k}|x_{1},\ldots,x_{n}\right)=\prod_{i=1}^{n}f_{i}\left(x_{i}|\theta_{1},\ldots,\theta_{k}\right)=f\left(\mathbf{x}|\theta\right),
+\]
+
+\end_inset
+
+i.e., the likelihood function is just the joint density of the data, except
+ that we treat it as a function of the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ The likelihood function is not a density function, i.e., it does not integrate
+ to 1.
+ If 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ is a discrete random vector, then 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)=P_{\theta}\left(\left\{ \mathbf{X}=\mathbf{x}\right\} \right)$
+\end_inset
+
+.
+ If we compare the likelihood function at two parameter points and find
+ that
+\begin_inset Formula 
+\[
+P_{\theta_{1}}\left(\left\{ \mathbf{X}=\mathbf{x}\right\} \right)=L\left(\theta_{1}|\mathbf{x}\right)>L\left(\theta_{2}|\mathbf{x}\right)=P_{\theta_{2}}\left(\left\{ \mathbf{X}=\mathbf{x}\right\} \right),
+\]
+
+\end_inset
+
+then the sample we actually observed is more likely to have occurred if
+ 
+\begin_inset Formula $\theta=\theta_{1}$
+\end_inset
+
+ than if 
+\begin_inset Formula $\theta=\theta_{2}$
+\end_inset
+
+, which can be interpreted as saying that 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ is a more plausible value for the true value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ than is 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+For each sample point 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, let 
+\begin_inset Formula $\hat{\theta}\left(\mathbf{x}\right)$
+\end_inset
+
+ be a parameter value at which 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+ attains its maximum as a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, with 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ held fixed.
+ A 
+\shape italic
+maximum likelihood estimator
+\shape default
+ (MLE) of the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ based on a sample 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{\theta}\left(\mathbf{X}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The MLE is the parameter point for which the observed sample is most likely.
+ Let 
+\begin_inset Formula $L\left(\hat{\theta}|X\right)$
+\end_inset
+
+ be the maximum of all likelihood functions evaluated at 
+\begin_inset Formula $\theta$
+\end_inset
+
+, i.e.,
+\begin_inset Formula 
+\[
+L\left(\hat{\theta}|X\right)=\max\left\{ L\left(\theta|X\right):\theta\in\Theta\right\} \Leftrightarrow\hat{\theta}\mbox{ is an MLE}.
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<likelihood-generic, echo=FALSE, fig.height=2, fig.width=3, fig.align='center',
+ fig.pos='h', fig.cap='maximizing the likelihood function'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- seq(0, 2, length = 1000)
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(0.2,1,0), mar = c(1,2,0.1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x, (-x^2)+2*x, type = "l", ylab = expression(paste("L(", lambda, ")")),
+ xlab = expression(lambda), xaxt = "n", yaxt = "n", cex.lab = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+points(x = 1, y = 1, pch = 19)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the likelihood is differentiable in 
+\begin_inset Formula $\theta$
+\end_inset
+
+, possible candidates for 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ are those that solve
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}\log L\left(\theta|X\right) & =0,
+\end{flalign*}
+
+\end_inset
+
+which gives solutions that find interior extrema, some of which may be minima.
+ To check whether a solution is a maximum, verify that 
+\begin_inset Formula 
+\begin{flalign*}
+\dfrac{\partial^{2}}{\partial\theta^{2}}\log L\left(\theta|X\right) & <0,
+\end{flalign*}
+
+\end_inset
+
+i.e., concave.
+ It is often easier to work with 
+\begin_inset Formula $\log L\left(\theta|X\right)$
+\end_inset
+
+ than with 
+\begin_inset Formula $L\left(\theta|X\right)$
+\end_inset
+
+, and whatever maximizes the likelihood will also maximize log-likelihood.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X\sim\mbox{Exp}\left(\lambda\right)$
+\end_inset
+
+, and let 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ be a random sample from the distribution of 
+\begin_inset Formula $X$
+\end_inset
+
+, so that the 
+\begin_inset Formula $X_{i}\mbox{'s}$
+\end_inset
+
+ are iid.
+ Find the MLE of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and compare it to the MOM estimator.
+\end_layout
+
+\begin_layout Example
+The pdf of 
+\begin_inset Formula $X$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{X}\left(x|\lambda\right) & =\frac{1}{\lambda}e^{-x/\lambda}
+\end{flalign*}
+
+\end_inset
+
+where 
+\begin_inset Formula $x\geq0$
+\end_inset
+
+, so that the pdf of 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{X}}\left(\mathbf{x}|\lambda\right) & =\prod_{i=1}^{n}f_{X}\left(x_{i}|\lambda\right)\\
+ & =\prod_{i=1}^{n}\frac{1}{\lambda}e^{-x_{i}/\lambda}\\
+ & =\frac{1}{\lambda^{n}}e^{-\sum_{i=1}^{n}x_{i}/\lambda}.
+\end{flalign*}
+
+\end_inset
+
+Then, we have 
+\begin_inset Formula $L\left(\lambda|\mathbf{x}\right)=f_{\mathbf{X}}\left(\mathbf{x}|\lambda\right)$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\lambda|\mathbf{x}\right) & =\ln\left(\frac{1}{\lambda^{n}}e^{-\sum_{i=1}^{n}x_{i}/\lambda}\right)\\
+ & =\ln\left(\frac{1}{\lambda^{n}}\right)+\ln\left(e^{-\sum_{i=1}^{n}x_{i}/\lambda}\right)\\
+ & =-n\ln\lambda-\frac{1}{\lambda}\sum_{i=1}^{n}x_{i}.
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative of 
+\begin_inset Formula $\ln L\left(\lambda|\mathbf{x}\right)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\lambda}\ln L\left(\lambda|\mathbf{x}\right) & =\frac{\partial}{\partial\lambda}\left[-n\ln\lambda-\frac{1}{\lambda}\sum_{i=1}^{n}x_{i}\right]\\
+ & =-\frac{n}{\lambda}+\frac{1}{\lambda^{2}}\sum_{i=1}^{n}x_{i}.
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{n}{\lambda} & =\frac{1}{\lambda^{2}}\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow n\lambda^{2} & =\lambda\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\hat{\lambda} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}\\
+ & =\bar{x}.
+\end{flalign*}
+
+\end_inset
+
+We will evaluate the second derivative of 
+\begin_inset Formula $\ln L\left(\lambda|\mathbf{x}\right)$
+\end_inset
+
+ at 
+\begin_inset Formula $\lambda=\hat{\lambda}$
+\end_inset
+
+ to verify that this is a maximum.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial^{2}}{\partial\lambda^{2}}\ln L\left(\lambda|\mathbf{x}\right)\Bigr\rvert_{\lambda=\hat{\lambda}} & =\frac{\partial^{2}}{\partial\lambda^{2}}\left[-\frac{n}{\lambda}+\frac{1}{\lambda^{2}}\sum_{i=1}^{n}x_{i}\right|_{\lambda=\hat{\lambda}}\\
+ & =\frac{n}{\lambda^{2}}-\frac{2}{\lambda^{3}}\sum_{i=1}^{n}x_{i}\Bigr\rvert_{\lambda=\hat{\lambda}}\\
+ & =\frac{n}{\bar{x}^{2}}-\frac{2}{\bar{x}^{3}}\cdot n\bar{x}\\
+ & =\frac{n}{\bar{x}^{2}}-\frac{2n}{\bar{x}^{2}}\\
+ & =-\frac{n}{\bar{x}^{2}}
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $n>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{x}^{2}>0$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $-n/\bar{x}^{2}<0$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\hat{\lambda}=\bar{x}$
+\end_inset
+
+ is the MLE.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:mom-exp-rv"
+
+\end_inset
+
+, we found that 
+\begin_inset Formula $\hat{\lambda}_{MOM}=\bar{x}$
+\end_inset
+
+, so the two estimators agree.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Let's reconsider 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:mom-sampling-replacement"
+
+\end_inset
+
+, where we found that the pmf of 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ was given by
+\begin_inset Formula 
+\[
+p_{\mathbf{X}}\left(\mathbf{x}|\theta\right)=\frac{1}{\theta^{n}}I_{\left\{ x_{\left(1\right)\geq1}\right\} }I_{\left\{ x_{\left(n\right)}\leq\theta\right\} }.
+\]
+
+\end_inset
+
+Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+We have
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{x}\right)=\begin{cases}
+\frac{1}{\theta^{n}}I_{\left\{ x_{\left(1\right)\geq1}\right\} }, & \theta\geq x_{\left(n\right)}\\
+0, & \theta<x_{\left(n\right)}
+\end{cases},
+\]
+
+\end_inset
+
+whose graph is shown below.
+ Clearly, the maximum value of 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+ occurs at 
+\begin_inset Formula $x_{\left(n\right)}$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $\hat{\theta}=X_{\left(n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<likelihood-sampling, echo=FALSE, fig.height=2, fig.width=3, fig.align='center',
+ fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,0.5,0), mar = c(3,3,0.1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- seq(2, 4, length=2000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(z, 1/(z^10), type="l", xlab = expression(theta), ylab=expression(paste(L,
+ "(",theta,"|",bold(x),")")), yaxt="n", xaxt="n", xlim = c(1, 4), cex.lab
+ = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at=c(1,2), labels=c(expression(x[(1)]), expression(x[(n)])))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+When the support of the likelihood function depends on the parameter, it
+ may not be necessary to take the derivative of 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+, e.g., the MLE may be found graphically.
+\end_layout
+
+\begin_layout Example
+Suppose 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ are sampled from a multinomial distribution with 3 categories and probabilities
+, e.g., the genotypes 
+\begin_inset Formula $AA$
+\end_inset
+
+, 
+\begin_inset Formula $Aa$
+\end_inset
+
+, and 
+\begin_inset Formula $aa$
+\end_inset
+
+, so that 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ represents the category of the 
+\begin_inset Formula $i\mbox{th}$
+\end_inset
+
+ observation.
+ Suppose that the pmf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ X_{i}=1|\theta\right\} \right) & =\theta^{2}\\
+P\left(\left\{ X_{i}=2|\theta\right\} \right) & =2\theta\left(1-\theta\right)\\
+P\left(\left\{ X_{i}=3|\theta\right\} \right) & =\left(1-\theta\right)^{2}
+\end{flalign*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta\in\left(0,1\right)$
+\end_inset
+
+.
+ We observe 
+\begin_inset Formula $n_{k}=\sum_{i=1}^{n}I_{\left\{ X_{i}=k\right\} }$
+\end_inset
+
+ individuals of type 
+\begin_inset Formula $k\in\left\{ 1,2,3\right\} $
+\end_inset
+
+.
+ Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Note that the pmf specified for 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is legitimate, i.e., is it non-negative and
+\begin_inset Formula 
+\[
+\theta^{2}+2\theta\left(1-\theta\right)+\left(1-\theta\right)^{2}=\theta^{2}+2\theta-2\theta^{2}+1-2\theta+\theta^{2}=1.
+\]
+
+\end_inset
+
+ We can write the pmf as
+\begin_inset Formula 
+\begin{flalign*}
+p_{X_{i}}\left(x_{i}|\theta\right) & =\left(\theta^{2}\right)^{I_{\left\{ x_{i}=1\right\} }}\left[2\theta\left(1-\theta\right)\right]^{I_{\left\{ x_{i}=2\right\} }}\left[\left(1-\theta\right)^{2}\right]^{I_{\left\{ x_{i}=3\right\} }}
+\end{flalign*}
+
+\end_inset
+
+where each 
+\begin_inset Formula $I_{\left\{ x_{i}=k\right\} }$
+\end_inset
+
+ is equal to 0 or 1.
+ Then, the joint pmf of 
+\begin_inset Formula $\mathbf{X}=X_{i},\ldots,X_{n}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+p_{\mathbf{X}}\left(\mathbf{x}|\theta\right) & =\prod_{i=1}^{n}p_{X_{i}}\left(x_{i}|\theta\right)\\
+ & =\prod_{i=1}^{n}\left(\theta^{2}\right)^{I_{\left\{ x_{i}=1\right\} }}\left[2\theta\left(1-\theta\right)\right]^{I_{\left\{ x_{i}=2\right\} }}\left[\left(1-\theta\right)^{2}\right]^{I_{\left\{ x_{i}=3\right\} }}\\
+ & =\left(\theta^{2}\right)^{\sum_{i=1}^{n}I_{\left\{ x_{i}=1\right\} }}\left[2\theta\left(1-\theta\right)\right]^{\sum_{i=1}^{n}I_{\left\{ x_{i}=2\right\} }}\left[\left(1-\theta\right)^{2}\right]^{\sum_{i=1}^{n}I_{\left\{ x_{i}=3\right\} }}
+\end{flalign*}
+
+\end_inset
+
+so that the likelihood function is given by 
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\theta|\mathbf{x}\right) & =p_{\mathbf{X}}\left(\mathbf{x}|\theta\right)\\
+ & =\left(\theta^{2}\right)^{\sum_{i=1}^{n}I_{\left\{ x_{i}=1\right\} }}\left[2\theta\left(1-\theta\right)\right]^{\sum_{i=1}^{n}I_{\left\{ x_{i}=2\right\} }}\left[\left(1-\theta\right)^{2}\right]^{\sum_{i=1}^{n}I_{\left\{ x_{i}=3\right\} }}\\
+ & =\left(\theta^{2}\right)^{n_{1}}\left[2\theta\left(1-\theta\right)\right]^{n_{2}}\left[\left(1-\theta\right)^{2}\right]^{n_{3}}\\
+ & =\theta^{2n_{1}}\left[2\theta\left(1-\theta\right)\right]^{n_{2}}\left(1-\theta\right)^{2n_{3}}\\
+ & =2^{n_{2}}\theta^{2n_{1}+n_{2}}\left(1-\theta\right)^{n_{2}+2n_{3}}\\
+\Leftrightarrow\ln L\left(\theta|\mathbf{x}\right) & =\ln\left[2^{n_{2}}\theta^{2n_{1}+n_{2}}\left(1-\theta\right)^{n_{2}+2n_{3}}\right]\\
+ & =\ln2^{n_{2}}+\ln\theta^{2n_{1}+n_{2}}+\ln\left(1-\theta\right)^{n_{2}+2n_{3}}\\
+ & =n_{2}\ln2+\left(2n_{1}+n_{2}\right)\ln\theta+\left(n_{2}+2n_{3}\right)\ln\left(1-\theta\right).
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative of the log-likelihood with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}\ln L\left(\theta|\mathbf{x}\right) & =\frac{\partial}{\partial\theta}\left[n_{2}\ln2+\left(2n_{1}+n_{2}\right)\ln\theta+\left(n_{2}+2n_{3}\right)\ln\left(1-\theta\right)\right]\\
+ & =0+\frac{2n_{1}+n_{2}}{\theta}+\frac{n_{2}+2n_{3}}{1-\theta}\cdot-1\\
+ & =\frac{2n_{1}+n_{2}}{\theta}-\frac{n_{2}+2n_{3}}{1-\theta}
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{2n_{1}+n_{2}}{\theta}-\frac{n_{2}+2n_{3}}{1-\theta} & =0\\
+\Leftrightarrow\frac{n_{2}+2n_{3}}{1-\theta} & =\frac{2n_{1}+n_{2}}{\theta}\\
+\Leftrightarrow\theta\left(n_{2}+2n_{3}\right) & =\left(1-\theta\right)\left(2n_{1}+n_{2}\right)\\
+\Leftrightarrow\frac{1-\theta}{\theta} & =\frac{n_{2}+2n_{3}}{2n_{1}+n_{2}}\\
+\Leftrightarrow\frac{1}{\theta}-1 & =\frac{n_{2}+2n_{3}}{2n_{1}+n_{2}}\\
+\Leftrightarrow\frac{1}{\theta} & =\frac{n_{2}+2n_{3}}{2n_{1}+n_{2}}+1\\
+ & =\frac{n_{2}+2n_{3}+2n_{1}+n_{2}}{2n_{1}+n_{2}}\\
+ & =\frac{2\left(n_{1}+n_{2}+n_{3}\right)}{2n_{1}+n_{2}}\\
+ & =\frac{2n}{2n_{1}+n_{2}}\\
+\Leftrightarrow\hat{\theta} & =\frac{2n_{1}+n_{2}}{2n}.
+\end{flalign*}
+
+\end_inset
+
+We will evaluate the second derivative of the log-likelihood at 
+\begin_inset Formula $\theta=\hat{\theta}$
+\end_inset
+
+ to verify that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is a maximum.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial^{2}}{\partial\theta^{2}}\ln L\left(\theta|\mathbf{x}\right)\Bigr\rvert_{\theta=\hat{\theta}} & =\frac{\partial}{\partial\theta}\left[\frac{2n_{1}+n_{2}}{\theta}-\frac{n_{2}-2n_{3}}{1-\theta}\right|_{\theta=\hat{\theta}}\\
+ & =-\frac{2n_{1}+n_{2}}{\theta^{2}}-\left(\frac{n_{2}-2n_{3}}{\left(1-\theta\right)^{2}}\cdot-1\cdot-1\right)\\
+ & =-\frac{2n_{1}+n_{2}}{\theta^{2}}-\frac{n_{2}-2n_{3}}{\left(1-\theta\right)^{2}}\\
+ & =-\left[\frac{2n_{1}+n_{2}}{\theta^{2}}+\frac{n_{2}-2n_{3}}{\left(1-\theta\right)^{2}}\right]
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $n_{k}\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $n>0$
+\end_inset
+
+, i.e., at least one of 
+\begin_inset Formula $n_{k}$
+\end_inset
+
+ is positive, and we have 
+\begin_inset Formula $\theta^{2}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(1-\theta\right)^{2}>0$
+\end_inset
+
+, so that the sum above is positive, so that the expression above is negative.
+ It follows that 
+\begin_inset Formula $\hat{\theta}=\left(2n_{1}+n_{2}\right)/2n$
+\end_inset
+
+ is the MLE.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}\stackrel{\mbox{iid}}{\sim}\mbox{Poisson}\left(\lambda\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\lambda>0$
+\end_inset
+
+.
+ Find the MLE of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:suff-stat-poisson"
+
+\end_inset
+
+, we found that the joint pmf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ was given by
+\begin_inset Formula 
+\begin{flalign*}
+p_{\mathbf{X}}\left(\mathbf{x}|\lambda\right) & =\left(\prod_{i=1}^{n}\frac{1}{x_{i}!}\right)e^{-n\lambda}\lambda^{\sum_{i=1}^{n}x_{i}},
+\end{flalign*}
+
+\end_inset
+
+so that the log-likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\lambda|\mathbf{x}\right) & =\ln\left[\left(\prod_{i=1}^{n}\frac{1}{x_{i}!}\right)e^{-n\lambda}\lambda^{\sum_{i=1}^{n}x_{i}}\right]\\
+ & =\ln\left(\prod_{i=1}^{n}\frac{1}{x_{i}!}\right)+\ln e^{-n\lambda}+\ln\lambda^{\sum_{i=1}^{n}x_{i}}\\
+ & =\left(\ln\frac{1}{x_{1}!}+\cdots+\ln\frac{1}{x_{n}!}\right)-n\lambda+\left(\sum_{i=1}^{n}x_{i}\right)\ln\lambda\\
+ & =\left[\left(\ln1-\ln x_{1}!\right)+\cdots+\left(\ln1-\ln x_{n}!\right)\right]-n\lambda+\left(\sum_{i=1}^{n}x_{i}\right)\ln\lambda\\
+ & =\left[\left(0-\ln x_{1}!\right)+\cdots+\left(0-\ln x_{n}!\right)\right]-n\lambda+\ln\lambda\left(\sum_{i=1}^{n}x_{i}\right)\\
+ & =\sum_{i=1}^{n}-\ln x_{i}!-n\lambda+\ln\lambda\left(\sum_{i=1}^{n}x_{i}\right)\\
+ & =-n\lambda+\ln\lambda\left(\sum_{i=1}^{n}x_{i}\right)-\sum_{i=1}^{n}\ln x_{i}!.
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative of the log-likelihood with respect to 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\lambda}\ln L\left(\lambda|\mathbf{x}\right) & =\frac{\partial}{\partial\lambda}\left[-n\lambda+\ln\lambda\left(\sum_{i=1}^{n}x_{i}\right)-\sum_{i=1}^{n}\ln x_{i}!\right]\\
+ & =-n+\frac{1}{\lambda}\sum_{i=1}^{n}x_{i}
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+-n+\frac{1}{\lambda}\sum_{i=1}^{n}x_{i} & =0\\
+\Leftrightarrow\frac{1}{\lambda}\sum_{i=1}^{n}x_{i} & =n\\
+\Leftrightarrow\hat{\lambda} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}\\
+ & =\bar{x}.
+\end{flalign*}
+
+\end_inset
+
+We will evaluate the second derivative of the log-likelihood at 
+\begin_inset Formula $\lambda=\hat{\lambda}$
+\end_inset
+
+ to verify that 
+\begin_inset Formula $\hat{\lambda}$
+\end_inset
+
+ is a maximum.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial^{2}}{\partial\lambda^{2}}\ln L\left(\lambda|\mathbf{x}\right)\Bigr\rvert_{\lambda=\hat{\lambda}} & =\frac{\partial}{\partial\lambda}\left[-n+\frac{1}{\lambda}\sum_{i=1}^{n}x_{i}\right|_{\lambda=\hat{\lambda}}\\
+ & =-\frac{1}{\lambda^{2}}\sum_{i=1}^{n}x_{i}\Bigr\rvert_{\lambda=\hat{\lambda}}\\
+ & =-\frac{1}{\bar{x}^{2}}\sum_{i=1}^{n}x_{i}\\
+ & =-\frac{1}{\bar{x}^{2}}n\bar{x}\\
+ & =-\frac{n}{\bar{x}}
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $n>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{x}\geq0$
+\end_inset
+
+ (because the 
+\begin_inset Formula $x_{i}\mbox{'s}$
+\end_inset
+
+ are each non-negative), so that 
+\begin_inset Formula $-n/\bar{x}<0$
+\end_inset
+
+ (assuming that 
+\begin_inset Formula $\bar{x}>0$
+\end_inset
+
+).
+ It follows that 
+\begin_inset Formula $\hat{\lambda}=\bar{x}$
+\end_inset
+
+ is the MLE.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}\stackrel{\mbox{iid}}{\sim}U\left(\theta-\frac{1}{2},\theta+\frac{1}{2}\right)$
+\end_inset
+
+.
+ Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The pdf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{X_{i}}\left(x_{i}\right) & =\frac{1}{\left(\theta+\frac{1}{2}\right)-\left(\theta-\frac{1}{2}\right)}I_{\left\{ \theta-\frac{1}{2}<x_{i}<\theta+\frac{1}{2}\right\} }\\
+ & =\frac{1}{1}I_{\left\{ \theta-\frac{1}{2}<x_{i}<\theta+\frac{1}{2}\right\} }\\
+ & =I_{\left\{ \theta-\frac{1}{2}<x_{i}<\theta+\frac{1}{2}\right\} },
+\end{flalign*}
+
+\end_inset
+
+so that the joint pdf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{X}}\left(\mathbf{x}|\theta\right) & =\prod_{i=1}^{n}I_{\left\{ \theta-\frac{1}{2}<x_{i}<\theta+\frac{1}{2}\right\} }\\
+ & =I_{\left\{ \theta-\frac{1}{2}<x_{1}<\theta+\frac{1}{2}\right\} }\cdot\ldots\cdot I_{\left\{ \theta-\frac{1}{2}<x_{n}<\theta+\frac{1}{2}\right\} }\\
+ & =I_{\left\{ x_{\left(1\right)}>\theta-\frac{1}{2}\right\} }I_{\left\{ x_{\left(n\right)}<\theta+\frac{1}{2}\right\} }.
+\end{flalign*}
+
+\end_inset
+
+Then, the likelihood function is given by 
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\theta|\mathbf{x}\right) & =\begin{cases}
+1, & x_{\left(n\right)}-\frac{1}{2}<\theta<x_{\left(1\right)}+\frac{1}{2}\\
+0, & \mbox{otherwise}
+\end{cases},
+\end{flalign*}
+
+\end_inset
+
+and its graph is shown below.
+ Clearly, 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+ is constant between 
+\begin_inset Formula $x_{\left(n\right)}-\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{\left(1\right)}+\frac{1}{2}$
+\end_inset
+
+ and 0 elsewhere, so that the MLE 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is given by any point in the interval 
+\begin_inset Formula $\left(x_{\left(n\right)}-\frac{1}{2},x_{\left(1\right)}+\frac{1}{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<likelihood-uniform, echo=FALSE, fig.height=2, fig.width=3, fig.align='center',
+ fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,1,0), mar = c(3,3,0.1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- seq(1, 2, length=1000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(z, rep(1,1000), type="l", xlab = expression(theta), ylab=expression(paste(L
+, "(",theta,"|",bold(x),")")), yaxt="n", xaxt="n", xlim = c(0, 3), cex.lab
+ = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at=c(1,2), labels=c(expression(x[(n)]-frac(1,2)), expression(x[(1)]+frac
+(1,2))), cex.axis=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(2, at=1, labels=1, cex.axis=0.75, las=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots X_{n}\stackrel{\mbox{iid}}{\sim}f\left(x|\theta\right)=\theta/x^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $0<\theta\leq x<\infty$
+\end_inset
+
+.
+ Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The support of 
+\begin_inset Formula $X$
+\end_inset
+
+ depends on the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+, so we will rewrite the pdf of 
+\begin_inset Formula $X$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{flalign*}
+f_{X}\left(x|\theta\right) & =\frac{\theta}{x^{2}}I_{\left\{ x\geq\theta\right\} }.
+\end{flalign*}
+
+\end_inset
+
+Then, the joint pdf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{X}}\left(\mathbf{x}|\theta\right) & =\prod_{i=1}^{n}f_{X_{i}}\left(x_{i}|\theta\right)\\
+ & =\prod_{i=1}^{n}\frac{\theta}{x_{i}^{2}}I_{\left\{ x_{i}\geq\theta\right\} }\\
+ & =\frac{\theta^{n}}{\prod_{i=1}^{n}x_{i}^{2}}I_{\left\{ x_{\left(1\right)}\geq\theta\right\} },
+\end{flalign*}
+
+\end_inset
+
+so that the likelihood function is given by
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\theta|\mathbf{x}\right) & =\begin{cases}
+\theta^{n}/\prod_{i=1}^{n}x_{i}^{2}, & \theta\leq x_{\left(1\right)}\\
+0, & \theta>x_{\left(1\right)}
+\end{cases}.
+\end{flalign*}
+
+\end_inset
+
+The graph of the likelihood function is shown below.
+ Clearly, the maximum value of 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+ occurs at 
+\begin_inset Formula $x_{\left(1\right)}$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $\hat{\theta}=X_{\left(1\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=2, fig.width=3, fig.align='center', fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,0.5,0), mar = c(3,3,0.1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- seq(0, 1, length=1000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(z, z^3, type="l", xlab = expression(theta), ylab=expression(paste(L,
+ "(",theta,"|",bold(x),")")), yaxt="n", xaxt="n", xlim = c(0, 2), cex.lab
+ = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at = 1, labels = expression(x[(1)]), cex.axis=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}\stackrel{\mbox{iid}}{\sim}U\left(\mu-\sqrt{3}\sigma,\mu+\sqrt{3}\sigma\right)$
+\end_inset
+
+.
+ Find the MLEs of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The pdf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{X_{i}}\left(x_{i}|\mu,\sigma\right) & =\frac{1}{\left(\mu+\sqrt{3}\sigma\right)-\left(\mu-\sqrt{3}\sigma\right)}I_{\left\{ \mu-\sqrt{3}\sigma<x_{i}<\mu+\sqrt{3}\sigma\right\} }\\
+ & =\frac{1}{2\sqrt{3}\sigma}I_{\left\{ \mu-\sqrt{3}\sigma<x_{i}<\mu+\sqrt{3}\sigma\right\} },
+\end{flalign*}
+
+\end_inset
+
+so that the joint pdf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{X}}\left(\mathbf{x}|\mu,\sigma\right) & =\prod_{i=1}^{n}f_{X_{i}}\left(x_{i}|\mu,\sigma\right)\\
+ & =\prod_{i=1}^{n}\frac{1}{2\sqrt{3}\sigma}I_{\left\{ \mu-\sqrt{3}\sigma<x_{i}<\mu+\sqrt{3}\sigma\right\} }\\
+ & =\left(2\sqrt{3}\sigma\right)^{-n}I_{\left\{ x_{\left(1\right)}>\mu-\sqrt{3}\sigma\right\} }I_{\left\{ x_{\left(n\right)}<\mu+\sqrt{3}\sigma\right\} }.
+\end{flalign*}
+
+\end_inset
+
+To maximize 
+\begin_inset Formula $L$
+\end_inset
+
+, we note that 
+\begin_inset Formula $\left(2\sqrt{3}\sigma\right)^{-n}$
+\end_inset
+
+ increases as 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ decreases.
+ Thus, we must find the minimum value of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ such that 
+\begin_inset Formula $L$
+\end_inset
+
+ is positive, which is true when 
+\begin_inset Formula $\sigma>\left(\mu-x_{\left(1\right)}\right)/\sqrt{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma>\left(x_{\left(n\right)}-\mu\right)/\sqrt{3}$
+\end_inset
+
+.
+ In the graph below, the region of positivity of 
+\begin_inset Formula $L$
+\end_inset
+
+ is shaded.
+ The minimum value of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ such that 
+\begin_inset Formula $L$
+\end_inset
+
+ is positive occurs precisely when the two lines intersect, i.e., when
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\mu-x_{\left(1\right)}}{\sqrt{3}} & =\frac{x_{\left(n\right)}-\mu}{\sqrt{3}}\\
+\Leftrightarrow\mu-x_{\left(1\right)} & =x_{\left(n\right)}-\mu\\
+\Leftrightarrow2\mu & =x_{\left(n\right)}+x_{\left(1\right)}\\
+\Leftrightarrow\hat{\mu} & =\frac{x_{\left(n\right)}+x_{\left(1\right)}}{2}.
+\end{flalign*}
+
+\end_inset
+
+We substitute into one of the line equations to find 
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\hat{\sigma} & =\frac{\hat{\mu}-x_{\left(1\right)}}{\sqrt{3}}\\
+ & =\frac{\frac{1}{2}\left(x_{\left(n\right)}+x_{\left(1\right)}\right)-x_{\left(1\right)}}{\sqrt{3}}\\
+ & =\frac{x_{\left(n\right)}+x_{\left(1\right)}-2x_{\left(1\right)}}{2\sqrt{3}}\\
+ & =\frac{x_{\left(n\right)}-x_{\left(1\right)}}{2\sqrt{3}}
+\end{flalign*}
+
+\end_inset
+
+Thus, the MLEs for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ are given by 
+\begin_inset Formula $\hat{\mu}=\left(x_{\left(n\right)}+x_{\left(1\right)}\right)/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\sigma}=\left(x_{\left(n\right)}-x_{\left(1\right)}\right)/2\sqrt{3}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=2, fig.width=3.5, fig.align='center', fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,0.5,0), mar = c(3,4,0.1,4))
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- seq(-1, 3, length=2000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+# set yaxs="i" to remove the default 4% padding beyond the ylim
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(z, (2-z)/sqrt(3), type = "l", xlab = expression(mu), ylab = expression(sigm
+a), yaxt = "n", xaxt = "n", yaxs = "i", xlim = c(0, 3), ylim = c(0,1.5),
+ cex.lab = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(z, (z-1)/sqrt(3), type="l")
+\end_layout
+
+\begin_layout Plain Layout
+
+polygon(c(-1, 1.5, 4), c(3/sqrt(3), 1/(2*sqrt(3)), 3/sqrt(3)), density=20,
+ angle=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at = c(1,2), labels = c(expression(x[(1)]), expression(x[(n)])),
+ cex.axis=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+# use las to rotate the strings and padj to move them along the axis
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(sigma == frac(mu-x[(1)], sqrt(3))), side=4, line=0.5, las=2,
+ padj=-1, cex=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(sigma == frac(x[(n)]-mu, sqrt(3))), side=2, line=0.5, las=2,
+ padj=-1, cex=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Supose that 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ are independent for 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+, where 
+\begin_inset Formula $X_{i}\sim f\left(x|\lambda\right)=\left(1/\lambda\right)e^{-x/\lambda}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{i}\sim f\left(y|\mu\right)=\left(1/\mu\right)e^{-y/\mu}$
+\end_inset
+
+.
+ We observe 
+\begin_inset Formula 
+\[
+Z_{i}=\min\left(X_{i},Y_{i}\right)\quad\mbox{and}\quad W_{i}=\begin{cases}
+1, & \mbox{if }Z_{i}=X_{i}\\
+0, & \mbox{if }Z_{i}=Y_{i}
+\end{cases}.
+\]
+
+\end_inset
+
+Find the MLEs of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
 \end_inset
 
 .
