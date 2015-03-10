@@ -11096,5 +11096,299 @@ Find the MLEs of
 .
 \end_layout
 
+\begin_layout Example
+WRITE THIS UP
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Invariance property of MLEs]
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, then for any function 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+, the MLE of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\tau\left(\hat{\theta}\right)$
+\end_inset
+
+.
+ (This is Theorem 7.2.10 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:invariance-mle"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+proof goes here
+\end_layout
+
+\begin_layout Example
+Suppose that 
+\begin_inset Formula $X_{1},\ldots,X_{n}\stackrel{\mbox{iid}}{\sim}\mbox{Exp}\left(\lambda\right)$
+\end_inset
+
+, so that the pdf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is given by 
+\begin_inset Formula $f_{X_{i}}\left(x|\lambda\right)=\lambda e^{-\lambda x}$
+\end_inset
+
+, and the MLE of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{\lambda}=1/\bar{X}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the MLE of 
+\begin_inset Formula $P\left(\left\{ X>a\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $\eta=P\left(\left\{ X>a\right\} \right)$
+\end_inset
+
+, so that we have 
+\begin_inset Formula 
+\begin{flalign*}
+\eta & =P\left(\left\{ X>a\right\} \right)\\
+ & =\int_{a}^{\infty}f_{X}\left(x|\lambda\right)\mbox{d}x\\
+ & =\lim_{c\rightarrow\infty}\int_{a}^{c}\lambda e^{-\lambda x}\mbox{d}x\\
+ & =\lim_{c\rightarrow\infty}\left[-e^{-\lambda x}\right|_{a}^{c}\\
+ & =\lim_{c\rightarrow\infty}\left(-e^{-\lambda c}-\left(-e^{-\lambda a}\right)\right)\\
+ & =\lim_{c\rightarrow\infty}\left(-e^{-\lambda c}+e^{-\lambda a}\right)\\
+ & =0+e^{-\lambda a}\\
+ & =e^{-\lambda a}.
+\end{flalign*}
+
+\end_inset
+
+Then, by 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:invariance-mle"
+
+\end_inset
+
+, we have 
+\begin_inset Formula $\hat{\eta}=e^{-\left(1/\bar{x}\right)a}=e^{-a/\bar{x}}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula 
+\begin{flalign*}
+\ln\eta & =\ln e^{-\lambda a}\\
+\Leftrightarrow-\lambda a & =\ln\eta\\
+\Leftrightarrow\lambda & =-\frac{\ln\eta}{a},
+\end{flalign*}
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\begin{flalign*}
+f_{X_{i}}\left(x|\eta\right) & =\left(-\frac{\ln\eta}{a}\right)e^{-\left(-\ln\eta/a\right)x}\\
+ & =\left(-\frac{\ln\eta}{a}\right)e^{\left(x\ln\eta\right)/a}.
+\end{flalign*}
+
+\end_inset
+
+Then, the joint pdf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{X}}\left(\mathbf{x}|\eta\right) & =\prod_{i=1}^{n}f_{X_{i}}\left(x|\eta\right)\\
+ & =\prod_{i=1}^{n}\left(-\frac{\ln\eta}{a}\right)e^{\left(x_{i}\ln\eta\right)/a}\\
+ & =\left(-\frac{\ln\eta}{a}\right)^{n}e^{\sum_{i=1}^{n}\left(x_{i}\ln\eta\right)/a},
+\end{flalign*}
+
+\end_inset
+
+so that the log-likelihood function is given by
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\eta|\mathbf{x}\right) & =\ln\left[\left(-\frac{\ln\eta}{a}\right)^{n}e^{\sum_{i=1}^{n}\left(x_{i}\ln\eta\right)/a}\right]\\
+ & =\ln\left[\left(-\frac{\ln\eta}{a}\right)^{n}\right]+\ln\left[e^{\sum_{i=1}^{n}\left(x_{i}\ln\eta\right)/a}\right]\\
+ & =n\ln\left(-\frac{\ln\eta}{a}\right)+\sum_{i=1}^{n}\left(\frac{x_{i}\ln\eta}{a}\right)\\
+ & =n\ln\left(-\frac{\ln\eta}{a}\right)+\frac{\ln\eta}{a}\sum_{i=1}^{n}x_{i}.
+\end{flalign*}
+
+\end_inset
+
+Taking the derivative with respect to 
+\begin_inset Formula $\eta$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\eta}\ln L\left(\eta|\mathbf{x}\right) & =\frac{\partial}{\partial\eta}\left[n\ln\left(-\frac{\ln\eta}{a}\right)+\ln\eta\left(a\sum_{i=1}^{n}x_{i}\right)\right]\\
+ & =\frac{n}{-\frac{\ln\eta}{a}}\left(-\frac{1}{\eta a}\right)+\frac{1}{\eta a}\sum_{i=1}^{n}x_{i}\\
+ & =\frac{n}{\eta\ln\eta}+\frac{1}{\eta a}\sum_{i=1}^{n}x_{i}.
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{n}{\hat{\eta}\ln\hat{\eta}}+\frac{1}{\hat{\eta}a}\sum_{i=1}^{n}x_{i} & =0\\
+\Leftrightarrow\frac{n}{\hat{\eta}\ln\hat{\eta}} & =-\frac{1}{\hat{\eta}a}\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\hat{\eta}\ln\hat{\eta}\sum_{i=1}^{n}x_{i} & =-n\hat{\eta}a\\
+\Leftrightarrow\ln\hat{\eta} & =-\frac{na}{\sum_{i=1}^{n}x_{i}}\\
+\Leftrightarrow\ln\hat{\eta} & =-\frac{a}{\bar{x}}\\
+\Leftrightarrow\hat{\eta} & =e^{-a/\bar{x}},
+\end{flalign*}
+
+\end_inset
+
+which agrees with the result obtained from the theorem.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Find the MLE of 
+\begin_inset Formula $\mbox{median}\left(X_{1},\ldots,X_{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The median of a distribution is a value 
+\begin_inset Formula $m$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\left(\left\{ Y\leq m\right\} \right)\geq\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $P\left(\left\{ Y\geq m\right\} \right)\geq\frac{1}{2}.$
+\end_inset
+
+ If 
+\begin_inset Formula $Y$
+\end_inset
+
+ is continuous, 
+\begin_inset Formula $m$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{m}f\left(y\right)\mbox{d}y=\int_{m}^{\infty}f\left(y\right)\mbox{d}y=\frac{1}{2}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $X$
+\end_inset
+
+ is continuous, so it follows that 
+\begin_inset Formula 
+\begin{flalign*}
+\frac{1}{2} & =P\left(\left\{ X\leq m\right\} \right)\\
+ & =F_{X}\left(m\right).
+\end{flalign*}
+
+\end_inset
+
+The cdf of 
+\begin_inset Formula $X$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+F_{X}\left(x\right) & =\int_{0}^{x}f_{X}\left(x\right)\mbox{d}x\\
+ & =\int_{0}^{x}\lambda e^{-\lambda x}\mbox{d}x\\
+ & =-e^{-\lambda x}\Big\rvert_{0}^{x}\\
+ & =-e^{-\lambda x}-\left(-e^{0}\right)\\
+ & =1-e^{-\lambda x},
+\end{flalign*}
+
+\end_inset
+
+so it follows that 
+\begin_inset Formula 
+\begin{flalign*}
+F_{X}\left(m\right) & =1-e^{-\lambda m}\\
+ & =\frac{1}{2}\\
+\Leftrightarrow e^{-\lambda m} & =\frac{1}{2}\\
+\Leftrightarrow-\lambda m & =\ln\left(2^{-1}\right)\\
+\Leftrightarrow-\lambda m & =-\ln2\\
+\Leftrightarrow m & =\frac{\ln2}{\lambda}.
+\end{flalign*}
+
+\end_inset
+
+Then, by 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:invariance-mle"
+
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{flalign*}
+\hat{m} & =\frac{\ln2}{\hat{\lambda}}\\
+\Leftrightarrow\hat{m} & =\frac{\ln2}{\frac{1}{\bar{x}}}\\
+ & =\bar{x}\ln2.
+\end{flalign*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
 \end_body
 \end_document
