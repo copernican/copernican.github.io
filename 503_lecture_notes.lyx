@@ -339,6 +339,153 @@ in the case that
 
 \end_deeper
 \begin_layout Section
+Sums of random variables from a random sample
+\end_layout
+
+\begin_layout Definition
+The 
+\shape italic
+sample variance
+\shape default
+ is the statistic defined by
+\begin_inset Formula 
+\[
+S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}.
+\]
+
+\end_inset
+
+The 
+\shape italic
+sample standard deviation
+\shape default
+ is the statistic defined by 
+\begin_inset Formula $S=\sqrt{S^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ be any numbers and 
+\begin_inset Formula $\bar{x}=\left(x_{1}+\cdots+x_{n}\right)/n$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(a)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\min_{a}\sum_{i=1}^{n}\left(x_{i}-a\right)^{2}=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(b)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(n-1\right)s^{2}=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}=\sum_{i=1}^{n}x_{i}^{2}-n\bar{x}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+(This is Theorem 5.2.4 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:computing-sums-rand-samples"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+To prove part (a), add and subtract 
+\begin_inset Formula $\bar{x}$
+\end_inset
+
+ to get
+\begin_inset Formula 
+\begin{flalign*}
+\sum_{i=1}^{n}\left(x_{i}-a\right)^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}+\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left[\left(x_{i}-\bar{x}\right)+\left(\bar{x}-a\right)\right]\left[\left(x_{i}-\bar{x}\right)+\left(\bar{x}-a\right)\right]\\
+ & =\sum_{i=1}^{n}\left[\left(x_{i}-\bar{x}\right)^{2}+\left(x_{i}-\bar{x}\right)\left(\bar{x}-a\right)+\left(\bar{x}-a\right)\left(x_{i}-\bar{x}\right)+\left(\bar{x}-a\right)^{2}\right]\\
+ & =\sum_{i=1}^{n}\left[\left(x_{i}-\bar{x}\right)^{2}+2\left(x_{i}-\bar{x}\right)\left(\bar{x}-a\right)+\left(\bar{x}-a\right)^{2}\right]\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+\sum_{i=1}^{n}\left[2\left(x_{i}-\bar{x}\right)\left(\bar{x}-a\right)\right]+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+2\sum_{i=1}^{n}\left(x_{i}\bar{x}-ax_{i}-\bar{x}^{2}+a\bar{x}\right)+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+2\left(\bar{x}\sum_{i=1}^{n}x_{i}-a\sum_{i=1}^{n}x_{i}-\sum_{i=1}^{n}\bar{x}^{2}+\sum_{i=1}^{n}a\bar{x}\right)+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+2\left(\bar{x}\left(n\bar{x}\right)-a\left(n\bar{x}\right)-n\bar{x}^{2}+na\bar{x}\right)+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+2\left(n\bar{x}^{2}-na\bar{x}-n\bar{x}^{2}+na\bar{x}\right)+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+2\left(0\right)+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+ & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}.
+\end{flalign*}
+
+\end_inset
+
+It is now clear that the right-hand side is minimized at 
+\begin_inset Formula $a=\bar{x}$
+\end_inset
+
+.
+ To prove part (b), take 
+\begin_inset Formula $a=0$
+\end_inset
+
+ in the above, i.e.,
+\begin_inset Formula 
+\begin{flalign*}
+\sum_{i=1}^{n}\left(x_{i}-a\right)^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+\sum_{i=1}^{n}\left(\bar{x}-a\right)^{2}\\
+\Leftrightarrow\sum_{i=1}^{n}\left(x_{i}-0\right)^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+\sum_{i=1}^{n}\left(\bar{x}-0\right)^{2}\\
+\Leftrightarrow\sum_{i=1}^{n}x_{i}^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+\sum_{i=1}^{n}\bar{x}^{2}\\
+\Leftrightarrow\sum_{i=1}^{n}x_{i}^{2}-\sum_{i=1}^{n}\bar{x}^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\\
+\Leftrightarrow\sum_{i=1}^{n}x_{i}^{2}-n\bar{x}^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}.
+\end{flalign*}
+
+\end_inset
+
+The sample variance is defined as 
+\begin_inset Formula 
+\begin{flalign*}
+s^{2} & =\frac{1}{n-1}\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\\
+\Leftrightarrow\left(n-1\right)s^{2} & =\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2},
+\end{flalign*}
+
+\end_inset
+
+so the final equality of part (b) holds.
+\end_layout
+
+\begin_layout Section
 Order statistics
 \end_layout
 
@@ -606,7 +753,7 @@ where
  The uniform distribution is not an exponential family (see example 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Example:-uniform-random"
+reference "exa:exp-family-uniform"
 
 \end_inset
 
@@ -760,13 +907,6 @@ status open
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:exp-family-poisson"
-
-\end_inset
-
 Let 
 \begin_inset Formula $X\sim P\left(\lambda\right)$
 \end_inset
@@ -803,6 +943,13 @@ for
 \end_inset
 
  in exponential family form.
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:exp-family-poisson"
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{flalign*}
 f\left(x|\lambda\right) & =\frac{e^{-\lambda}\lambda^{x}}{x!}\\
@@ -982,13 +1129,6 @@ status open
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Example:-uniform-random"
-
-\end_inset
-
 Let 
 \begin_inset Formula $X\sim U\left(0,\theta\right)$
 \end_inset
@@ -1021,7 +1161,17 @@ for
 \end_inset
 
  in exponential family form, if possible.
- Let 
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:exp-family-uniform"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Let 
 \begin_inset Formula $A=\left\{ x:x\in\left(0,\theta\right)\right\} $
 \end_inset
 
@@ -1466,7 +1616,7 @@ Let
  From 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:exp-family-poisson"
+reference "exa:exp-family-poisson"
 
 \end_inset
 
@@ -2346,6 +2496,10 @@ lines(x,dnorm(x, mean=-2, sd=1), type="l", col="green")
 @
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2490,6 +2644,10 @@ lines(x,dnorm(x, mean=0, sd=1.5), type="l", col="green")
 \begin_layout Plain Layout
 
 @
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -6715,7 +6873,7 @@ name "exa:ancillary-stat-uniform-range"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 The pdf of each 
 \begin_inset Formula $X_{i}$
 \end_inset
@@ -6891,8 +7049,93 @@ v<\theta+1 & \Rightarrow\frac{2m+r}{2}<\theta+1\\
 
 \end_inset
 
-[insert figure here whenever Octave decides to cooperate] From the figure
- above, we see that the region where 
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=2, fig.width=3.5, fig.align='center', fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,0.5,0), mar = c(3,4,0.5,4))
+\end_layout
+
+\begin_layout Plain Layout
+
+r <- seq(-1, 4, length=5000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+# set xaxs="i" to remove the default 4% padding beyond the ylim
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(r, 1 + r / 2, type = "l", xlab = "r", ylab = "m", yaxt = "n", xaxt
+ = "n", xaxs = "i", xlim = c(0, 4), ylim = c(0,3), cex.lab = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(r, 2 - r / 2, type="l")
+\end_layout
+
+\begin_layout Plain Layout
+
+polygon(c(-1,1,-1), c(2.5,1.5,0.5), density=20, angle=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at = c(0,1), labels = c(0,1), cex.axis = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(2, at = c(1,2), labels = c(expression(theta), expression(theta + 1)),
+ cex.axis = 0.75, las = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+# use las to rotate the strings and padj to move them along the axis
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(m == theta + frac(r, 2)), side=4, line=0.5, las=2, padj=-1.5,
+ cex=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(m == theta + 1 - frac(r, 2)), side=4, line=0.5, las=2, padj=2.5,
+ cex=0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+From the figure above, we see that the region where 
 \begin_inset Formula $f_{R,M}$
 \end_inset
 
@@ -6998,6 +7241,10 @@ where
 \end_inset
 
  is ancillary.
+\end_layout
+
+\begin_layout --Separator--
+
 \end_layout
 
 \begin_layout Example
@@ -7674,7 +7921,7 @@ reference "thm:complete-stat-exp-family"
  is not complete.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Remark
 \begin_inset ERT
 status open
 
@@ -7717,6 +7964,10 @@ cloud(z~x+y, data.frame(x=t, y=t^2, z=t^3), pch=".", ylim=c(0,1.5), xlim=c(-1,1)
 @
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -7744,7 +7995,6 @@ reference "thm:complete-stat-exp-family"
  not complete, as shown in the following example.
 \end_layout
 
-\begin_deeper
 \begin_layout Example
 Suppose 
 \begin_inset Formula $X\sim\mbox{Bernoulli}\left(p\right)$
@@ -7932,7 +8182,6 @@ and thus
  of distributions is complete.
 \end_layout
 
-\end_deeper
 \begin_layout --Separator--
 
 \end_layout
@@ -9700,28 +9949,25 @@ and
 \begin_inset Formula 
 \begin{flalign*}
 \mbox{Var}\left(X\right) & =\mbox{E}\left[X^{2}\right]-\mbox{E}\left[X\right]^{2}\\
- & =\mbox{E}\left[X^{2}\right]-\bar{X}^{2}\\
- & =\mbox{E}\left[X^{2}\right]-2\bar{X}\bar{X}+\bar{X}^{2}\\
- & =\mbox{E}\left[X^{2}\right]-2\bar{X}\mbox{E}\left[X\right]+\bar{X}^{2}\\
- & =\mbox{E}\left[X^{2}\right]-\mbox{E}\left[2\bar{X}X\right]+\mbox{E}\left[\bar{X}^{2}\right]\\
- & =\mbox{E}\left[X^{2}-2\bar{X}X+\bar{X}^{2}\right]\\
- & =\mbox{E}\left[X-\bar{X}\right]^{2}\\
 \Leftrightarrow\hat{\lambda} & =\hat{\mu}_{2}-\hat{\mu}_{1}^{2}\\
  & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)^{2}\\
- & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-2\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)+\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\\
- & =\sum_{i=1}^{n}\frac{1}{n}X_{i}^{2}-\sum_{i=1}^{n}\frac{2\bar{X}}{n}X_{i}+\sum_{i=1}^{n}\frac{\bar{X}}{n}X_{i}\\
- & =\sum_{i=1}^{n}\left(\frac{1}{n}X_{i}^{2}-\frac{2\bar{X}}{n}X_{i}+\frac{\bar{X}}{n}X_{i}\right)\\
- & =\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}^{2}-2\bar{X}X_{i}+\bar{X}X_{i}\right)\\
- & =\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}^{2}-\bar{X}X_{i}\right)
+ & =\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}-\bar{X}^{2}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}-\frac{n\bar{X}^{2}}{n}\\
+ & =\frac{1}{n}\left(\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}\right)\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2},
 \end{flalign*}
 
 \end_inset
 
+where the final equality follows from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:computing-sums-rand-samples"
 
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Standard method of moments may not work.
+.
+ Standard method of moments may not work.
 \end_layout
 
 \begin_layout Example
@@ -9969,6 +10215,10 @@ points(x = 1, y = 1, pch = 19)
 \begin_layout Plain Layout
 
 @
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -10222,7 +10472,7 @@ whose graph is shown below.
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 \begin_inset ERT
 status open
 
@@ -10257,6 +10507,10 @@ axis(1, at=c(1,2), labels=c(expression(x[(1)]), expression(x[(n)])))
 \begin_layout Plain Layout
 
 @
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -10676,7 +10930,7 @@ and its graph is shown below.
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 \begin_inset ERT
 status open
 
@@ -10719,8 +10973,16 @@ axis(2, at=1, labels=1, cex.axis=0.75, las=2)
 @
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout --Separator--
 
 \end_layout
 
@@ -10803,7 +11065,7 @@ The graph of the likelihood function is shown below.
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 \begin_inset ERT
 status open
 
@@ -10839,8 +11101,16 @@ axis(1, at = 1, labels = expression(x[(1)]), cex.axis=0.75)
 @
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout --Separator--
 
 \end_layout
 
@@ -10924,60 +11194,9 @@ To maximize
 \end_inset
 
  is shaded.
- The minimum value of 
-\begin_inset Formula $\sigma$
-\end_inset
-
- such that 
-\begin_inset Formula $L$
-\end_inset
-
- is positive occurs precisely when the two lines intersect, i.e., when
-\begin_inset Formula 
-\begin{flalign*}
-\frac{\mu-x_{\left(1\right)}}{\sqrt{3}} & =\frac{x_{\left(n\right)}-\mu}{\sqrt{3}}\\
-\Leftrightarrow\mu-x_{\left(1\right)} & =x_{\left(n\right)}-\mu\\
-\Leftrightarrow2\mu & =x_{\left(n\right)}+x_{\left(1\right)}\\
-\Leftrightarrow\hat{\mu} & =\frac{x_{\left(n\right)}+x_{\left(1\right)}}{2}.
-\end{flalign*}
-
-\end_inset
-
-We substitute into one of the line equations to find 
-\begin_inset Formula $\hat{\sigma}$
-\end_inset
-
-.
-\begin_inset Formula 
-\begin{flalign*}
-\hat{\sigma} & =\frac{\hat{\mu}-x_{\left(1\right)}}{\sqrt{3}}\\
- & =\frac{\frac{1}{2}\left(x_{\left(n\right)}+x_{\left(1\right)}\right)-x_{\left(1\right)}}{\sqrt{3}}\\
- & =\frac{x_{\left(n\right)}+x_{\left(1\right)}-2x_{\left(1\right)}}{2\sqrt{3}}\\
- & =\frac{x_{\left(n\right)}-x_{\left(1\right)}}{2\sqrt{3}}
-\end{flalign*}
-
-\end_inset
-
-Thus, the MLEs for 
-\begin_inset Formula $\mu$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma$
-\end_inset
-
- are given by 
-\begin_inset Formula $\hat{\mu}=\left(x_{\left(n\right)}+x_{\left(1\right)}\right)/2$
-\end_inset
-
- and 
-\begin_inset Formula $\hat{\sigma}=\left(x_{\left(n\right)}-x_{\left(1\right)}\right)/2\sqrt{3}$
-\end_inset
-
-, respectively.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 \begin_inset ERT
 status open
 
@@ -11047,8 +11266,70 @@ mtext(expression(sigma == frac(x[(n)]-mu, sqrt(3))), side=2, line=0.5, las=2,
 @
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Example
+The minimum value of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ such that 
+\begin_inset Formula $L$
+\end_inset
+
+ is positive occurs precisely when the two lines intersect, i.e., when
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\mu-x_{\left(1\right)}}{\sqrt{3}} & =\frac{x_{\left(n\right)}-\mu}{\sqrt{3}}\\
+\Leftrightarrow\mu-x_{\left(1\right)} & =x_{\left(n\right)}-\mu\\
+\Leftrightarrow2\mu & =x_{\left(n\right)}+x_{\left(1\right)}\\
+\Leftrightarrow\hat{\mu} & =\frac{x_{\left(n\right)}+x_{\left(1\right)}}{2}.
+\end{flalign*}
+
+\end_inset
+
+We substitute into one of the line equations to find 
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\hat{\sigma} & =\frac{\hat{\mu}-x_{\left(1\right)}}{\sqrt{3}}\\
+ & =\frac{\frac{1}{2}\left(x_{\left(n\right)}+x_{\left(1\right)}\right)-x_{\left(1\right)}}{\sqrt{3}}\\
+ & =\frac{x_{\left(n\right)}+x_{\left(1\right)}-2x_{\left(1\right)}}{2\sqrt{3}}\\
+ & =\frac{x_{\left(n\right)}-x_{\left(1\right)}}{2\sqrt{3}}
+\end{flalign*}
+
+\end_inset
+
+Thus, the MLEs for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ are given by 
+\begin_inset Formula $\hat{\mu}=\left(x_{\left(n\right)}+x_{\left(1\right)}\right)/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\sigma}=\left(x_{\left(n\right)}-x_{\left(1\right)}\right)/2\sqrt{3}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout --Separator--
 
 \end_layout
 
