@@ -11378,7 +11378,223 @@ Find the MLEs of
 \end_layout
 
 \begin_layout Example
-WRITE THIS UP
+In the case where 
+\begin_inset Formula $W_{i}=1$
+\end_inset
+
+, we have 
+\begin_inset Formula $Z_{i}=\min\left(X_{i},Y_{i}\right)=X_{i}$
+\end_inset
+
+, so that our information about 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is limited to 
+\begin_inset Formula $Y_{i}>Z_{i}$
+\end_inset
+
+, and we have
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ W_{i}=1\right\} \cap\left\{ Z_{i}=z_{i}\right\} \right) & =P\left(\left\{ X_{i}=z_{i}\right\} \cap\left\{ Y_{i}>z_{i}\right\} \right)\\
+ & =P\left(\left\{ X_{i}=z_{i}\right\} \right)\cdot P\left(\left\{ Y_{i}>z_{i}\right\} \right)\\
+ & =f_{X_{i}}\left(z_{i}|\lambda\right)\cdot\left(1-F_{Y_{i}}\left(z_{i}|\mu\right)\right).
+\end{flalign*}
+
+\end_inset
+
+In the case where 
+\begin_inset Formula $W_{i}=0$
+\end_inset
+
+, we have 
+\begin_inset Formula $Z_{i}=\min\left(X_{i},Y_{i}\right)=Y_{i}$
+\end_inset
+
+, so that our information about 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is limited to 
+\begin_inset Formula $X_{i}>Z_{i}$
+\end_inset
+
+, and we have
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ W_{i}=0\right\} \cap\left\{ Z_{i}=z_{i}\right\} \right) & =P\left(\left\{ Y_{i}=z_{i}\right\} \cap\left\{ X_{i}>z_{i}\right\} \right)\\
+ & =P\left(\left\{ Y_{i}=z_{i}\right\} \right)\cdot P\left(\left\{ X_{i}>z_{i}\right\} \right)\\
+ & =f_{Y_{i}}\left(z_{i}|\mu\right)\cdot\left(1-F_{X_{i}}\left(z_{i}|\lambda\right)\right).
+\end{flalign*}
+
+\end_inset
+
+The cdf of 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+F_{Y_{i}}\left(y|\mu\right) & =\int_{0}^{y}f_{Y_{i}}\left(t|\mu\right)\mbox{d}t\\
+ & =\int_{0}^{y}\frac{1}{\mu}e^{-t/\mu}\mbox{d}t\\
+ & =\left[-e^{-t/\mu}\right|_{0}^{y}\\
+ & =-e^{-y/\mu}-\left(-e^{0}\right)\\
+ & =1-e^{-y/\mu}.
+\end{flalign*}
+
+\end_inset
+
+By symmetry, the cdf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula $F_{X_{i}}\left(x|\lambda\right)=1-e^{-x/\lambda}$
+\end_inset
+
+.
+ So, we have
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ W_{i}=1\right\} \cap\left\{ Z_{i}=z_{i}\right\} \right) & =\frac{1}{\lambda}e^{-z_{i}/\lambda}\cdot e^{-z_{i}/\mu}
+\end{flalign*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ W_{i}=0\right\} \cap\left\{ Z_{i}=z_{i}\right\} \right) & =\frac{1}{\mu}e^{-z_{i}/\mu}\cdot e^{-z_{i}/\lambda}.
+\end{flalign*}
+
+\end_inset
+
+Then, the joint pdf of 
+\begin_inset Formula $W_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{W_{i},Z_{i}}\left(w_{i},z_{i}|\lambda,\mu\right) & =P\left(\left\{ Z_{i}=z_{i}\right\} \cap\left\{ W_{i}=w_{i}\right\} \right)\\
+ & =\left[\frac{1}{\lambda}e^{-z_{i}/\lambda}e^{-z_{i}/\mu}\right]^{w_{i}}\left[\frac{1}{\mu}e^{-z_{i}/\mu}e^{-z_{i}/\lambda}\right]^{1-w_{i}}\\
+ & =\left(\frac{1}{\lambda}\right)^{w_{i}}e^{\left(-z_{i}/\lambda\right)w_{i}}e^{\left(-z_{i}/\mu\right)w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}e^{\left(-z_{i}/\mu\right)\left(1-w_{i}\right)}e^{\left(-z_{i}/\lambda\right)\left(1-w_{i}\right)}\\
+ & =\left(\frac{1}{\lambda}\right)^{w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}\exp\left\{ -w_{i}\frac{z_{i}}{\lambda}-w_{i}\frac{z_{i}}{\mu}-\frac{z_{i}}{\mu}+w_{i}\frac{z_{i}}{\mu}-\frac{z_{i}}{\lambda}+w_{i}\frac{z_{i}}{\lambda}\right\} \\
+ & =\left(\frac{1}{\lambda}\right)^{w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}\exp\left\{ -\frac{z_{i}}{\mu}-\frac{z_{i}}{\lambda}\right\} \\
+ & =\left(\frac{1}{\lambda}\right)^{w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}e^{-z_{i}/\mu}e^{-z_{i}/\lambda},
+\end{flalign*}
+
+\end_inset
+
+so that the joint pdf of 
+\begin_inset Formula $\mathbf{W}=W_{1},\ldots,W_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{Z}=Z_{1},\ldots,Z_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{W},\mathbf{Z}}\left(\mathbf{w},\mathbf{z}|\lambda,\mu\right) & =\prod_{i=1}^{n}f_{W_{i},Z_{i}}\left(w_{i},z_{i}|\lambda,\mu\right)\\
+ & =\prod_{i=1}^{n}\left[\left(\frac{1}{\lambda}\right)^{w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}e^{-z_{i}/\mu}e^{-z_{i}/\lambda}\right]\\
+ & =\prod_{i=1}^{n}\left[\left(\frac{1}{\lambda}\right)^{w_{i}}\left(\frac{1}{\mu}\right)^{1-w_{i}}\exp\left\{ -z_{i}\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\right\} \right]\\
+ & =\lambda^{-\sum_{i=1}^{n}w_{i}}\mu^{-\sum_{i=1}^{n}\left(1-w_{i}\right)}\exp\left\{ -\sum_{i=1}^{n}z_{i}\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\right\} .
+\end{flalign*}
+
+\end_inset
+
+Then, the log-likelihood is given by 
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\lambda,\mu|\mathbf{w},\mathbf{z}\right) & =\ln\left[\lambda^{-\sum_{i=1}^{n}w_{i}}\mu^{-\sum_{i=1}^{n}\left(1-w_{i}\right)}\exp\left\{ -\sum_{i=1}^{n}z_{i}\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\right\} \right]\\
+ & =\ln\lambda^{-\sum_{i=1}^{n}w_{i}}+\ln\mu^{-\sum_{i=1}^{n}\left(1-w_{i}\right)}-\sum_{i=1}^{n}z_{i}\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\\
+ & =-\ln\lambda\sum_{i=1}^{n}w_{i}-\ln\mu\sum_{i=1}^{n}\left(1-w_{i}\right)-\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\sum_{i=1}^{n}z_{i}.
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative of 
+\begin_inset Formula $\ln L$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\lambda}\ln L\left(\lambda,\mu|\mathbf{w},\mathbf{z}\right) & =\frac{\partial}{\partial\lambda}\left[-\ln\lambda\sum_{i=1}^{n}w_{i}-\ln\mu\sum_{i=1}^{n}\left(1-w_{i}\right)-\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\sum_{i=1}^{n}z_{i}\right]\\
+ & =-\frac{1}{\lambda}\sum_{i=1}^{n}w_{i}-0+\frac{1}{\lambda^{2}}\sum_{i=1}^{n}z_{i}\\
+ & =-\frac{1}{\lambda}\sum_{i=1}^{n}w_{i}+\frac{1}{\lambda^{2}}\sum_{i=1}^{n}z_{i}
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{1}{\hat{\lambda}^{2}}\sum_{i=1}^{n}z_{i} & =\frac{1}{\hat{\lambda}}\sum_{i=1}^{n}w_{i}\\
+\Leftrightarrow\hat{\lambda}^{2}\sum_{i=1}^{n}w_{i} & =\hat{\lambda}\sum_{i=1}^{n}z_{i}\\
+\Leftrightarrow\hat{\lambda} & =\frac{\sum_{i=1}^{n}z_{i}}{\sum_{i=1}^{n}w_{i}}.
+\end{flalign*}
+
+\end_inset
+
+We will now take the derivative of 
+\begin_inset Formula $\ln L$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\mu}\ln L\left(\lambda,\mu|\mathbf{w},\mathbf{z}\right) & =\frac{\partial}{\partial\mu}\left[-\ln\lambda\sum_{i=1}^{n}w_{i}-\ln\mu\sum_{i=1}^{n}\left(1-w_{i}\right)-\left(\frac{1}{\mu}+\frac{1}{\lambda}\right)\sum_{i=1}^{n}z_{i}\right]\\
+ & =0-\frac{1}{\mu}\sum_{i=1}^{n}\left(1-w_{i}\right)+\frac{1}{\mu^{2}}\sum_{i=1}^{n}z_{i}\\
+ & =-\frac{1}{\mu}\sum_{i=1}^{n}\left(1-w_{i}\right)+\frac{1}{\mu^{2}}\sum_{i=1}^{n}z_{i}.
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{1}{\hat{\mu}^{2}}\sum_{i=1}^{n}z_{i} & =\frac{1}{\hat{\mu}}\sum_{i=1}^{n}\left(1-w_{i}\right)\\
+\Leftrightarrow\hat{\mu}^{2}\sum_{i=1}^{n}\left(1-w_{i}\right) & =\hat{\mu}\sum_{i=1}^{n}z_{i}\\
+\Leftrightarrow\hat{\mu} & =\frac{\sum_{i=1}^{n}z_{i}}{\sum_{i=1}^{n}\left(1-w_{i}\right)}.
+\end{flalign*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+The above example is a common setting for survival (or failure) analysis.
+ For example, 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ might be the time of cure for the 
+\begin_inset Formula $i\mbox{th}$
+\end_inset
+
+ subject, and 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ the follow-up time.
 \end_layout
 
 \begin_layout Theorem
@@ -11425,7 +11641,37 @@ name "thm:invariance-mle"
 \end_layout
 
 \begin_layout Proof
-proof goes here
+Let 
+\begin_inset Formula $\hat{\eta}$
+\end_inset
+
+ denote the value the maximizes 
+\begin_inset Formula $L^{*}\left(\eta|\mathbf{x}\right)$
+\end_inset
+
+.
+ We must show that 
+\begin_inset Formula $L^{*}\left(\hat{\eta}\mathbf{x}\right)=L^{*}\left[\tau\left(\hat{\theta}\right)|\mathbf{x}\right]$
+\end_inset
+
+.
+ Now, the maxima of 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{*}$
+\end_inset
+
+ coincide, so we have
+\begin_inset Formula 
+\begin{flalign*}
+L^{*}\left(\hat{\eta}|\mathbf{x}\right) & =\sup_{\eta}\sup_{\left\{ \theta:\tau\left(\theta\right)=\eta\right\} }L\left(\theta|\mathbf{x}\right)
+\end{flalign*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -11671,5 +11917,447 @@ reference "thm:invariance-mle"
 
 \end_deeper
 \end_deeper
+\begin_layout Theorem
+If an MLE is unique, then it is a function of the sufficient statistics.
+\end_layout
+
+\begin_layout Proof
+Suppose that 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ is a random sample from the distribution of 
+\begin_inset Formula $X$
+\end_inset
+
+, whose pdf is given by 
+\begin_inset Formula $f\left(x|\theta\right)$
+\end_inset
+
+.
+ Suppose also that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, and that the associated likelihood function is given by
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+.
+ Then, we have
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{x}\right)=f\left(\mathbf{x}|\theta\right)=h\left(\mathbf{x}\right)g\left(T\left(\mathbf{x}\right)|\theta\right),
+\]
+
+\end_inset
+
+where the final equality follows from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:factorization"
+
+\end_inset
+
+.
+ Then, maximizing 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is equivalent to maximizing 
+\begin_inset Formula $g\left(T\left(\mathbf{x}\right)|\theta\right)$
+\end_inset
+
+, which is a function of 
+\begin_inset Formula $T\left(\mathbf{x}\right)$
+\end_inset
+
+, which is a sufficient statistic.
+\end_layout
+
+\begin_layout Standard
+Often, it is not possible to find the MLE analytically and we need to use
+ numerical methods.
+ Two commonly used methods are the Newton-Raphson algorithm and the Expectation-
+Maximization (EM) algorithm.
+ Both are iterative methods that produce a sequence of values 
+\begin_inset Formula $\theta^{\left(0\right)},\theta^{\left(1\right)},\ldots$
+\end_inset
+
+ that, under ideal conditions, converge to the MLE 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+.
+ It is helpful to use a good starting value 
+\begin_inset Formula $\theta^{\left(0\right)}$
+\end_inset
+
+.
+ Often, the method of moments estimator is a good starting value.
+\end_layout
+
+\begin_layout Subsection
+Newton-Raphson
+\end_layout
+
+\begin_layout Standard
+WRITE THIS UP
+\end_layout
+
+\begin_layout Subsection
+EM algorithm
+\end_layout
+
+\begin_layout Standard
+The idea behind the EM algorithm is to iterate between taking an expectation
+ and maximizing.
+ Consider data 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ whose density 
+\begin_inset Formula $f\left(\mathbf{y}|\theta\right)$
+\end_inset
+
+ leads to a log-likelihood function that is hard to maximize.
+ Suppose we can find another random variable 
+\begin_inset Formula $Z$
+\end_inset
+
+ such that 
+\begin_inset Formula $f\left(\mathbf{y}|\theta\right)=\int f\left(\mathbf{y},\mathbf{z}|\theta\right)\mbox{d}z$
+\end_inset
+
+ and such that the likelihood based on 
+\begin_inset Formula $f\left(\mathbf{y},\mathbf{z}|\theta\right)$
+\end_inset
+
+ is easy to maximize.
+ 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ is the observed data, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ is called the augmented (or latent, or missing) data, and 
+\begin_inset Formula $L\left(\theta|\mathbf{y},\mathbf{z}\right)=f\left(\mathbf{y},\mathbf{z}|\theta\right)$
+\end_inset
+
+ is the complete-data likelihood.
+ Conceptually, the EM algorithm works by filling in the missing data, maximizing
+ the expectation of the complete log-likelihood, and iterating until convergence.
+\end_layout
+
+\begin_layout Standard
+The EM algorithm proceeds as follows:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(0)]
+\backslash
+setcounter{enumi}{0}
+\end_layout
+
+\end_inset
+
+Pick a starting value 
+\begin_inset Formula $\theta^{\left(0\right)}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $j=1,2,\ldots$
+\end_inset
+
+, repeat steps 1 and 2 below.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+E-step:
+\series default
+ Calculate
+\begin_inset Formula 
+\begin{flalign*}
+J\left(\theta|\theta^{\left(j\right)}\right) & =\mbox{E}\left[\log L\left(\theta|\mathbf{y},\mathbf{z}\right)|\theta^{\left(j\right)},\mathbf{y}\right]\\
+ & =\mbox{E}\left[\log f\left(y_{1},\ldots,y_{n},z_{1},\ldots,z_{n}|\theta\right)|\theta^{\left(j\right)},Y_{1}=y_{1},\ldots,Y_{n}=y_{n}\right]
+\end{flalign*}
+
+\end_inset
+
+The expectation is over the missing data 
+\begin_inset Formula $Z_{1},\ldots,Z_{n}$
+\end_inset
+
+ treating 
+\begin_inset Formula $\theta^{\left(j\right)}$
+\end_inset
+
+ and the observed data 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ as fixed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+M-step:
+\series default
+ Find 
+\begin_inset Formula $\theta^{\left(j+1\right)}$
+\end_inset
+
+ to maximize 
+\begin_inset Formula $J\left(\theta|\theta^{\left(j\right)}\right)$
+\end_inset
+
+, i.e., take the derivative, set it equal to zero, and solve for 
+\begin_inset Formula $\theta\rightarrow\theta^{\left(j+1\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Mixture of normals]
+\end_layout
+
+\end_inset
+
+Often the data distribution may arise as a mixture of normal densities.
+ Consider, for instance, heights of people arising as a mixture of men's
+ and women's heights.
+ The density of a mixture of two Normals is
+\begin_inset Formula 
+\[
+f\left(y|\theta\right)=\left(1-p\right)\phi\left(y|\mu_{0},\sigma_{0}\right)+p\phi\left(y|\mu_{1},\sigma_{1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi\left(y|\mu,\sigma\right)$
+\end_inset
+
+ denotes a normal density with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and standard deviation 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ The idea is that an observation is drawn from the first normal with probability
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ and the second with probability 
+\begin_inset Formula $1-p$
+\end_inset
+
+.
+ However, we don't know from which Normal it was drawn.
+ The parameters are 
+\begin_inset Formula $\boldsymbol{\theta}=\left(\mu_{0},\sigma_{0},\mu_{1},\sigma_{1},p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The incomplete-data likelihood is given by
+\begin_inset Formula 
+\[
+L\left(\boldsymbol{\theta}|\mathbf{y}\right)=\prod_{i=1}^{n}\left[\left(1-p\right)\phi\left(y_{i}|\mu_{0},\sigma_{0}\right)+p\phi\left(y_{i}|\mu_{1},\sigma_{1}\right)\right],
+\]
+
+\end_inset
+
+so that the log-likelihood is given by
+\begin_inset Formula 
+\[
+\ln L\left(\boldsymbol{\theta}|\mathbf{y}\right)=\sum_{i=1}^{n}\log\left[\left(1-p\right)\phi\left(y_{i}|\mu_{0},\sigma_{0}\right)+p\phi\left(y_{i}|\mu_{1},\sigma_{1}\right)\right].
+\]
+
+\end_inset
+
+The sum inside the logarithm makes this difficult to maximize.
+ Instead, we will define an indicator variable
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+Z_{i}=\begin{cases}
+0, & \mbox{if }Y_{i}\sim N\left(\mu_{0},\sigma_{0}^{2}\right)\\
+1, & \mbox{if }Y_{i}\sim N\left(\mu_{1},\sigma_{1}^{2}\right)
+\end{cases}.
+\]
+
+\end_inset
+
+Then, we can write the joint density of 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ conditioned on 
+\begin_inset Formula $\mathbf{Z}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{Y}}\left(\mathbf{y}|\theta,z_{i}=j\right) & =\phi\left(y_{i}|\mu_{j},\sigma_{j}\right)\\
+ & =\frac{1}{\sqrt{2\pi\sigma_{j}^{2}}}e^{-\left(y_{i}-\mu_{j}\right)^{2}/\left(2\sigma_{j}^{2}\right)}.
+\end{flalign*}
+
+\end_inset
+
+Recall that the probability of the intersection of two events 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is equal to the probability of 
+\begin_inset Formula $A$
+\end_inset
+
+ given 
+\begin_inset Formula $B$
+\end_inset
+
+ multiplied by the probability of 
+\begin_inset Formula $B$
+\end_inset
+
+, i.e., 
+\begin_inset Formula 
+\[
+P\left(\left\{ A\cap B\right\} \right)=P\left(\left\{ A|B\right\} \right)P\left(\left\{ B\right\} \right).
+\]
+
+\end_inset
+
+Then, abusing notation slightly, we have
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ Y_{i}=y_{i}\right\} \cap\left\{ Z_{i}=z_{i}\right\} \right) & =P\left(\left\{ Y_{i}=y_{i}|Z_{i}=z_{i}\right\} \right)P\left(\left\{ Z_{i}=z_{i}\right\} \right),
+\end{flalign*}
+
+\end_inset
+
+i.e., the joint density of 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{Z}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+f_{\mathbf{Y},\mathbf{Z}}\left(y_{i},z_{i}=j\right) & =f_{\mathbf{Y}}\left(y_{i}|z_{i}=j,\theta\right)P\left(\left\{ Z_{i}=j\right\} \right),
+\end{flalign*}
+
+\end_inset
+
+where 
+\begin_inset Formula $P\left(\left\{ Z_{i}=1\right\} \right)=p$
+\end_inset
+
+ and 
+\begin_inset Formula $P\left(\left\{ Z_{i}=0\right\} \right)=1-p$
+\end_inset
+
+.
+ Then, the complete-data likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\boldsymbol{\theta}|\mathbf{y},\mathbf{z}\right) & =\prod_{i=1}^{n}f_{\mathbf{Y},\mathbf{Z}}\left(y_{i},z_{i}|\boldsymbol{\theta}\right)\\
+ & =\prod_{i=1}^{n}\left[\frac{1}{\sqrt{2\pi\sigma_{j}^{2}}}e^{-\left(y_{i}-\mu_{j}\right)^{2}/\left(2\sigma_{j}^{2}\right)}\cdot P\left(\left\{ Z_{i}=j\right\} \right)\right]\\
+ & =\prod_{i=1}^{n}\left[\left[\frac{1}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\cdot\left(1-p\right)\right]^{1-z_{i}}\cdot\left[\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\cdot p\right]^{z_{i}}\right],
+\end{flalign*}
+
+\end_inset
+
+so that the log-likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\boldsymbol{\theta}|\mathbf{y},\mathbf{z}\right) & =\ln\prod_{i=1}^{n}\left[\left[\frac{1}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\cdot\left(1-p\right)\right]^{1-z_{i}}\cdot\left[\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\cdot p\right]^{z_{i}}\right]\\
+ & =\sum_{i=1}^{n}\left\{ \left(1-z_{i}\right)\ln\left[\frac{1-p}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\right]+z_{i}\ln\left[\frac{p}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\right]\right\} .
+\end{flalign*}
+
+\end_inset
+
+We will now find the expected value of the complete-data log likelihood
+ (the E-step).
+\begin_inset Formula 
+\begin{flalign*}
+J\left(\boldsymbol{\theta}|\boldsymbol{\theta}^{\left(j\right)}\right) & =\mbox{E}\left[\ln L\left(\boldsymbol{\theta}|\mathbf{y},\mathbf{z}\right)|\mathbf{y},\boldsymbol{\theta}^{\left(j\right)}\right]\\
+ & =\sum_{i=1}^{n}\left\{ \mbox{E}\left[1-z_{i}|\mathbf{y},\boldsymbol{\theta}^{\left(j\right)}\right]\ln\left[\frac{1-p}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\right]+\mbox{E}\left[z_{i}|\mathbf{y},\boldsymbol{\theta}^{\left(j\right)}\right]\ln\left[\frac{p}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\right]\right\} 
+\end{flalign*}
+
+\end_inset
+
+We will evaluate 
+\begin_inset Formula $\mbox{E}\left[z_{i}|\mathbf{y},\boldsymbol{\theta}^{\left(j\right)}\right]=P\left(\left\{ z_{i}=1|y_{i},\boldsymbol{\theta}^{\left(j\right)}\right\} \right)$
+\end_inset
+
+ using Bayes' Rule.
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[z_{i}|\mathbf{y},\boldsymbol{\theta}^{\left(j\right)}\right] & =P\left(\left\{ z_{i}=1|y_{i},\boldsymbol{\theta}^{\left(j\right)}\right\} \right)\\
+ & =\frac{f\left(y_{i}|z_{i}=1,\boldsymbol{\theta}^{\left(j\right)}\right)P\left(\left\{ Z_{i}=1\right\} \right)}{\sum_{k=0}^{1}f\left(y_{i}|Z_{i}=k,\boldsymbol{\theta}^{\left(j\right)}\right)P\left(\left\{ Z_{i}=k\right\} \right)}\\
+ & =\frac{\phi\left(y_{i}|\mu_{1}^{\left(j\right)},\sigma_{1}^{\left(j\right)}\right)\cdot p^{\left(j\right)}}{p^{\left(j\right)}\phi\left(y_{i}|\mu_{1}^{\left(j\right)},\sigma_{1}^{\left(j\right)}\right)+\left(1-p^{\left(j\right)}\right)\phi\left(y_{i}|\mu_{0}^{\left(j\right)},\sigma_{0}^{\left(j\right)}\right)}\\
+ & =\tau_{i}^{\left(j\right)}
+\end{flalign*}
+
+\end_inset
+
+Then, we have
+\begin_inset Formula 
+\begin{flalign*}
+J\left(\boldsymbol{\theta}|\boldsymbol{\theta}^{\left(j\right)}\right) & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\right)\left[\ln\left(1-p\right)-\ln\left(\frac{1}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\right)\right]\right.\\
+ & \qquad\left.+\tau_{i}^{\left(j\right)}\left[\ln p-\ln\left(\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\right)\right]\right\} \\
+ & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\left[\ln\left(1-p\right)-\ln\left(\left(2\pi\sigma_{0}^{2}\right)^{-1/2}e^{\left(y_{i}-\mu_{0}^{2}\right)/\left(2\sigma_{0}^{2}\right)}\right)\right]\right)\right.\\
+ & \qquad\left.+\tau_{i}^{\left(j\right)}\left[\ln p-\ln\left(\left(2\pi\sigma_{1}^{2}\right)^{-1/2}e^{\left(y_{i}-\mu_{1}^{2}\right)/\left(2\sigma_{1}^{2}\right)}\right)\right]\right\} 
+\end{flalign*}
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
