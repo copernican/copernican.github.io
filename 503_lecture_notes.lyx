@@ -147,6 +147,560 @@ Background material
 \end_layout
 
 \begin_layout Section
+Upper bounds and suprema
+\end_layout
+
+\begin_layout Standard
+This section is drawn from 
+\shape italic
+Analysis: with an introduction to proof
+\shape default
+ (4th ed.) by Steven R.
+ Lay.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $x,y\in\mathbb{R}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x\leq y+\epsilon$
+\end_inset
+
+ for every 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x\leq y$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:inequality-of-reals"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+[proof goes here]
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a subset of 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+ If there exists a real number 
+\begin_inset Formula $m$
+\end_inset
+
+ such that 
+\begin_inset Formula $m\geq s$
+\end_inset
+
+ for all 
+\begin_inset Formula $s\in S$
+\end_inset
+
+, then 
+\begin_inset Formula $m$
+\end_inset
+
+ is called an 
+\shape italic
+upper bound
+\shape default
+ for 
+\begin_inset Formula $S$
+\end_inset
+
+, and we say that 
+\begin_inset Formula $S$
+\end_inset
+
+ is bounded above.
+ If 
+\begin_inset Formula $m\leq s$
+\end_inset
+
+ for all 
+\begin_inset Formula $s\in S$
+\end_inset
+
+, then 
+\begin_inset Formula $m$
+\end_inset
+
+ is a 
+\shape italic
+lower bound
+\shape default
+ for 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $S$
+\end_inset
+
+ is bounded below.
+ The set 
+\begin_inset Formula $S$
+\end_inset
+
+ is said to be 
+\shape italic
+bounded
+\shape default
+ if it is bounded above and bounded below.
+\end_layout
+
+\begin_layout Definition
+If an upper bound 
+\begin_inset Formula $m$
+\end_inset
+
+ for 
+\begin_inset Formula $S$
+\end_inset
+
+ is a member of 
+\begin_inset Formula $S$
+\end_inset
+
+, then 
+\begin_inset Formula $m$
+\end_inset
+
+ is called the 
+\shape italic
+maximum
+\shape default
+ (or largest element) of 
+\begin_inset Formula $S$
+\end_inset
+
+, and we write
+\begin_inset Formula 
+\[
+m=\max S.
+\]
+
+\end_inset
+
+Similarly, if a lower bound of 
+\begin_inset Formula $S$
+\end_inset
+
+ is a member of 
+\begin_inset Formula $S$
+\end_inset
+
+, then it is called the 
+\shape italic
+minimum
+\shape default
+ (or least element) of 
+\begin_inset Formula $S$
+\end_inset
+
+, denoted by 
+\begin_inset Formula $\min S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+A set may have upper or lower bounds, or it may have neither.
+ If 
+\begin_inset Formula $m$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $S$
+\end_inset
+
+, then any number greater than 
+\begin_inset Formula $m$
+\end_inset
+
+ is also an upper bound.
+ While a set may have many upper and lower bounds, if it has a maximum or
+ a minimum, then those values are unique.
+ Thus we speak of 
+\shape italic
+an
+\shape default
+ upper bound and 
+\shape italic
+the
+\shape default
+ maximum.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a nonempty subset of 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $S$
+\end_inset
+
+ is bounded above, then the least upper bound of 
+\begin_inset Formula $S$
+\end_inset
+
+ is called its 
+\shape italic
+supremum
+\shape default
+ and is denoted by 
+\begin_inset Formula $\sup S$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $m=\sup S$
+\end_inset
+
+ iff
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(a)]
+\backslash
+setcounter{enumi}{1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $m\geq s$
+\end_inset
+
+, for all 
+\begin_inset Formula $s\in S$
+\end_inset
+
+, and
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(b)]
+\end_layout
+
+\end_inset
+
+if 
+\begin_inset Formula $m'<m$
+\end_inset
+
+, then there exists 
+\begin_inset Formula $s'\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $s'>m'$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+If 
+\begin_inset Formula $S$
+\end_inset
+
+ is bounded below, then the greatest lower bound of 
+\begin_inset Formula $S$
+\end_inset
+
+ is called its 
+\shape italic
+infimum
+\shape default
+ and is denoted by 
+\begin_inset Formula $\inf S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[completeness axiom]
+\end_layout
+
+\end_inset
+
+Every nonempty subset 
+\begin_inset Formula $S$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ that is bounded above has a least upper bound.
+ That is, 
+\begin_inset Formula $\sup S$
+\end_inset
+
+ exists and is a real number.
+\end_layout
+
+\begin_layout Theorem
+Given nonempty subsets 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ or 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, let 
+\begin_inset Formula $C$
+\end_inset
+
+ denote the set
+\begin_inset Formula 
+\[
+C=\left\{ x+y:x\in A\mbox{ and }y\in B\right\} .
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ have suprema, then 
+\begin_inset Formula $C$
+\end_inset
+
+ has a supremum and 
+\begin_inset Formula 
+\[
+\sup C=\sup A+\sup B.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\sup A=a$
+\end_inset
+
+ and 
+\begin_inset Formula $\sup B=b$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $z\in C$
+\end_inset
+
+, then 
+\begin_inset Formula $z=x+y$
+\end_inset
+
+ for some 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ and 
+\begin_inset Formula $y\in B$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $z=x+y\leq a+b$
+\end_inset
+
+, so 
+\begin_inset Formula $a+b$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ By the completeness axiom, 
+\begin_inset Formula $C$
+\end_inset
+
+ has at least an upper bound, say 
+\begin_inset Formula $\sup C=c$
+\end_inset
+
+.
+ We must show that 
+\begin_inset Formula $c=a+b$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $c$
+\end_inset
+
+ is the 
+\shape italic
+least
+\shape default
+ upper bound for 
+\begin_inset Formula $C$
+\end_inset
+
+, we have 
+\begin_inset Formula $c\leq a+b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+To see that 
+\begin_inset Formula $a+b\leq c$
+\end_inset
+
+, choose any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $a=\sup A$
+\end_inset
+
+, 
+\begin_inset Formula $a-\epsilon$
+\end_inset
+
+ is not an upper bound for 
+\begin_inset Formula $A$
+\end_inset
+
+, and there must exist 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ such that 
+\begin_inset Formula $a-\epsilon<x$
+\end_inset
+
+.
+ Similarly, since 
+\begin_inset Formula $b=\sup B$
+\end_inset
+
+, there exists 
+\begin_inset Formula $y\in B$
+\end_inset
+
+ such that 
+\begin_inset Formula $b-\epsilon<y$
+\end_inset
+
+.
+ Combining these inequalities, we have
+\begin_inset Formula 
+\[
+a+b-2\epsilon<x+y\leq c.
+\]
+
+\end_inset
+
+That is, 
+\begin_inset Formula $a+b<c+2\epsilon$
+\end_inset
+
+ for every 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+ Thus, by 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:inequality-of-reals"
+
+\end_inset
+
+, 
+\begin_inset Formula $a+b\leq c$
+\end_inset
+
+.
+ Finally, since 
+\begin_inset Formula $c\leq a+b$
+\end_inset
+
+ and 
+\begin_inset Formula $c\geq a+b$
+\end_inset
+
+, we conclude that 
+\begin_inset Formula $c=a+b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Univariate transformations
 \end_layout
 
@@ -11651,7 +12205,7 @@ Let
 
 .
  We must show that 
-\begin_inset Formula $L^{*}\left(\hat{\eta}\mathbf{x}\right)=L^{*}\left[\tau\left(\hat{\theta}\right)|\mathbf{x}\right]$
+\begin_inset Formula $L^{*}\left(\hat{\eta}|\mathbf{x}\right)=L^{*}\left[\tau\left(\hat{\theta}\right)|\mathbf{x}\right]$
 \end_inset
 
 .
@@ -11666,12 +12220,45 @@ Let
  coincide, so we have
 \begin_inset Formula 
 \begin{flalign*}
-L^{*}\left(\hat{\eta}|\mathbf{x}\right) & =\sup_{\eta}\sup_{\left\{ \theta:\tau\left(\theta\right)=\eta\right\} }L\left(\theta|\mathbf{x}\right)
+L^{*}\left(\hat{\eta}|\mathbf{x}\right) & =\sup_{\eta}\sup_{\left\{ \theta:\tau\left(\theta\right)=\eta\right\} }L\left(\theta|\mathbf{x}\right)\\
+ & =\sup_{\theta}L\left(\theta|\mathbf{x}\right)\\
+ & =L\left(\hat{\theta}|\mathbf{x}\right),
 \end{flalign*}
 
 \end_inset
 
+where the second equality follows because the iterated maximization is equal
+ to the unconditional maximization over 
+\begin_inset Formula $\theta$
+\end_inset
 
+, which is attained at 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+.
+ Furthermore
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\hat{\theta}|\mathbf{x}\right) & =\sup_{\left\{ \theta:\tau\left(\theta\right)=\tau\left(\hat{\theta}\right)\right\} }L\left(\theta|\mathbf{x}\right)\\
+ & =L^{*}\left[\tau\left(\hat{\theta}\right)|\mathbf{x}\right].
+\end{flalign*}
+
+\end_inset
+
+Hence the string of equalities shows that 
+\begin_inset Formula $L^{*}\left(\hat{\eta}|\mathbf{x}\right)=L^{*}\left(\tau\left(\hat{\theta}\right)|\mathbf{x}\right)$
+\end_inset
+
+ and that 
+\begin_inset Formula $\tau\left(\hat{\theta}\right)$
+\end_inset
+
+ is the MLE of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Example
@@ -12010,7 +12597,623 @@ Newton-Raphson
 \end_layout
 
 \begin_layout Standard
-WRITE THIS UP
+Let 
+\begin_inset Formula $l\left(\theta|\mathbf{x}\right)=\ln L\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+.
+ When we maximize the log-likelihood by setting its derivative equal to
+ zero, we are solving the equation
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}l\left(\theta|\mathbf{x}\right) & =0.
+\end{flalign*}
+
+\end_inset
+
+To motivate Newton-Raphson, we will expand the derivative of 
+\begin_inset Formula $l\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+around 
+\begin_inset Formula $\theta^{\left(j\right)}$
+\end_inset
+
+.
+ Recall that the Taylor series expansion of 
+\begin_inset Formula $f$
+\end_inset
+
+ around 
+\begin_inset Formula $a$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+f\left(x\right) & =\sum_{n=0}^{\infty}\frac{f^{\left(n\right)}\left(a\right)}{n!}\left(x-a\right)^{n}\\
+ & =f\left(a\right)+f'\left(a\right)\left(x-a\right)+\frac{f''\left(a\right)}{2!}\left(x-a\right)^{2}+\frac{f'''\left(a\right)}{3!}\left(x-a\right)^{3}+\cdots,
+\end{flalign*}
+
+\end_inset
+
+so that we have 
+\begin_inset Formula 
+\begin{flalign*}
+l'\left(\hat{\theta}\right) & \approx l'\left(\theta^{\left(j\right)}\right)+l''\left(\theta^{\left(j\right)}\right)\left(\hat{\theta}-\theta^{\left(j\right)}\right).
+\end{flalign*}
+
+\end_inset
+
+Setting 
+\begin_inset Formula $l'$
+\end_inset
+
+ equal to zero and solving for 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{flalign*}
+0 & =l'\left(\hat{\theta}\right)\\
+ & \approx l'\left(\theta^{\left(j\right)}\right)+l''\left(\theta^{\left(j\right)}\right)\left(\hat{\theta}-\theta^{\left(j\right)}\right)\\
+ & \approx l'\left(\theta^{\left(j\right)}\right)+\hat{\theta}l''\left(\theta^{\left(j\right)}\right)-\theta^{\left(j\right)}l''\left(\theta^{\left(j\right)}\right)\\
+\Leftrightarrow\hat{\theta}l''\left(\theta^{\left(j\right)}\right) & \approx\theta^{\left(j\right)}l''\left(\theta^{\left(j\right)}\right)-l'\left(\theta^{\left(j\right)}\right)\\
+\Leftrightarrow\hat{\theta} & \approx\frac{\theta^{\left(j\right)}l''\left(\theta^{\left(j\right)}\right)-l'\left(\theta^{\left(j\right)}\right)}{l''\left(\theta^{\left(j\right)}\right)}\\
+\Leftrightarrow\hat{\theta} & \approx\theta^{\left(j\right)}-\frac{l'\left(\theta^{\left(j\right)}\right)}{l''\left(\theta^{\left(j\right)}\right)}.
+\end{flalign*}
+
+\end_inset
+
+This suggests the following iterative scheme:
+\begin_inset Formula 
+\[
+\hat{\theta}^{\left(j+1\right)}=\theta^{\left(j\right)}-\frac{l'\left(\theta^{\left(j\right)}\right)}{l''\left(\theta^{\left(j\right)}\right)}.
+\]
+
+\end_inset
+
+We will continue to improve the estimator in this way until convergence.
+\end_layout
+
+\begin_layout Standard
+In the multiparameter case, the MLE 
+\begin_inset Formula $\hat{\boldsymbol{\theta}}=\left(\hat{\theta}_{1},\ldots,\hat{\theta}_{k}\right)$
+\end_inset
+
+ is a vector and the method becomes
+\begin_inset Formula 
+\[
+\hat{\boldsymbol{\theta}}^{\left(j+1\right)}=\boldsymbol{\theta}^{\left(j\right)}-H^{-1}l'\left(\boldsymbol{\theta}^{\left(j\right)}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $l'\left(\boldsymbol{\theta}^{\left(j\right)}\right)$
+\end_inset
+
+ is a vector of first derivatives, i.e., 
+\begin_inset Formula 
+\[
+l'\left(\boldsymbol{\theta}^{\left(j\right)}\right)=\left(\frac{\partial}{\partial\theta_{1}}l\left(\boldsymbol{\theta}\right),\ldots,\frac{\partial}{\partial\theta_{k}}l\left(\boldsymbol{\theta}\right)\right),
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $H$
+\end_inset
+
+ is the (Hessian) matrix of second partial derivatives of the log-likelihood,
+ i.e., 
+\begin_inset Formula 
+\[
+H=l''\left(\boldsymbol{\theta}\right)=\begin{bmatrix}\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}l\left(\theta\right) & \cdots & \dfrac{\partial^{2}}{\partial\theta_{1}\theta_{k}}l\left(\theta\right)\\
+\vdots & \ddots & \vdots\\
+\dfrac{\partial^{2}}{\partial\theta_{k}\theta_{1}}l\left(\theta\right) & \cdots & \dfrac{\partial^{2}}{\partial\theta_{k}^{2}}l\left(\theta\right)
+\end{bmatrix}.
+\]
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is sufficiently close to zero.
+ Then, the convergence criterion may be 
+\begin_inset Formula $\left|\theta^{\left(j+1\right)}-\theta^{\left(j\right)}\right|<\epsilon$
+\end_inset
+
+, 
+\begin_inset Formula $l'\left(\theta^{\left(j+1\right)}\right)<\epsilon$
+\end_inset
+
+, or 
+\begin_inset Formula $L\left(\theta^{\left(j+1\right)}\right)-L\left(\theta^{\left(j\right)}\right)<\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $Y_{1},\ldots,Y_{n}$
+\end_inset
+
+ with
+\begin_inset Formula 
+\[
+Y_{i}=\begin{cases}
+0, & \mbox{if subject }i\mbox{ did not experience the event}\\
+1, & \mbox{if subject }i\mbox{ experienced the event}
+\end{cases}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ fixed covariate for each subject and 
+\begin_inset Formula 
+\[
+P\left(\left\{ Y_{i}=1\right\} \right)=\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}.
+\]
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $n=5$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(x_{i},y_{i}\right)$
+\end_inset
+
+ are as shown below.
+ Solve for the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ using the Newton-Raphson algorithm.
+\end_layout
+
+\begin_layout Example
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+We have 
+\begin_inset Formula $Y_{i}\sim\mbox{Bernoulli}\left(p_{i}\right)$
+\end_inset
+
+, so that the pmf of 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+p_{Y_{i}}\left(y_{i}|p_{i}\right) & =p_{i}^{y_{i}}\left(1-p_{i}\right)^{1-y_{i}}.
+\end{flalign*}
+
+\end_inset
+
+We are given that 
+\begin_inset Formula $P\left(\left\{ Y_{i}=1\right\} \right)=e^{\theta x_{i}}/\left(1+e^{\theta x_{i}}\right)$
+\end_inset
+
+, so we can write
+\begin_inset Formula 
+\begin{flalign*}
+P\left(\left\{ Y_{i}=1\right\} \right) & =p_{i}^{1}\left(1-p_{i}\right)^{1-1}\\
+ & =p_{i}\\
+ & =\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}.
+\end{flalign*}
+
+\end_inset
+
+Then, we can reparameterize 
+\begin_inset Formula $p_{Y_{i}}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{flalign*}
+p_{Y_{i}}\left(y_{i}|\theta\right) & =\left(\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{y_{i}}\left(1-\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{1-y_{i}}\\
+ & =\left(\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{y_{i}}\left(\frac{1+e^{\theta x_{i}}-e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{1-y_{i}}\\
+ & =\left(\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{y_{i}}\left(\frac{1}{1+e^{\theta x_{i}}}\right)^{1-y_{i}}\\
+ & =\left(\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}\right)^{y_{i}}\left(\frac{1}{1+e^{\theta x_{i}}}\right)\left(\frac{1}{1+e^{\theta x_{i}}}\right)^{-y_{i}}\\
+ & =\frac{\left(e^{\theta x_{i}}\right)^{y_{i}}}{\left(1+e^{\theta x_{i}}\right)^{y_{i}}}\left(1+e^{\theta x_{i}}\right)^{-1}\left(1+e^{\theta x_{i}}\right)^{y_{i}}\\
+ & =e^{\theta x_{i}y_{i}}\left(1+e^{\theta x_{i}}\right)^{-1},
+\end{flalign*}
+
+\end_inset
+
+so that the joint pmf of 
+\begin_inset Formula $\mathbf{Y}=Y_{1},\ldots,Y_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+p_{\mathbf{Y}}\left(\mathbf{y}|\theta\right) & =\prod_{i=1}^{n}p_{Y_{i}}\left(y_{i}|\theta\right)\\
+ & =\prod_{i=1}^{n}e^{\theta x_{i}y_{i}}\left(1+e^{\theta x_{i}}\right)^{-1}\\
+ & =e^{\sum_{i=1}^{n}\theta x_{i}y_{i}}\prod_{i=1}^{n}\left(1+e^{\theta x_{i}}\right)^{-1}.
+\end{flalign*}
+
+\end_inset
+
+Then, the log-likelihood is given by 
+\begin_inset Formula 
+\begin{flalign*}
+l\left(\theta\right) & =\ln L\left(\theta|\mathbf{y}\right)\\
+ & =\ln\left[e^{\sum_{i=1}^{n}\theta x_{i}y_{i}}\prod_{i=1}^{n}\left(1+e^{\theta x_{i}}\right)^{-1}\right]\\
+ & =\ln e^{\theta\sum_{i=1}^{n}x_{i}y_{i}}+\ln\prod_{i=1}^{n}\left(1+e^{\theta x_{i}}\right)^{-1}\\
+ & =\theta\sum_{i=1}^{n}x_{i}y_{i}+\sum_{i=1}^{n}\ln\left(1+e^{\theta x_{i}}\right)^{-1}\\
+ & =\theta\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\ln\left(1+e^{\theta x_{i}}\right).
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}l\left(\theta\right) & =\frac{\partial}{\partial\theta}\left[\theta\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\ln\left(1+e^{\theta x_{i}}\right)\right]\\
+ & =\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\frac{1}{1+e^{\theta x_{i}}}\cdot x_{i}e^{\theta x_{i}}
+\end{flalign*}
+
+\end_inset
+
+To implement Newton-Raphson algorithm, we will also need the second derivative
+ with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta^{2}}l\left(\theta\right) & =\frac{\partial}{\partial\theta}\left[\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\frac{1}{1+e^{\theta x_{i}}}\cdot x_{i}e^{\theta x_{i}}\right]\\
+ & =0-\sum_{i=1}^{n}\frac{\left(x_{i}^{2}e^{\theta x_{i}}\right)\left(1+e^{\theta x_{i}}\right)-\left(x_{i}e^{\theta x_{i}}\right)\left(x_{i}e^{\theta x_{i}}\right)}{\left(1+e^{\theta x_{i}}\right)^{2}}\\
+ & =-\sum_{i=1}^{n}\frac{x_{i}^{2}e^{\theta x_{i}}+x_{i}^{2}e^{2\theta x_{i}}-x_{i}^{2}e^{2\theta x_{i}}}{\left(1+e^{\theta x_{i}}\right)^{2}}\\
+ & =-\sum_{i=1}^{n}\frac{x_{i}^{2}e^{\theta x_{i}}}{\left(1+e^{\theta x_{i}}\right)^{2}}
+\end{flalign*}
+
+\end_inset
+
+Thus, we must solve
+\begin_inset Formula 
+\begin{flalign*}
+\hat{\theta} & =\theta^{\left(j\right)}-\frac{l'\left(\theta^{\left(j\right)}\right)}{l''\left(\theta^{\left(j\right)}\right)}\\
+ & =\theta^{\left(j\right)}-\frac{\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\frac{1}{1+e^{\theta x_{i}}}\cdot x_{i}e^{\theta x_{i}}}{-\sum_{i=1}^{n}\frac{x_{i}^{2}e^{\theta x_{i}}}{\left(1+e^{\theta x_{i}}\right)^{2}}}\\
+ & =\theta^{\left(j\right)}+\frac{\sum_{i=1}^{n}x_{i}y_{i}-\sum_{i=1}^{n}\frac{1}{1+e^{\theta x_{i}}}\cdot x_{i}e^{\theta x_{i}}}{\sum_{i=1}^{n}\frac{x_{i}^{2}e^{\theta x_{i}}}{\left(1+e^{\theta x_{i}}\right)^{2}}}.
+\end{flalign*}
+
+\end_inset
+
+We can implement the algorithm using the following R code.
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+newtraph <- function(x, y, theta, eps = 1e-6) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	diff <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+	theta.hat <- theta
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (diff > eps) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		eta <- theta * x
+\end_layout
+
+\begin_layout Plain Layout
+
+		U <- sum(x * y) - sum((x * exp(eta)) / (1 + exp(eta)))
+\end_layout
+
+\begin_layout Plain Layout
+
+		I <- sum((x^2 * exp(eta)) / (1 + exp(eta)^2))
+\end_layout
+
+\begin_layout Plain Layout
+
+		theta.new <- theta + (U / I)
+\end_layout
+
+\begin_layout Plain Layout
+
+		diff <- abs(theta.new - theta)
+\end_layout
+
+\begin_layout Plain Layout
+
+		theta <- theta.new
+\end_layout
+
+\begin_layout Plain Layout
+
+		theta.hat <- c(theta.hat, theta)
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return(theta.hat)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- c(4.1,2.2,3.9,7.1,6.2)
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- c(0,1,0,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+newtraph(x, y, 0.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+So, we see that our estimates for 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ converge and 
+\begin_inset Formula $\hat{\theta}\approx0.125$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -12348,15 +13551,133 @@ We will evaluate
 Then, we have
 \begin_inset Formula 
 \begin{flalign*}
-J\left(\boldsymbol{\theta}|\boldsymbol{\theta}^{\left(j\right)}\right) & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\right)\left[\ln\left(1-p\right)-\ln\left(\frac{1}{\sqrt{2\pi\sigma_{0}^{2}}}e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\right)\right]\right.\\
- & \qquad\left.+\tau_{i}^{\left(j\right)}\left[\ln p-\ln\left(\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\right)\right]\right\} \\
- & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\left[\ln\left(1-p\right)-\ln\left(\left(2\pi\sigma_{0}^{2}\right)^{-1/2}e^{\left(y_{i}-\mu_{0}^{2}\right)/\left(2\sigma_{0}^{2}\right)}\right)\right]\right)\right.\\
- & \qquad\left.+\tau_{i}^{\left(j\right)}\left[\ln p-\ln\left(\left(2\pi\sigma_{1}^{2}\right)^{-1/2}e^{\left(y_{i}-\mu_{1}^{2}\right)/\left(2\sigma_{1}^{2}\right)}\right)\right]\right\} 
+J\left(\boldsymbol{\theta}|\boldsymbol{\theta}^{\left(j\right)}\right) & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\right)\left[\ln\left(\frac{1-p}{\sqrt{2\pi\sigma_{0}^{2}}}\right)+\ln\left(e^{-\left(y_{i}-\mu_{0}\right)^{2}/\left(2\sigma_{0}^{2}\right)}\right)\right]\right.\\
+ & \qquad\left.+\tau_{i}^{\left(j\right)}\left[\ln\frac{p}{\sqrt{2\pi\sigma_{1}^{2}}}+\ln\left(e^{-\left(y_{i}-\mu_{1}\right)^{2}/\left(2\sigma_{1}^{2}\right)}\right)\right]\right\} \\
+ & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\right)\left[\ln\left(1-p\right)-\ln\left(2\pi\sigma_{0}^{2}\right)^{1/2}-\frac{\left(y_{i}-\mu_{0}\right)^{2}}{2\sigma_{0}^{2}}\right]+\tau_{i}^{\left(j\right)}\left[\ln p-\ln\left(2\pi\sigma_{1}^{2}\right)^{1/2}-\frac{\left(y_{i}-\mu_{1}\right)^{2}}{2\sigma_{1}^{2}}\right]\right\} \\
+ & =\sum_{i=1}^{n}\left\{ \left(1-\tau_{i}^{\left(j\right)}\right)\left[\ln\left(1-p\right)-\frac{1}{2}\ln2\pi\sigma_{0}^{2}-\frac{\left(y_{i}-\mu_{0}\right)^{2}}{2\sigma_{0}^{2}}\right]+\tau_{i}^{\left(j\right)}\left[\ln p-\frac{1}{2}\ln2\pi\sigma_{1}^{2}-\frac{\left(y_{i}-\mu_{1}\right)^{2}}{2\sigma_{1}^{2}}\right]\right\} .
 \end{flalign*}
 
 \end_inset
 
+We will take the derivative with respect to 
+\begin_inset Formula $p$
+\end_inset
 
+ (the M-step).
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial p}J\left(\boldsymbol{\theta}|\boldsymbol{\theta}^{\left(j\right)}\right) & =\sum_{i=1}^{n}\left\{ -\left(1-\tau_{i}^{\left(j\right)}\right)\frac{1}{1-p}+\tau_{i}^{\left(j\right)}\frac{1}{p}\right\} 
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\sum_{i=1}^{n}\frac{\left(1-\tau_{i}^{\left(j\right)}\right)}{1-p} & =\sum_{i=1}^{n}\frac{\tau_{i}^{\left(j\right)}}{p}\\
+\Leftrightarrow\frac{1}{1-p}\sum_{i=1}^{n}\left(1-\tau_{i}^{\left(j\right)}\right) & =\frac{1}{p}\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}\\
+\Leftrightarrow\left(1-p\right)\sum_{i=1}^{n}\tau_{i}^{\left(j\right)} & =p\sum_{i=1}^{n}\left(1-\tau_{i}^{\left(j\right)}\right)\\
+\Leftrightarrow\frac{1-p}{p} & =\frac{\sum_{i=1}^{n}\left(1-\tau_{i}^{\left(j\right)}\right)}{\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}\\
+\Leftrightarrow\frac{1}{p}-1 & =\frac{n-\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}{\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}\\
+\Leftrightarrow\frac{1}{p}-1 & =\frac{n}{\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}-1\\
+\Leftrightarrow\frac{1}{p} & =\frac{n}{\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}\\
+\Leftrightarrow p^{\left(j+1\right)} & =\frac{\sum_{i=1}^{n}\tau_{i}^{\left(j\right)}}{n}.
+\end{flalign*}
+
+\end_inset
+
+We can proceed similarly to find the other parameter estimates, i.e., by taking
+ the derivative of 
+\begin_inset Formula $J$
+\end_inset
+
+ with respect to each parameter, setting the result equal to zero, and solving
+ for the parameter.
+\end_layout
+
+\begin_layout Standard
+We have introduced four methods for finding MLEs.
+ In order of approximate difficulty, the methods are
+\end_layout
+
+\begin_layout Enumerate
+Set the derivative of the log-likelihood equal to zero and solve or 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+.
+ This is the simplest method when a closed-form solution is possible.
+\end_layout
+
+\begin_layout Enumerate
+When the support depends on the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+, plot the likelihood function and determine where it attains its maximum.
+\end_layout
+
+\begin_layout Enumerate
+Use the Newton-Raphson method to estimate the MLE.
+\end_layout
+
+\begin_layout Enumerate
+Use the EM method to find the expectation of the complete log-likelihood
+ using the observed 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ and an initial estimate for 
+\begin_inset Formula $\theta^{\left(j\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Introduce a latent variable 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Find the complete log-likelihood 
+\begin_inset Formula $L\left(\theta|\mathbf{y},\mathbf{z}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Use the E-step to estimate 
+\begin_inset Formula $J\left(\theta|\theta^{\left(j\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Use the M-step to maximize 
+\begin_inset Formula $J\left(\theta|\theta^{\left(j\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bayes estimators
+\end_layout
+
+\begin_layout Standard
+In the classical (frequentist) approach, 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is considered to be unknown, but fixed.
 \end_layout
 
 \end_body
