@@ -1337,7 +1337,7 @@ For
 \end_inset
 
 , let 
-\begin_inset Formula $y_{i}\sim Bernoulli\left(p\right)$
+\begin_inset Formula $y_{i}\sim\mbox{Bernoulli}\left(p\right)$
 \end_inset
 
 , i.e., 
@@ -4756,7 +4756,7 @@ status open
 \end_inset
 
 Let 
-\begin_inset Formula $X\sim Bernoulli\left(p\right)$
+\begin_inset Formula $X\sim\mbox{Bernoulli}\left(p\right)$
 \end_inset
 
 , and let 
@@ -4794,7 +4794,10 @@ Let
 \end_inset
 
 .
- A Bernoulli random variable is a binomial random variable with 
+\end_layout
+
+\begin_layout Example
+A Bernoulli random variable is a binomial random variable with 
 \begin_inset Formula $n=1$
 \end_inset
 
@@ -6079,7 +6082,7 @@ status open
 \end_inset
 
 Let 
-\begin_inset Formula $X_{1},X_{2}\sim Bernoulli\left(p\right)$
+\begin_inset Formula $X_{1},X_{2}\sim\mbox{Bernoulli}\left(p\right)$
 \end_inset
 
 .
@@ -10521,7 +10524,11 @@ reference "thm:computing-sums-rand-samples"
 \end_inset
 
 .
- Standard method of moments may not work.
+ 
+\end_layout
+
+\begin_layout Standard
+Standard method of moments may not work.
 \end_layout
 
 \begin_layout Example
@@ -13571,7 +13578,27 @@ We will take the derivative with respect to
 
 \end_inset
 
-Setting this equal to zero, we have
+(Although 
+\begin_inset Formula $p$
+\end_inset
+
+ is incorporated in 
+\begin_inset Formula $\tau_{i}^{\left(j\right)}$
+\end_inset
+
+, it is considered to have been evaluated there, so that 
+\begin_inset Formula $\tau_{i}^{\left(j\right)}$
+\end_inset
+
+ is treated as constant when taking the deriative of 
+\begin_inset Formula $J$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $p$
+\end_inset
+
+.) Setting this equal to zero, we have
 \begin_inset Formula 
 \begin{flalign*}
 \sum_{i=1}^{n}\frac{\left(1-\tau_{i}^{\left(j\right)}\right)}{1-p} & =\sum_{i=1}^{n}\frac{\tau_{i}^{\left(j\right)}}{p}\\
@@ -13653,7 +13680,7 @@ Find the complete log-likelihood
 
 \begin_layout Enumerate
 Use the E-step to estimate 
-\begin_inset Formula $J\left(\theta|\theta^{\left(j\right)}\right)$
+\begin_inset Formula $z^{\left(j\right)}$
 \end_inset
 
 .
@@ -13678,6 +13705,602 @@ In the classical (frequentist) approach,
 \end_inset
 
  is considered to be unknown, but fixed.
+ in the Bayesian approach, 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is treated as a random variable.
+ A prior distribution for 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+, is specified.
+ This may be non-informative or may describe expert opinion (or subjective
+ belief).
+ Inference is based on the posterior distribution, 
+\begin_inset Formula 
+\[
+\pi\left(\theta|\mathbf{x}\right)=\frac{f\left(\mathbf{x}|\theta\right)\pi\left(\theta\right)}{\int f\left(\mathbf{x}|\theta\right)\pi\left(\theta\right)\mbox{d}\theta},
+\]
+
+\end_inset
+
+which is obtained from Bayes' rule and updates the prior, 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+, given the observed data.
+ The expectation of 
+\begin_inset Formula $\pi\left(\theta|\mathbf{x}\right)$
+\end_inset
+
+, which is given by
+\begin_inset Formula 
+\[
+\mbox{E}\left[\pi\left(\theta|\mathbf{x}\right)\right]=\int_{\Theta}\theta\cdot\pi\left(\theta|\mathbf{x}\right)\mbox{d}\theta,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is the support of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, i.e., the parameter space, is called the posterior mean or the 
+\shape italic
+Bayes estimator
+\shape default
+.
+ One could also use the most probable value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, the 
+\shape italic
+posterior mode
+\shape default
+, as a point estimator.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim\mbox{Bernoulli}\left(\theta\right)$
+\end_inset
+
+ and consider 
+\begin_inset Formula $\theta\sim U\left(0,1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the Bayes estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The prior distribution is uniform on the interval 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+, so its density is given by
+\begin_inset Formula 
+\[
+\pi\left(\theta\right)=\frac{1}{1-0}=1.
+\]
+
+\end_inset
+
+From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:suff-stat-bernoulli"
+
+\end_inset
+
+, the joint pmf of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+p_{\mathbf{X}}\left(\mathbf{x}|\theta\right)=\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}},
+\]
+
+\end_inset
+
+so that the posterior distribution is given by
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\theta|\mathbf{x}\right) & =\frac{p_{\mathbf{X}}\left(\mathbf{x}|\theta\right)\pi\left(\theta\right)}{\int p_{\mathbf{X}}\left(\mathbf{x}|\theta\right)\pi\left(\theta\right)\mbox{d}\theta}\\
+ & =\frac{\left[\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}\right]\cdot1}{\int_{0}^{1}\left[\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}\right]\cdot1\mbox{d}\theta}\\
+ & =\frac{\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}}{\int_{0}^{1}\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}\mbox{d}\theta}.
+\end{flalign*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\alpha=\sum_{i=1}^{n}x_{i}+1$
+\end_inset
+
+ and let 
+\begin_inset Formula $\beta=n-\sum_{i=1}^{n}x_{i}+1$
+\end_inset
+
+, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\theta|\mathbf{x}\right) & =\frac{\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1}}{\int_{0}^{1}\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1}\mbox{d}\theta}.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the kernel of a 
+\begin_inset Formula $\mbox{Beta}\left(\alpha,\beta\right)$
+\end_inset
+
+ distribution, so we write
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\theta|\mathbf{x}\right) & =\frac{\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1}}{B\left(\alpha,\beta\right)\int_{0}^{1}\frac{1}{B\left(\alpha,\beta\right)}\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1}\mbox{d}\theta},
+\end{flalign*}
+
+\end_inset
+
+where 
+\begin_inset Formula $B\left(\alpha,\beta\right)=\Gamma\left(\alpha+\beta\right)/\left(\Gamma\left(\alpha\right)\Gamma\left(\beta\right)\right)$
+\end_inset
+
+.
+ Then, the integrand is the pdf of a 
+\begin_inset Formula $\mbox{Beta}\left(\alpha,\beta\right)$
+\end_inset
+
+ distribution, which integrates to 1, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\theta|\mathbf{x}\right) & =\frac{\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1}}{B\left(\alpha,\beta\right)\cdot1}\\
+ & =\frac{1}{B\left(\alpha,\beta\right)}\theta^{\alpha-1}\left(1-\theta\right)^{\beta-1},
+\end{flalign*}
+
+\end_inset
+
+which is the pdf of a 
+\begin_inset Formula $\mbox{Beta}\left(\alpha,\beta\right)$
+\end_inset
+
+ random variable.
+ It follows that 
+\begin_inset Formula $\pi\left(\theta|\mathbf{x}\right)\sim\mbox{Beta}\left(\sum_{i=1}^{n}x_{i}+1,n-\sum_{i=1}^{n}x_{i}+1\right)$
+\end_inset
+
+.
+ The expected value (mean) of a 
+\begin_inset Formula $\mbox{Beta}\left(\gamma,\psi\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $\gamma/\left(\gamma+\psi\right)$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[\pi\left(\theta|\mathbf{x}\right)\right] & =\frac{\alpha}{\alpha+\beta}\\
+ & =\frac{\sum_{i=1}^{n}x_{i}+1}{\left(\sum_{i=1}^{n}x_{i}+1\right)+\left(n-\sum_{i=1}^{n}x_{i}+1\right)}\\
+ & =\frac{\sum_{i=1}^{n}x_{i}+1}{n+2}
+\end{flalign*}
+
+\end_inset
+
+is the Bayes estimator (posterior mean) for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Show that the Bayes estimator is a weighted average of the MLE and the prior
+ mean.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The log-likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+\ln L\left(\theta|\mathbf{x}\right) & =\ln\left[\theta^{\sum_{i=1}^{n}x_{i}}\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}\right]\\
+ & =\ln\theta^{\sum_{i=1}^{n}x_{i}}+\ln\left(1-\theta\right)^{n-\sum_{i=1}^{n}x_{i}}\\
+ & =\left(\sum_{i=1}^{n}x_{i}\right)\ln\theta+\left(n-\sum_{i=1}^{n}x_{i}\right)\ln\left(1-\theta\right).
+\end{flalign*}
+
+\end_inset
+
+We will take the derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}\ln L\left(\theta|\mathbf{x}\right) & =\frac{\partial}{\partial\theta}\left[\left(\sum_{i=1}^{n}x_{i}\right)\ln\theta+\left(n-\sum_{i=1}^{n}x_{i}\right)\ln\left(1-\theta\right)\right]\\
+ & =\frac{1}{\theta}\sum_{i=1}^{n}x_{i}+\left(n-\sum_{i=1}^{n}x_{i}\right)\frac{1}{1-\theta}\cdot-1\\
+ & =\frac{1}{\theta}\sum_{i=1}^{n}x_{i}-\frac{1}{1-\theta}\left(n-\sum_{i=1}^{n}x_{i}\right)
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{1}{\theta}\sum_{i=1}^{n}x_{i} & =\frac{1}{1-\theta}\left(n-\sum_{i=1}^{n}x_{i}\right)\\
+\Leftrightarrow\theta\left(n-\sum_{i=1}^{n}x_{i}\right) & =\left(1-\theta\right)\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\theta\left(n-\sum_{i=1}^{n}x_{i}\right) & =\sum_{i=1}^{n}x_{i}-\theta\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\theta\left(n-\sum_{i=1}^{n}x_{i}\right)+\theta\sum_{i=1}^{n}x_{i} & =\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\theta\left[\left(n-\sum_{i=1}^{n}x_{i}\right)+\sum_{i=1}^{n}x_{i}\right] & =\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\theta n & =\sum_{i=1}^{n}x_{i}\\
+\Leftrightarrow\hat{\theta} & =\bar{x}.
+\end{flalign*}
+
+\end_inset
+
+The prior mean is given by 
+\begin_inset Formula 
+\[
+\mbox{E}\left[\theta\right]=\frac{0+1}{2}=\frac{1}{2}.
+\]
+
+\end_inset
+
+Suppose that 
+\begin_inset Formula $a$
+\end_inset
+
+ is the weight of the MLE and 
+\begin_inset Formula $1-a$
+\end_inset
+
+ is the weight of the prior mean, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+a\bar{x}+\left(1-a\right)\frac{1}{2} & =\frac{n\bar{x}+1}{n+2}\\
+ & =\frac{n}{n+2}\bar{x}+\frac{1}{n+2}\\
+ & =\frac{n}{n+2}\bar{x}+\left(\frac{1}{n+2}\right)\left(\frac{2}{2}\right)\\
+ & =\frac{n}{n+2}\bar{x}+\left(\frac{2+n-n}{n+2}\right)\frac{1}{2}\\
+ & =\frac{n}{n+2}\bar{x}+\left(1-\frac{n}{n+2}\right)\frac{1}{2}
+\end{flalign*}
+
+\end_inset
+
+Then, it follows that 
+\begin_inset Formula 
+\begin{flalign*}
+a & =\frac{n}{n+2}\quad\mbox{and}\quad1-a=\frac{2}{n+2}.
+\end{flalign*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Suppose 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ are iid 
+\begin_inset Formula $\mbox{Poisson}\left(\lambda\right)$
+\end_inset
+
+, i.e.,
+\begin_inset Formula 
+\[
+f\left(\mathbf{x}|\lambda\right)=\frac{\lambda^{\sum_{i=1}^{n}x_{i}}e^{-n\lambda}}{\prod_{i=1}^{n}x_{i}!}.
+\]
+
+\end_inset
+
+The investigator decides to use a prior distribution that captures his prior
+ opinion using a gamma density (conjugate prior for Poisson) with mean of
+ 15 and standard deviation of 5.
+ Find the posterior mean (Bayes estimator) of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The posterior distribution is given by
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\lambda|\mathbf{x}\right) & =\frac{f\left(\mathbf{x}|\lambda\right)\pi\left(\lambda\right)}{\int f\left(\mathbf{x}|\lambda\right)\pi\left(\lambda\right)\mbox{d}\lambda}\\
+ & =\frac{\left[\frac{\lambda^{\sum_{i=1}^{n}x_{i}}e^{-n\lambda}}{\prod_{i=1}^{n}x_{i}!}\right]\left[\frac{1}{\Gamma\left(\alpha\right)\beta^{\alpha}}\lambda^{\alpha-1}e^{-\lambda/\beta}\right]}{\int_{0}^{\infty}\left[\frac{\lambda^{\sum_{i=1}^{n}x_{i}}e^{-n\lambda}}{\prod_{i=1}^{n}x_{i}!}\right]\left[\frac{1}{\Gamma\left(\alpha\right)\beta^{\alpha}}\lambda^{\alpha-1}e^{-\lambda/\beta}\right]\mbox{d}\lambda}\\
+ & =\frac{\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-n\lambda-\lambda/\beta}}{\int_{0}^{\infty}\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-n\lambda-\lambda/\beta}\mbox{d}\lambda}\\
+ & =\frac{\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-\lambda\left(n+1/\beta\right)}}{\int_{0}^{\infty}\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-\lambda\left(n+1/\beta\right)}\mbox{d}\lambda}\\
+ & =\frac{\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-\lambda/\left(n+1/\beta\right)^{-1}}}{\int_{0}^{\infty}\lambda^{\sum_{i=1}^{n}x_{i}+\alpha-1}e^{-\lambda/\left(n+1/\beta\right)^{-1}}\mbox{d}\lambda}
+\end{flalign*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\alpha'=\sum_{i=1}^{n}x_{i}+\alpha$
+\end_inset
+
+ and let 
+\begin_inset Formula $\beta'=1/\left(n+1/\beta\right)$
+\end_inset
+
+, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\lambda|\mathbf{x}\right) & =\frac{\lambda^{\alpha'-1}e^{-\lambda/\beta'}}{\int_{0}^{\infty}\lambda^{\alpha'-1}e^{-\lambda/\beta'}\mbox{d}\lambda}.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the kernel of a 
+\begin_inset Formula $\Gamma\left(\alpha',\beta'\right)$
+\end_inset
+
+ distribution, so we write
+\begin_inset Formula 
+\[
+\pi\left(\lambda|\mathbf{x}\right)=\frac{\lambda^{\alpha'-1}e^{-\lambda/\beta'}}{\Gamma\left(\alpha'\right)\beta'^{\alpha'}\int_{0}^{\infty}\frac{1}{\Gamma\left(\alpha'\right)\beta'^{\alpha'}}\lambda^{\alpha'-1}e^{-\lambda/\beta'}\mbox{d}\lambda}.
+\]
+
+\end_inset
+
+Then, the integrand is the pdf of a 
+\begin_inset Formula $\Gamma\left(\alpha',\beta'\right)$
+\end_inset
+
+ distribution, which integrates to 1, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\pi\left(\lambda|\mathbf{x}\right) & =\frac{\lambda^{\alpha'-1}e^{-\lambda/\beta'}}{\Gamma\left(\alpha'\right)\beta'^{\alpha'}\cdot1}\\
+ & =\frac{1}{\Gamma\left(\alpha'\right)\beta'^{\alpha'}}\lambda^{\alpha'-1}e^{-\lambda/\beta'},
+\end{flalign*}
+
+\end_inset
+
+which is the pdf of a 
+\begin_inset Formula $\Gamma\left(\alpha',\beta'\right)$
+\end_inset
+
+ random variable.
+ It follows that 
+\begin_inset Formula $\pi\left(\lambda|\mathbf{x}\right)\sim\Gamma\left(\sum_{i=1}^{n}x_{i}+\alpha,1/\left(n+1/\beta\right)\right)$
+\end_inset
+
+.
+ The expected value (mean) of a 
+\begin_inset Formula $\Gamma\left(\gamma,\psi\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $\gamma\psi$
+\end_inset
+
+, so it follows that
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[\pi\left(\lambda|\mathbf{x}\right)\right] & =\left(\sum_{i=1}^{n}x_{i}+\alpha\right)\left(\frac{1}{n+\frac{1}{\beta}}\right)\\
+ & =\frac{\sum_{i=1}^{n}x_{i}+\alpha}{n+\frac{1}{\beta}}
+\end{flalign*}
+
+\end_inset
+
+is the Bayes estimator of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ denote the class of pdfs or pmfs 
+\begin_inset Formula $f\left(x|\theta\right)$
+\end_inset
+
+ (indexed by 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ A class 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ of prior distributions is a 
+\shape italic
+conjugate family
+\shape default
+ for 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ if the posterior distribution is in the class 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ for all 
+\begin_inset Formula $f\in\mathcal{F}$
+\end_inset
+
+, all priors in 
+\begin_inset Formula $\Pi$
+\end_inset
+
+, and all 
+\begin_inset Formula $x\in\mathcal{X}$
+\end_inset
+
+, i.e., if 
+\begin_inset Formula 
+\[
+\pi\left(\theta\right)\in\Pi\Rightarrow f\left(\theta|x\right)\in\Pi.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+Sampling models from exponential families all have conjugate priors, including
+ the following examples.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sampling model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prior & Posterior
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{Binomial}\left(n,\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beta
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{Poisson}\left(\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{Exponential}\left(\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gamma
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Without a conjugate prior, it is not usually possible to obtain a closed-form
+ solution for a posterior distribution.
+\end_layout
+
+\begin_layout Standard
+Contemporary computational resources have had an enormous impact on Bayesian
+ inference.
+ The computationally difficult part of Bayesian inference is the calculation
+ of the normalizing constant that makes the posterior density integrate
+ to 1.
+ Traditionally, such calculations were performed analytically, often using
+ conjugate priors so that the integrations could be done explicitly.
+ For more complex problems, Markov chain Monte Carlo methods are used to
+ sample from the posterior distribution.
 \end_layout
 
 \end_body
