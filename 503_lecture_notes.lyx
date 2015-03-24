@@ -12,19 +12,10 @@
 \allowdisplaybreaks
 \newref{cor}{name=corollary~}
 \newref{exa}{name=example~}
-\usepackage{thmtools}
-\declaretheoremstyle[
-spaceabove=6pt, spacebelow=6pt,
-headfont=\normalfont\bfseries,
-notefont=\mdseries, notebraces={(}{)},
-bodyfont=\normalfont,
-postheadspace=1em,
-headpunct={.},
-qed=$\blacktriangleleft$,
-numbered=no
-]{solstyle}
-\declaretheorem[style=solstyle]{solution}
 \usepackage{hyperref}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\E}{E}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -1244,6 +1235,66 @@ name "thm:order-stat-joint-pdf"
 [add the proof]
 \end_layout
 
+\begin_layout Section
+Covariance and correlation
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are any two random variables and 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ are any two constants, then
+\begin_inset Formula 
+\[
+\Var\left(aX+bY\right)=a^{2}\Var\left(X\right)+b^{2}\Var\left(Y\right)+2ab\Cov\left(X,Y\right).
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent random variables, then
+\begin_inset Formula 
+\[
+\Var\left(aX+bY\right)=a^{2}\Var\left(X\right)+b^{2}\Var\left(Y\right).
+\]
+
+\end_inset
+
+(This is Theorem 4.5.6 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:variance-of-ind-rvs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+[proof goes here]
+\end_layout
+
 \begin_layout Chapter
 Common families of distributions
 \end_layout
@@ -1337,7 +1388,7 @@ For
 \end_inset
 
 , let 
-\begin_inset Formula $y_{i}\sim\mbox{Bernoulli}\left(p\right)$
+\begin_inset Formula $y_{i}\sim\text{Bernoulli}\left(p\right)$
 \end_inset
 
 , i.e., 
@@ -2068,7 +2119,7 @@ status open
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:natural-param-binomial"
+name "exa:natural-param-binomial"
 
 \end_inset
 
@@ -2206,8 +2257,8 @@ Then, let
 \begin_inset Formula 
 \begin{flalign*}
 \eta & =\log\lambda\\
-e^{\eta} & =\exp\left(\log\lambda\right)\\
-e^{\eta} & =\lambda.
+\Leftrightarrow e^{\eta} & =\exp\left(\log\lambda\right)\\
+\Leftrightarrow e^{\eta} & =\lambda.
 \end{flalign*}
 
 \end_inset
@@ -2248,7 +2299,7 @@ status open
 \end_inset
 
 Let 
-\begin_inset Formula $X\sim Bernoulli\left(p\right)$
+\begin_inset Formula $X\sim\text{Bernoulli}\left(p\right)$
 \end_inset
 
 , i.e., 
@@ -2259,7 +2310,7 @@ Let
  From 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:natural-param-binomial"
+reference "exa:natural-param-binomial"
 
 \end_inset
 
@@ -2390,23 +2441,34 @@ Let
 
  have density in an exponential family.
  Then,
-\begin_inset Formula 
-\begin{flalign}
-\mbox{E}\left(t_{j}\left(X\right)\right) & =-\frac{\partial}{\partial\eta_{j}}\log c^{*}\left(\eta\right),\label{eq:expected-val-exp-family}\\
-\mbox{Var}\left(t_{j}\left(X\right)\right) & =-\frac{\partial^{2}}{\partial\eta_{j}^{2}}\log c^{*}\left(\eta\right),
-\end{flalign}
+\end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\E\left(t_{j}\left(X\right)\right)=-\dfrac{\partial}{\partial\eta_{j}}\log c^{*}\left(\eta\right)$
 \end_inset
 
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Var\left(t_{j}\left(X\right)\right)=-\dfrac{\partial^{2}}{\partial\eta_{j}^{2}}\log c^{*}\left(\eta\right)$
+\end_inset
+
+,
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
 and the moment-generating function for 
 \begin_inset Formula $\left(X_{1},\ldots,X_{k}\right)$
 \end_inset
 
  is
 \begin_inset Formula 
-\begin{flalign*}
-M_{\left(X_{1},\ldots,X_{k}\right)}\left(s_{1},\ldots,s_{k}\right) & =\mbox{E}\left[e^{\sum_{j=1}^{k}s_{j}x_{j}}\right].
-\end{flalign*}
+\[
+M_{\left(X_{1},\ldots,X_{k}\right)}\left(s_{1},\ldots,s_{k}\right)=\E\left[e^{\sum_{j=1}^{k}s_{j}x_{j}}\right].
+\]
 
 \end_inset
 
@@ -2615,7 +2677,7 @@ reference "thm:expected-value-exp-family"
  From 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:natural-param-binomial"
+reference "exa:natural-param-binomial"
 
 \end_inset
 
@@ -3404,11 +3466,11 @@ Let
 
 .
  Suppose 
-\begin_inset Formula $\mbox{E}\left(Z\right)$
+\begin_inset Formula $\E\left(Z\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\mbox{Var}\left(Z\right)$
+\begin_inset Formula $\Var\left(Z\right)$
 \end_inset
 
  exist.
@@ -3421,11 +3483,11 @@ Let
 \end_inset
 
 , then 
-\begin_inset Formula $\mbox{E}\left(X\right)=\sigma\mbox{E}\left(Z\right)+\mu$
+\begin_inset Formula $\E\left(X\right)=\sigma\E\left(Z\right)+\mu$
 \end_inset
 
 , and 
-\begin_inset Formula $\mbox{Var}\left(X\right)=\sigma^{2}\mbox{Var}\left(Z\right)$
+\begin_inset Formula $\Var\left(X\right)=\sigma^{2}\Var\left(Z\right)$
 \end_inset
 
 .
@@ -3457,11 +3519,11 @@ reference "thm:location-scale-family"
  So 
 \begin_inset Formula 
 \begin{flalign}
-\mbox{E}\left(X\right) & =\mbox{E}\left(\sigma Z^{*}+\mu\right)\label{eq:expected-val-loc-scale-step-1}\\
- & =\mbox{E}\left(\sigma Z^{*}\right)+\mbox{E}\left(\mu\right)\label{eq:expected-val-loc-scale-step-2}\\
- & =\sigma\mbox{E}\left(Z^{*}\right)+\mu\label{eq:expected-val-loc-scale-step-3}\\
+\E\left(X\right) & =\E\left(\sigma Z^{*}+\mu\right)\label{eq:expected-val-loc-scale-step-1}\\
+ & =\E\left(\sigma Z^{*}\right)+\E\left(\mu\right)\label{eq:expected-val-loc-scale-step-2}\\
+ & =\sigma\E\left(Z^{*}\right)+\mu\label{eq:expected-val-loc-scale-step-3}\\
  & =\sigma\int z\cdot f\left(z\right)\mbox{d}z+\mu\label{eq:expected-val-loc-scale-step-4}\\
- & =\sigma\mbox{E}\left(Z\right)+\mu.\label{eq:expected-val-loc-scale-step-5}
+ & =\sigma\E\left(Z\right)+\mu.\label{eq:expected-val-loc-scale-step-5}
 \end{flalign}
 
 \end_inset
@@ -3532,15 +3594,15 @@ reference "eq:expected-val-loc-scale-step-5"
  Then, 
 \begin_inset Formula 
 \begin{flalign}
-\mbox{Var}\left(X\right) & =\mbox{Var}\left(\sigma Z^{*}+\mu\right)\label{eq:variance-loc-scale-step-1}\\
- & =\mbox{E}\left(\left(\sigma Z^{*}+\mu\right)-\mbox{E}\left(\sigma Z^{*}+\mu\right)\right)^{2}\label{eq:variance-loc-scale-step-2}\\
- & =\mbox{E}\left(\sigma Z^{*}+\mu-\left(\sigma\mbox{E}\left(Z^{*}\right)+\mu\right)\right)^{2}\label{eq:variance-loc-scale-step-3}\\
- & =\mbox{E}\left(\sigma Z^{*}+\mu-\sigma\mbox{E}\left(Z^{*}\right)-\mu\right)^{2}\label{eq:variance-loc-scale-step-4}\\
- & =\mbox{E}\left(\sigma\left(Z^{*}-\mbox{E}\left(Z^{*}\right)\right)\right)^{2}\label{eq:variance-loc-scale-step-5}\\
- & =\left(\sigma\mbox{E}\left(Z^{*}-\mbox{E}\left(Z^{*}\right)\right)\right)^{2}\label{eq:variance-loc-scale-step-6}\\
- & =\sigma^{2}\mbox{E}\left(Z^{*}-\mbox{E}\left(Z^{*}\right)\right)^{2}\label{eq:variance-loc-scale-step-7}\\
- & =\sigma^{2}\mbox{Var}\left(Z^{*}\right)\label{eq:variance-loc-scale-step-8}\\
- & =\sigma^{2}\mbox{Var}\left(Z\right)\label{eq:variance-loc-scale-step-9}
+\Var\left(X\right) & =\Var\left(\sigma Z^{*}+\mu\right)\label{eq:variance-loc-scale-step-1}\\
+ & =\E\left(\left(\sigma Z^{*}+\mu\right)-\E\left(\sigma Z^{*}+\mu\right)\right)^{2}\label{eq:variance-loc-scale-step-2}\\
+ & =\E\left(\sigma Z^{*}+\mu-\left(\sigma\E\left(Z^{*}\right)+\mu\right)\right)^{2}\label{eq:variance-loc-scale-step-3}\\
+ & =\E\left(\sigma Z^{*}+\mu-\sigma\E\left(Z^{*}\right)-\mu\right)^{2}\label{eq:variance-loc-scale-step-4}\\
+ & =\E\left(\sigma\left(Z^{*}-\E\left(Z^{*}\right)\right)\right)^{2}\label{eq:variance-loc-scale-step-5}\\
+ & =\left(\sigma\E\left(Z^{*}-\E\left(Z^{*}\right)\right)\right)^{2}\label{eq:variance-loc-scale-step-6}\\
+ & =\sigma^{2}\E\left(Z^{*}-\E\left(Z^{*}\right)\right)^{2}\label{eq:variance-loc-scale-step-7}\\
+ & =\sigma^{2}\Var\left(Z^{*}\right)\label{eq:variance-loc-scale-step-8}\\
+ & =\sigma^{2}\Var\left(Z\right)\label{eq:variance-loc-scale-step-9}
 \end{flalign}
 
 \end_inset
@@ -4756,7 +4818,7 @@ status open
 \end_inset
 
 Let 
-\begin_inset Formula $X\sim\mbox{Bernoulli}\left(p\right)$
+\begin_inset Formula $X\sim\text{Bernoulli}\left(p\right)$
 \end_inset
 
 , and let 
@@ -5229,7 +5291,7 @@ status open
 \end_inset
 
 Let 
-\begin_inset Formula $X\sim Poisson\left(\lambda\right)$
+\begin_inset Formula $X\sim\text{Poisson}\left(\lambda\right)$
 \end_inset
 
 , and let 
@@ -5436,7 +5498,7 @@ for
 
 .
  Find a sufficient statistic for 
-\begin_inset Formula $\theta=\left(\mu,\sigma^{2}\right)$
+\begin_inset Formula $\boldsymbol{\theta}=\left(\mu,\sigma^{2}\right)$
 \end_inset
 
 .
@@ -5484,7 +5546,7 @@ reference "thm:factorization"
 \end_inset
 
  is a sufficient statistic for 
-\begin_inset Formula $\theta=\left(\mu,\sigma^{2}\right)$
+\begin_inset Formula $\boldsymbol{\theta}=\left(\mu,\sigma^{2}\right)$
 \end_inset
 
 .
@@ -9077,7 +9139,7 @@ We have
 \begin_inset Formula $n$
 \end_inset
 
-trials), so that 
+ trials), so that 
 \begin_inset Formula $P\left(\left\{ g\left(T_{2}\right)=0\right\} \right)=1$
 \end_inset
 
@@ -9988,6 +10050,10 @@ nuisance parameter
 \end_layout
 
 \begin_layout Section
+Methods of finding estimators
+\end_layout
+
+\begin_layout Subsection
 Method of moments estimators
 \end_layout
 
@@ -10612,7 +10678,7 @@ then setting
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Maximum likelihood estimators
 \end_layout
 
@@ -11062,7 +11128,8 @@ plot(z, 1/(z^10), type="l", xlab = expression(theta), ylab=expression(paste(L,
 
 \begin_layout Plain Layout
 
-axis(1, at=c(1,2), labels=c(expression(x[(1)]), expression(x[(n)])))
+axis(1, at=c(1,2), labels=c(expression(x[(1)]), expression(x[(n)])), cex.axis
+ = 0.75)
 \end_layout
 
 \begin_layout Plain Layout
@@ -12599,7 +12666,7 @@ Maximization (EM) algorithm.
  Often, the method of moments estimator is a good starting value.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Newton-Raphson
 \end_layout
 
@@ -13223,7 +13290,7 @@ So, we see that our estimates for
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 EM algorithm
 \end_layout
 
@@ -13418,7 +13485,7 @@ so that the log-likelihood is given by
 \end_inset
 
 The sum inside the logarithm makes this difficult to maximize.
- Instead, we will define an indicator variable
+ Instead, we will define an indicator variable 
 \begin_inset Formula $Z_{i}$
 \end_inset
 
@@ -13695,7 +13762,7 @@ Use the M-step to maximize
 \end_layout
 
 \end_deeper
-\begin_layout Section
+\begin_layout Subsection
 Bayes estimators
 \end_layout
 
@@ -13886,11 +13953,14 @@ which is the pdf of a
 
  random variable.
  It follows that 
-\begin_inset Formula $\pi\left(\theta|\mathbf{x}\right)\sim\mbox{Beta}\left(\sum_{i=1}^{n}x_{i}+1,n-\sum_{i=1}^{n}x_{i}+1\right)$
+\begin_inset Formula 
+\[
+\pi\left(\theta|\mathbf{x}\right)\sim\mbox{Beta}\left(\sum_{i=1}^{n}x_{i}+1,n-\sum_{i=1}^{n}x_{i}+1\right).
+\]
+
 \end_inset
 
-.
- The expected value (mean) of a 
+The expected value (mean) of a 
 \begin_inset Formula $\mbox{Beta}\left(\gamma,\psi\right)$
 \end_inset
 
@@ -14301,6 +14371,1027 @@ Contemporary computational resources have had an enormous impact on Bayesian
  conjugate priors so that the integrations could be done explicitly.
  For more complex problems, Markov chain Monte Carlo methods are used to
  sample from the posterior distribution.
+\end_layout
+
+\begin_layout Section
+Methods of evaluating estimators
+\end_layout
+
+\begin_layout Standard
+In the previous section, we discussed techniques for finding point estimators
+ of parameters.
+ Since we can usually apply more than one of these methods, we are often
+ faced with the task of choosing between estimators.
+ What qualities should a 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ estimator have? Is it possible to find a 
+\begin_inset Quotes eld
+\end_inset
+
+best
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Definition
+The 
+\shape italic
+bias
+\shape default
+ of a point estimator 
+\begin_inset Formula $W$
+\end_inset
+
+ of a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the difference between the expected value of 
+\begin_inset Formula $W$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+; that is, 
+\begin_inset Formula $\mbox{Bias}_{\theta}W=\mbox{E}_{\theta}\left[W\right]-\theta$
+\end_inset
+
+.
+ An estimator whose bias is identically (in 
+\begin_inset Formula $\theta$
+\end_inset
+
+) equal to zero is called 
+\shape italic
+unbiased
+\shape default
+ and satisfied 
+\begin_inset Formula $\mbox{E}_{\theta}\left[W\right]=\theta$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $Y_{1},\ldots,Y_{n}$
+\end_inset
+
+ be a random sample from the pdf 
+\begin_inset Formula 
+\[
+f\left(y|\theta\right)=\frac{2y}{\theta^{2}},\quad0\leq y\leq\theta.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the moment estimator and the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The first moment of 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[Y_{i}\right] & =\int_{0}^{\theta}y\cdot f_{Y_{i}}\left(y|\theta\right)\mbox{d}y\\
+ & =\int_{0}^{\theta}y\cdot\frac{2y}{\theta^{2}}\mbox{d}y\\
+ & =\frac{2}{3\theta^{2}}y^{3}\Big\rvert_{0}^{\theta}\\
+ & =\frac{2\theta^{3}}{3\theta^{2}}-0\\
+ & =\frac{2}{3}\theta,
+\end{flalign*}
+
+\end_inset
+
+so that we have 
+\begin_inset Formula 
+\begin{flalign*}
+\hat{\mu}_{1} & =\frac{\sum_{i=1}^{n}y_{i}}{n}\\
+\Leftrightarrow\frac{2}{3}\hat{\theta} & =\bar{y}\\
+\Leftrightarrow\hat{\theta}_{MOM} & =\frac{3}{2}\bar{y}.
+\end{flalign*}
+
+\end_inset
+
+The support depends on the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+, so we can write the pdf as 
+\begin_inset Formula 
+\begin{flalign*}
+f_{Y}\left(y|\theta\right) & =\frac{2y}{\theta^{2}}I_{\left\{ 0\leq y\leq\theta\right\} }.
+\end{flalign*}
+
+\end_inset
+
+Then, the likelihood function is given by
+\begin_inset Formula 
+\begin{flalign*}
+L\left(\theta|\mathbf{y}\right) & =\prod_{i=1}^{n}f_{Y_{i}}\left(y_{i}|\theta\right)\\
+ & =\prod_{i=1}^{n}\frac{2y_{i}}{\theta^{2}}I_{\left\{ 0\leq y_{i}\leq\theta\right\} }\\
+ & =\frac{2^{n}\prod_{i=1}^{n}y_{i}}{\theta^{2n}}I_{\left\{ 0\leq y_{\left(n\right)}\leq\theta\right\} },
+\end{flalign*}
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{y}\right)=\begin{cases}
+\dfrac{2^{n}\prod_{i=1}^{n}y_{i}}{\theta^{2n}}, & \theta\geq y_{\left(n\right)}\\
+0, & \theta<y_{\left(n\right)}
+\end{cases},
+\]
+
+\end_inset
+
+and whose graph is shown below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=2, fig.width=3, fig.align='center', fig.pos='h'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mgp = c(1.5,0.5,0), mar = c(3,3,0.1,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- seq(2, 4, length=2000) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(z, 2^4/(z^4), type="l", xlab = expression(theta), ylab=expression(paste(L,
+ "(",theta,"|",bold(y),")")), yaxt="n", xaxt="n", xlim = c(1, 4), cex.lab
+ = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+axis(1, at=2, labels=expression(y[(n)]), cex.axis = 0.75)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly, the likelihood is maximized at 
+\begin_inset Formula $Y_{\left(n\right)}$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $\hat{\theta}_{MLE}=Y_{\left(n\right)}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Is either estimator unbiased?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The expected value of 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[\hat{\theta}_{MOM}\right] & =\mbox{E}\left[\frac{3}{2}\bar{Y}\right]\\
+ & =\frac{3}{2}\mbox{E}\left[\bar{Y}\right]\\
+ & =\frac{3}{2}\mbox{E}\left[\frac{1}{n}\sum_{i=1}^{n}Y_{i}\right]\\
+ & =\frac{3}{2n}\sum_{i=1}^{n}\mbox{E}\left[Y_{i}\right]\\
+ & =\frac{3}{2n}\sum_{i=1}^{n}\frac{2}{3}\theta\\
+ & =\frac{3}{2n}\left(n\cdot\frac{2}{3}\theta\right)\\
+ & =\theta,
+\end{flalign*}
+
+\end_inset
+
+so it follows that 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is unbiased for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ The cdf of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+F_{Y}\left(y\right) & =\int_{0}^{y}f_{Y}\left(y|\theta\right)\mbox{d}t\\
+ & =\int_{0}^{y}\frac{2t}{\theta^{2}}\mbox{d}t\\
+ & =\frac{t^{2}}{\theta^{2}}\Bigr\rvert_{0}^{y}\\
+ & =\frac{y^{2}}{\theta^{2}}-0\\
+ & =\frac{y^{2}}{\theta^{2}},
+\end{flalign*}
+
+\end_inset
+
+so that the pdf of 
+\begin_inset Formula $\hat{\theta}_{MLE}=Y_{\left(n\right)}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+f_{Y_{\left(n\right)}}\left(y|\theta\right) & =n\left[F_{y}\left(y\right)\right]^{n-1}f_{Y}\left(y\right)\\
+ & =n\left(\frac{y^{2}}{\theta^{2}}\right)^{n-1}\left(\frac{2y}{\theta^{2}}\right)\\
+ & =n\frac{y^{2\left(n-1\right)}}{\theta^{2\left(n-1\right)}}\left(\frac{2y}{\theta^{2}}\right)\\
+ & =\frac{2ny^{2n-1}}{\theta^{2n}}.
+\end{flalign*}
+
+\end_inset
+
+Then, the expected value of 
+\begin_inset Formula $\hat{\theta}_{MLE}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[\hat{\theta}_{MLE}\right] & =\mbox{E}\left[Y_{\left(n\right)}\right]\\
+ & =\int_{0}^{\theta}y\cdot f_{Y_{\left(n\right)}}\left(y\right)\mbox{d}y\\
+ & =\int_{0}^{\theta}y\cdot\frac{2ny^{2n-1}}{\theta^{2n}}\mbox{d}y\\
+ & =\frac{2n}{\theta^{2n}}\int_{0}^{\theta}y^{2n}\mbox{d}y\\
+ & =\frac{2n}{\theta^{2n}}\left[\frac{1}{2n+1}y^{2n+1}\right|_{0}^{\theta}\\
+ & =\frac{2n}{\theta^{2n}}\left(\frac{\theta^{2n+1}}{2n+1}-0\right)\\
+ & =\frac{2n}{2n+1}\theta.
+\end{flalign*}
+
+\end_inset
+
+We see that 
+\begin_inset Formula $\mbox{E}\left[\hat{\theta}_{MLE}\right]$
+\end_inset
+
+ is not equal to 
+\begin_inset Formula $\theta$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $\hat{\theta}_{MLE}$
+\end_inset
+
+ is a biased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Construct an unbiased estimator based on the MLE.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+An unbiased estimator 
+\begin_inset Formula $\tilde{\lambda}$
+\end_inset
+
+ for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ satisfies the condition that 
+\begin_inset Formula $\mbox{E}\left[\tilde{\lambda}\right]=\lambda$
+\end_inset
+
+ for all 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ So, to construct an unbiased estimator 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ based on the MLE 
+\begin_inset Formula $\hat{\theta}_{MLE}$
+\end_inset
+
+, we need to find a constant such that 
+\begin_inset Formula $\mbox{E}\left[\hat{\theta}_{MLE}\right]=\theta$
+\end_inset
+
+.
+ We see that
+\begin_inset Formula 
+\[
+\tilde{\theta}=\frac{2n+1}{2n}\hat{\theta}_{MLE}=\frac{2n+1}{2n}Y_{\left(n\right)}
+\]
+
+\end_inset
+
+satisfies the condition that 
+\begin_inset Formula 
+\[
+\mbox{E}\left[\tilde{\theta}\right]=\mbox{E}\left[\frac{2n+1}{2n}Y_{\left(n\right)}\right]=\frac{2n+1}{2n}\mbox{E}\left[Y_{\left(n\right)}\right]=\frac{2n+1}{2n}\left(\frac{2n}{2n+1}\theta\right)=\theta,
+\]
+
+\end_inset
+
+so it follows that 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is an unbiased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ based on the MLE.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+The precision of an estimator is another important property beside unbiasedness.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+ be two unbiased estimators for a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mbox{Var}\left(\hat{\theta}_{1}\right)<\mbox{Var}\left(\hat{\theta}_{2}\right)$
+\end_inset
+
+, we say that 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ is 
+\shape italic
+more efficient
+\shape default
+ than 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+.
+ The relative efficiency of 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+ is the ratio 
+\begin_inset Formula $\mbox{Var}\left(\hat{\theta}_{2}\right)/\mbox{Var}\left(\hat{\theta}_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Consider the two unbiased estimators from the example above.
+ Which estimator is more efficient?
+\end_layout
+
+\begin_layout Example
+The variance of 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\hat{\theta}_{MOM}\right) & =\mbox{Var}\left(\frac{3}{2}\bar{Y}\right)\\
+ & =\mbox{Var}\left(\frac{3}{2n}\sum_{i=1}^{n}Y_{i}\right)\\
+ & =\frac{9}{4n^{2}}\mbox{Var}\left(\sum_{i=1}^{n}Y_{i}\right)\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\mbox{Var}\left(Y_{i}\right)
+\end{flalign*}
+
+\end_inset
+
+The final equality follows from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:variance-of-ind-rvs"
+
+\end_inset
+
+, i.e., the variance of the sum of independent random variables is equal to
+ the sum of their variances.
+ To find the variance of 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+, we will need to find its second moment.
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[Y^{2}\right] & =\int_{0}^{\theta}y^{2}\cdot f_{Y}\left(y\right)\mbox{d}y\\
+ & =\int_{0}^{\theta}y^{2}\frac{2y}{\theta^{2}}\mbox{d}y\\
+ & =\frac{1}{2\theta^{2}}y^{4}\Big\rvert_{0}^{\theta}\\
+ & =\frac{\theta^{4}}{2\theta^{2}}-0\\
+ & =\frac{\theta^{2}}{2}
+\end{flalign*}
+
+\end_inset
+
+Then, we have
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\hat{\theta}_{MOM}\right) & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\mbox{Var}\left(Y_{i}\right)\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\left[\mbox{E}\left[Y^{2}\right]-\left(\mbox{E}\left[Y\right]\right)^{2}\right]\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\left[\frac{\theta^{2}}{2}-\left(\frac{2}{3}\theta\right)^{2}\right]\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\left[\frac{\theta^{2}}{2}-\frac{4\theta^{2}}{9}\right]\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\left[\frac{9\theta^{2}}{18}-\frac{8\theta^{2}}{18}\right]\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\frac{\theta^{2}}{18}\\
+ & =\frac{9}{4n^{2}}\cdot n\frac{\theta^{2}}{18}\\
+ & =\frac{\theta^{2}}{8n}.
+\end{flalign*}
+
+\end_inset
+
+The variance of 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\tilde{\theta}\right) & =\mbox{Var}\left(\frac{2n+1}{2n}\hat{\theta}_{MLE}\right)\\
+ & =\left(\frac{2n+1}{2n}\right)^{2}\mbox{Var}\left(\hat{\theta}_{MLE}\right)\\
+ & =\frac{\left(2n+1\right)^{2}}{4n^{2}}\mbox{Var}\left(\hat{\theta}_{MLE}\right).
+\end{flalign*}
+
+\end_inset
+
+We will now find the second moment of 
+\begin_inset Formula $\hat{\theta}_{MLE}=Y_{\left(n\right)}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[Y_{\left(n\right)}^{2}\right] & =\int_{0}^{\theta}y^{2}\cdot f_{Y_{\left(n\right)}}\left(y\right)\mbox{d}y\\
+ & =\int_{0}^{\theta}y^{2}\cdot\frac{2ny^{2n-1}}{\theta^{2n}}\mbox{d}y\\
+ & =\frac{2n}{\theta^{2n}}\int_{0}^{\theta}y^{2n+1}\mbox{d}y\\
+ & =\frac{2n}{\theta^{2n}}\left[\frac{1}{2n+2}y^{2n+2}\right|_{0}^{\theta}\\
+ & =\frac{2n}{\theta^{2n}}\left(\frac{\theta^{2n+2}}{2n+2}-0\right)\\
+ & =\frac{2n\theta^{2}}{2n+2}\\
+ & =\frac{n\theta^{2}}{n+1}
+\end{flalign*}
+
+\end_inset
+
+Then, the variance of 
+\begin_inset Formula $\hat{\theta}_{MLE}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\hat{\theta}_{MLE}\right) & =\mbox{Var}\left(Y_{\left(n\right)}\right)\\
+ & =\mbox{E}\left[Y_{\left(n\right)}^{2}\right]-\left(\mbox{E}\left[Y_{\left(n\right)}\right]\right)^{2}\\
+ & =\frac{n\theta^{2}}{n+1}-\left(\frac{2n\theta}{2n+1}\right)^{2}\\
+ & =\frac{n\theta^{2}}{n+1}-\frac{4n^{2}\theta^{2}}{\left(2n+1\right)^{2}}\\
+ & =\frac{\theta^{2}\left[n\left(2n+1\right)^{2}-4n^{2}\left(n+1\right)\right]}{\left(n+1\right)\left(2n+1\right)^{2}}\\
+ & =\frac{\theta^{2}\left[n\left(4n^{2}+4n+1\right)-4n^{3}-4n^{2}\right]}{\left(n+1\right)\left(2n+1\right)^{2}}\\
+ & =\frac{\theta^{2}\left[4n^{3}+4n^{2}+n-4n^{3}-4n^{2}\right]}{\left(n+1\right)\left(2n+1\right)^{2}}\\
+ & =\frac{n\theta^{2}}{\left(n+1\right)\left(2n+1\right)^{2}},
+\end{flalign*}
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\tilde{\theta}\right) & =\frac{\left(2n+1\right)^{2}}{4n^{2}}\mbox{Var}\left(\hat{\theta}_{MLE}\right)\\
+ & =\frac{\left(2n+1\right)^{2}}{4n^{2}}\left(\frac{n\theta^{2}}{\left(n+1\right)\left(2n+1\right)^{2}}\right)\\
+ & =\frac{\theta^{2}}{4n\left(n+1\right)}.
+\end{flalign*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\mbox{Var}\left(\hat{\theta}_{MOM}\right)<\mbox{Var}\left(\tilde{\theta}\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is more efficient than 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(\hat{\theta}_{MOM}\right) & <\mbox{Var}\left(\tilde{\theta}\right)\\
+\Leftrightarrow\frac{\theta^{2}}{8n} & <\frac{\theta^{2}}{4n\left(n+1\right)}\\
+\Leftrightarrow8n & >4n\left(n+1\right)\\
+\Leftrightarrow8n-4n\left(n+1\right) & >0\\
+\Leftrightarrow4n\left(2-\left(n+1\right)\right) & >0\\
+\Leftrightarrow4n\left(2-n-1\right) & >0\\
+\Leftrightarrow4n\left(1-n\right) & >0\\
+\Leftrightarrow4n-4n^{2} & >0
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $n>0$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $4n-4n^{2}<0$
+\end_inset
+
+, so it cannot be the case that 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is more efficient than 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is more efficient than 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+.
+ The relative efficiency of 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\hat{\theta}_{MOM}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+\frac{\mbox{Var}\left(\hat{\theta}_{MOM}\right)}{\mbox{Var}\left(\tilde{\theta}\right)}=\frac{\theta^{2}/\left(8n\right)}{\theta^{2}/\left(4n\left(n+1\right)\right)}=\frac{4n\left(n+1\right)}{8n}=\frac{n+1}{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mean squared error
+\end_layout
+
+\begin_layout Definition
+The 
+\shape italic
+mean squared error
+\shape default
+ (MSE) of an estimator 
+\begin_inset Formula $W$
+\end_inset
+
+ of a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\mbox{E}_{\theta}\left[\left(W-\theta\right)^{2}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Any increasing function of 
+\begin_inset Formula $\left|W-\theta\right|$
+\end_inset
+
+ would serve to measure the goodness of an estimator, but MSE has at least
+ two advantages over other distance measures.
+ First, it is analytically tractable (absolute value would lead to discontinuiti
+es).
+ Second, it has the interpretation
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[\left(W-\theta\right)^{2}\right] & =\mbox{E}\left[\left(W-\mbox{E}\left[W\right]+\mbox{E}\left[W\right]-\theta\right)^{2}\right]\\
+ & =\mbox{E}\left[\left(W-\mbox{E}\left[W\right]\right)^{2}+2\left(W-\mbox{E}\left[W\right]\right)\left(\mbox{E}\left[W\right]-\theta\right)+\left(\mbox{E}\left[W\right]-\theta\right)^{2}\right]\\
+ & =\mbox{E}\left[\left(W-\mbox{E}\left[W\right]\right)^{2}\right]+2\mbox{E}\left[\left(W-\mbox{E}\left[W\right]\right)\left(\mbox{E}\left[W\right]-\theta\right)\right]+\mbox{E}\left[\left(\mbox{E}\left[W\right]-\theta\right)^{2}\right]\\
+ & =\mbox{Var}\left(W\right)+2\mbox{E}\left[W\mbox{E}\left[W\right]-\theta W-\left(\mbox{E}\left[W\right]\right)^{2}+\theta\mbox{E}\left[W\right]\right]+\mbox{E}\left[\left(\mbox{Bias}\left(W\right)\right)^{2}\right]\\
+ & =\mbox{Var}\left(W\right)+2\left[\mbox{E}\left[W\mbox{E}\left[W\right]\right]-\mbox{E}\left[\theta W\right]-\mbox{E}\left[\left(\mbox{E}\left[W\right]\right)^{2}\right]+\mbox{E}\left[\theta\mbox{E}\left[W\right]\right]\right]+\left[\mbox{Bias}\left(W\right)\right]^{2}\\
+ & =\mbox{Var}\left(W\right)+2\left[\left(\mbox{E}\left[W\right]\right)^{2}-\theta\mbox{E}\left[W\right]-\left(\mbox{E}\left[W\right]\right)^{2}+\theta\mbox{E}\left[W\right]\right]+\left[\mbox{Bias}\left(W\right)\right]^{2}\\
+ & =\mbox{Var}\left(W\right)+2\left(0\right)+\left[\mbox{Bias}\left(W\right)\right]^{2}\\
+ & =\mbox{Var}\left(W\right)+\left[\mbox{Bias}\left(W\right)\right]^{2}.
+\end{flalign*}
+
+\end_inset
+
+If 
+\begin_inset Formula $W$
+\end_inset
+
+ is unbiased, 
+\begin_inset Formula $\mbox{MSE}\left[W\right]=\mbox{Var}\left(W\right)$
+\end_inset
+
+.
+ An estimator that has good MSE properties has small combined variance and
+ bias.
+ Controlling bias does not guarantee that MSE is controlled.
+ There is often a bias-variance trade-off, such that a small increase in
+ bias can be traded for a larger decrease in variance, resulting in an improveme
+nt in MSE.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ be iid 
+\begin_inset Formula $\mbox{Bernoulli}\left(\theta\right)$
+\end_inset
+
+.
+ Consider the statistics
+\begin_inset Formula 
+\[
+T_{1}=\frac{\sum_{i}X_{i}+1}{n+2}\quad\mbox{and}\quad T_{2}=\frac{\sum_{i}X_{i}}{n}.
+\]
+
+\end_inset
+
+Find the MSE for 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Noting that the expected value of a 
+\begin_inset Formula $\mbox{Bernoulli}\left(p\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $p$
+\end_inset
+
+, we will begin by finding the expected value of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[T_{1}\right] & =\mbox{E}\left[\frac{\sum_{i}X_{i}+1}{n+2}\right]\\
+ & =\frac{1}{n+2}\mbox{E}\left[\sum_{i=1}^{n}X_{i}+1\right]\\
+ & =\frac{1}{n+2}\left(\sum_{i=1}^{n}\mbox{E}\left[X_{i}\right]+1\right)\\
+ & =\frac{1}{n+2}\left(\sum_{i=1}^{n}\theta+1\right)\\
+ & =\frac{n\theta+1}{n+2}.
+\end{flalign*}
+
+\end_inset
+
+Then, the bias of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Bias}\left(T_{1}\right) & =\mbox{E}\left[T_{1}\right]-\theta\\
+ & =\frac{n\theta+1}{n+2}-\frac{\theta\left(n+2\right)}{n+2}\\
+ & =\frac{n\theta+1-n\theta-2\theta}{n+2}\\
+ & =\frac{1-2\theta}{n+2}.
+\end{flalign*}
+
+\end_inset
+
+Noting that the variance of a 
+\begin_inset Formula $\mbox{Bernoulli}\left(p\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $p\left(1-p\right)$
+\end_inset
+
+, it follows that the variance of 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(T_{1}\right) & =\mbox{Var}\left(\frac{\sum_{i}X_{i}+1}{n+2}\right)\\
+ & =\left(\frac{1}{n+2}\right)^{2}\mbox{Var}\left(\sum_{i=1}^{n}X_{i}+1\right)\\
+ & =\frac{1}{\left(n+2\right)^{2}}\mbox{Var}\left(\sum_{i=1}^{n}X_{i}\right)\\
+ & =\frac{1}{\left(n+2\right)^{2}}\sum_{i=1}^{n}\mbox{Var}\left(X_{i}\right)\\
+ & =\frac{1}{\left(n+2\right)^{2}}\sum_{i=1}^{n}\theta\left(1-\theta\right)\\
+ & =\frac{n\theta\left(1-\theta\right)}{\left(n+2\right)^{2}},
+\end{flalign*}
+
+\end_inset
+
+where the fourth equality follows from the independence of the 
+\begin_inset Formula $X_{i}\mbox{'s}$
+\end_inset
+
+.
+ Then, the MSE for 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{MSE}\left(T_{1}\right) & =\mbox{Var}\left(T_{1}\right)+\left[\mbox{Bias}\left(T_{1}\right)\right]^{2}\\
+ & =\frac{n\theta\left(1-\theta\right)}{\left(n+2\right)^{2}}+\left[\frac{1-2\theta}{n+2}\right]^{2}\\
+ & =\frac{n\theta\left(1-\theta\right)+\left(1-2\theta\right)^{2}}{\left(n+2\right)^{2}}\\
+ & =\frac{n\theta-n\theta^{2}+\left(1-4\theta+4\theta^{2}\right)}{\left(n+2\right)^{2}}\\
+ & =\frac{\theta^{2}\left(4-n\right)-\theta\left(4-n\right)+1}{\left(n+2\right)^{2}}.
+\end{flalign*}
+
+\end_inset
+
+The expected value of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{E}\left[T_{2}\right] & =\mbox{E}\left[\frac{1}{n}\sum_{i=1}^{n}X_{i}\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\mbox{E}\left[X_{i}\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\theta\\
+ & =\frac{n\theta}{n}\\
+ & =\theta,
+\end{flalign*}
+
+\end_inset
+
+so that we have 
+\begin_inset Formula 
+\[
+\mbox{Bias}\left(T_{2}\right)=\mbox{E}\left[T_{2}\right]-\theta=\theta-\theta=0.
+\]
+
+\end_inset
+
+The variance of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\mbox{Var}\left(T_{2}\right) & =\mbox{Var}\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\\
+ & =\frac{1}{n^{2}}\mbox{Var}\left(\sum_{i=1}^{n}X_{i}\right)\\
+ & =\frac{1}{n^{2}}\sum_{i=1}^{n}\mbox{Var}\left(X_{i}\right)\\
+ & =\frac{1}{n^{2}}\sum_{i=1}^{n}\theta\left(1-\theta\right)\\
+ & =\frac{n\theta\left(1-\theta\right)}{n^{2}}\\
+ & =\frac{\theta\left(1-\theta\right)}{n},
+\end{flalign*}
+
+\end_inset
+
+so that the MSE for 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\mbox{MSE}\left(T_{2}\right)=\mbox{Var}\left(T_{2}\right)+\left[\mbox{Bias}\left(T_{2}\right)^{2}\right]=\frac{\theta\left(1-\theta\right)}{n}+0=\frac{\theta\left(1-\theta\right)}{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The MSEs may differ based on how large 
+\begin_inset Formula $n$
+\end_inset
+
+ is, i.e., one may be superior for certain ranges of 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Best unbiased estimators
+\end_layout
+
+\begin_layout Standard
+A common way to make the problem of finding a 
+\begin_inset Quotes eld
+\end_inset
+
+best
+\begin_inset Quotes erd
+\end_inset
+
+ estimator tractable is to limit the class of estimators to unbiased estimators.
+\end_layout
+
+\begin_layout Definition
+An estimator 
+\begin_inset Formula $W^{*}$
+\end_inset
+
+ is a 
+\shape italic
+best unbiased estimator
+\shape default
+ of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+ if it satisfies 
+\begin_inset Formula $\mbox{E}_{\theta}\left[W^{*}\right]=\tau\left(\theta\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and, for any other estimator 
+\begin_inset Formula $W$
+\end_inset
+
+ with 
+\begin_inset Formula $\mbox{E}_{\theta}\left[W\right]=\tau\left(\theta\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mbox{Var}_{\theta}\left(W^{*}\right)\leq\mbox{Var}_{\theta}\left(W\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\begin_inset Formula $W^{*}$
+\end_inset
+
+ is also called a 
+\shape italic
+uniform minimum variance unbiased estimator
+\shape default
+ (UMVUE) of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Cramér-Rao Inequality]
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ be a sample with pdf 
+\begin_inset Formula $f\left(\mathbf{x}|\theta\right)$
+\end_inset
+
+, and let 
+\begin_inset Formula $W\left(\mathbf{X}\right)=W\left(X_{1},\ldots,X_{n}\right)$
+\end_inset
+
+ be any estimator satisfying
+\begin_inset Formula 
+\[
+\frac{\mbox{d}}{\mbox{d}\theta}\E_{\theta}\left[W\left(\mathbf{X}\right)\right]=\int_{\mathcal{X}}\frac{\partial}{\partial\theta}\left[W\left(\mathbf{x}\right)f\left(\mathbf{x}|\theta\right)\right]\mbox{d}x\quad\mbox{and}\quad\Var_{\theta}\left(W\left(\mathbf{X}\right)\right)<\infty.
+\]
+
+\end_inset
+
+Then
+\begin_inset Formula 
+\[
+\Var_{\theta}\left(W\left(\mathbf{X}\right)\right)\geq\frac{\left[\frac{\mbox{d}}{\mbox{d}\theta}\E_{\theta}\left[W\left(\mathbf{X}\right)\right]\right]^{2}}{\E_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{X}|\theta\right)\right)^{2}\right]}=\frac{\left[\tau'\left(\theta\right)\right]^{2}}{\E_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{X}|\theta\right)\right)^{2}\right]}
+\]
+
+\end_inset
+
+with Fisher information
+\begin_inset Formula 
+\[
+I=\E_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{X}|\theta\right)\right)^{2}\right]=-\E_{\theta}\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(\mathbf{X}|\theta\right)\right].
+\]
+
+\end_inset
+
+(This is Theorem 7.3.9 from Casella & Berger; the following proof is given
+ there.)
+\end_layout
+
+\begin_layout Proof
+[proof goes here]
+\end_layout
+
+\begin_layout Standard
+Under independence, 
+\begin_inset Formula $f\left(\mathbf{x}|\theta\right)=\prod_{i=1}^{n}f_{i}\left(x_{i}|\theta\right)$
+\end_inset
+
+.
 \end_layout
 
 \end_body
