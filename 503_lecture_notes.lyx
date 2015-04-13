@@ -16,6 +16,7 @@
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\Corr}{Corr}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -841,6 +842,13 @@ f_{X}\left(g^{-1}\left(y\right)\right)\left|\dfrac{\mbox{d}}{\mbox{d}y}g^{-1}\le
 \end_inset
 
 (This is Theorem 2.1.5 from Casella & Berger.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:pdf-of-function-of-rv"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1171,7 +1179,7 @@ name "thm:order-stat-continuous"
 \end_layout
 
 \begin_layout Proof
-[add the proof]
+[proof goes here]
 \end_layout
 
 \begin_layout --Separator--
@@ -1232,11 +1240,140 @@ name "thm:order-stat-joint-pdf"
 \end_layout
 
 \begin_layout Proof
-[add the proof]
+[proof goes here]
 \end_layout
 
 \begin_layout Section
 Covariance and correlation
+\end_layout
+
+\begin_layout Definition
+The 
+\shape italic
+covariance
+\shape default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is the number defined by
+\begin_inset Formula 
+\[
+\Cov\left(X,Y\right)=\E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+The 
+\shape italic
+correlation
+\shape default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is the number defined by
+\begin_inset Formula 
+\[
+\rho_{XY}=\frac{\Cov\left(X,Y\right)}{\sigma_{X}\sigma_{Y}}.
+\]
+
+\end_inset
+
+The value 
+\begin_inset Formula $\rho_{XY}$
+\end_inset
+
+ is also called the 
+\shape italic
+correlation coefficient
+\shape default
+.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent random variables, then 
+\begin_inset Formula $\Cov\left(X,Y\right)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{XY}=0$
+\end_inset
+
+.
+ (This is Theorem 4.5.5 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:cov-of-ind-rvs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, we have 
+\begin_inset Formula $\E\left[XY\right]=\E\left[X\right]\E\left[Y\right]$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right] & =\E\left[XY-\mu_{Y}X-\mu_{X}Y+\mu_{X}\mu_{Y}\right]\\
+ & =\E\left[XY\right]-\mu_{Y}\E\left[X\right]-\mu_{X}\E\left[Y\right]+\mu_{X}\mu_{Y}\\
+ & =\E\left[X\right]\E\left[Y\right]-\E\left[Y\right]\E\left[X\right]-\E\left[X\right]\E\left[Y\right]+\E\left[X\right]\E\left[Y\right]\\
+ & =0
+\end{flalign*}
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\rho_{XY}=\frac{\Cov\left(X,Y\right)}{\sigma_{X}\sigma_{Y}}=\frac{0}{\sigma_{X}\sigma_{Y}}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
 \end_layout
 
 \begin_layout Theorem
@@ -1285,6 +1422,135 @@ If
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:variance-of-ind-rvs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We have
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(aX+bY\right) & =\E\left[\left(\left(aX+bY\right)-\E\left[aX+bY\right]\right)^{2}\right]\\
+ & =\E\left[\left(aX+bY-a\E\left[X\right]-b\E\left[Y\right]\right)^{2}\right]\\
+ & =\E\left[\left(aX+bY-a\mu_{X}-b\mu_{Y}\right)^{2}\right]\\
+ & =\E\left[\left(a\left(X-\mu_{X}\right)+b\left(Y-\mu_{Y}\right)\right)^{2}\right]\\
+ & =\E\left[\left(a\left(X-\mu_{X}\right)\right)^{2}-2ab\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)+\left(b\left(Y-\mu_{Y}\right)\right)^{2}\right]\\
+ & =\E\left[a^{2}\left(X-\mu_{X}\right)^{2}\right]-\E\left[2ab\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right]+\E\left[b^{2}\left(Y-\mu_{Y}\right)^{2}\right]\\
+ & =a^{2}\E\left[\left(X-\mu_{X}\right)^{2}\right]-2ab\E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right]+b^{2}\E\left[\left(Y-\mu_{Y}\right)^{2}\right]\\
+ & =a^{2}\Var\left(X\right)+b^{2}\Var\left(Y\right)-2ab\Cov\left(X,Y\right).
+\end{flalign*}
+
+\end_inset
+
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, it follows from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:cov-of-ind-rvs"
+
+\end_inset
+
+ that 
+\begin_inset Formula $\Cov\left(X,Y\right)=0$
+\end_inset
+
+ and the second equality is immediate from the first.
+\end_layout
+
+\begin_layout Theorem
+For any random variables 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+,
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(a)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $-1\leq\rho_{XY}\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[(b)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left|\rho_{XY}\right|=1$
+\end_inset
+
+ if and only if there exist numbers 
+\begin_inset Formula $a\neq0$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\left(\left\{ Y=aX+b\right\} \right)=1$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\rho_{XY}=1$
+\end_inset
+
+, then 
+\begin_inset Formula $a>0$
+\end_inset
+
+, and if 
+\begin_inset Formula $\rho_{XY}=-1$
+\end_inset
+
+, then 
+\begin_inset Formula $a<0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+(This is Theorem 4.5.7 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:correlation-values"
 
 \end_inset
 
@@ -9253,13 +9519,13 @@ where
 \end_inset
 
  is a function satisfying 
-\begin_inset Formula $\mbox{E}\left[g\left(T\right)\right]=0$
+\begin_inset Formula $\E\left[g\left(T\right)\right]=0$
 \end_inset
 
 , so that we have
 \begin_inset Formula 
 \begin{flalign*}
-0 & =\mbox{E}\left[g\left(T\right)\right]\\
+0 & =\E\left[g\left(T\right)\right]\\
  & =\sum_{t=0}^{\infty}\left[g\left(t\right)\cdot\frac{e^{-n\lambda}\left(n\lambda\right)^{t}}{t!}\right]\\
  & =e^{-n\lambda}\sum_{t=0}^{\infty}g\left(t\right)\cdot\frac{\left(n\lambda\right)^{t}}{t!}.
 \end{flalign*}
@@ -10570,7 +10836,7 @@ Suppose
 and
 \begin_inset Formula 
 \begin{flalign*}
-\mbox{Var}\left(X\right) & =\mbox{E}\left[X^{2}\right]-\mbox{E}\left[X\right]^{2}\\
+\Var\left(X\right) & =\E\left[X^{2}\right]-\E\left[X\right]^{2}\\
 \Leftrightarrow\hat{\lambda} & =\hat{\mu}_{2}-\hat{\mu}_{1}^{2}\\
  & =\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}\right)-\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}X_{i}^{2}-\bar{X}^{2}\\
@@ -10652,7 +10918,7 @@ then setting
 If we consider instead
 \begin_inset Formula 
 \begin{flalign*}
-\mbox{E}_{\theta}\left[X^{1/2}\right] & =\int_{\theta}^{\infty}x^{1/2}\frac{\theta}{x^{2}}\mbox{d}x\\
+\E_{\theta}\left[X^{1/2}\right] & =\int_{\theta}^{\infty}x^{1/2}\frac{\theta}{x^{2}}\mbox{d}x\\
  & =\lim_{c\rightarrow\infty}\left[\theta\int_{\theta}^{c}x^{-3/2}\mbox{d}x\right]\\
  & =\lim_{c\rightarrow\infty}\left[\theta\left(-2x^{-1/2}\Bigr\rvert_{\theta}^{c}\right)\right]\\
  & =\lim_{c\rightarrow\infty}\left[\theta\left(-2c^{-1/2}-\left(-2\theta^{-1/2}\right)\right)\right]\\
@@ -10891,6 +11157,16 @@ i.e., concave.
 \end_layout
 
 \begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[MLE of exponential random variable]
+\end_layout
+
+\end_inset
+
 Let 
 \begin_inset Formula $X\sim\mbox{Exp}\left(\lambda\right)$
 \end_inset
@@ -10913,6 +11189,13 @@ Let
 \end_inset
 
  and compare it to the MOM estimator.
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:mle-exp-rv"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -12519,10 +12802,9 @@ The median of a distribution is a value
 
  is continuous, so it follows that 
 \begin_inset Formula 
-\begin{flalign*}
-\frac{1}{2} & =P\left(\left\{ X\leq m\right\} \right)\\
- & =F_{X}\left(m\right).
-\end{flalign*}
+\[
+\frac{1}{2}=P\left(\left\{ X\leq m\right\} \right)=F_{X}\left(m\right).
+\]
 
 \end_inset
 
@@ -13072,11 +13354,9 @@ We are given that
 
 , so we can write
 \begin_inset Formula 
-\begin{flalign*}
-P\left(\left\{ Y_{i}=1\right\} \right) & =p_{i}^{1}\left(1-p_{i}\right)^{1-1}\\
- & =p_{i}\\
- & =\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}.
-\end{flalign*}
+\[
+P\left(\left\{ Y_{i}=1\right\} \right)=p_{i}^{1}\left(1-p_{i}\right)^{1-1}=p_{i}=\frac{e^{\theta x_{i}}}{1+e^{\theta x_{i}}}.
+\]
 
 \end_inset
 
@@ -14827,10 +15107,10 @@ The variance of
  is given by
 \begin_inset Formula 
 \begin{flalign*}
-\mbox{Var}\left(\hat{\theta}_{MOM}\right) & =\mbox{Var}\left(\frac{3}{2}\bar{Y}\right)\\
- & =\mbox{Var}\left(\frac{3}{2n}\sum_{i=1}^{n}Y_{i}\right)\\
- & =\frac{9}{4n^{2}}\mbox{Var}\left(\sum_{i=1}^{n}Y_{i}\right)\\
- & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\mbox{Var}\left(Y_{i}\right)
+\Var\left(\hat{\theta}_{MOM}\right) & =\Var\left(\frac{3}{2}\bar{Y}\right)\\
+ & =\Var\left(\frac{3}{2n}\sum_{i=1}^{n}Y_{i}\right)\\
+ & =\frac{9}{4n^{2}}\Var\left(\sum_{i=1}^{n}Y_{i}\right)\\
+ & =\frac{9}{4n^{2}}\sum_{i=1}^{n}\Var\left(Y_{i}\right)
 \end{flalign*}
 
 \end_inset
@@ -14851,7 +15131,7 @@ reference "thm:variance-of-ind-rvs"
 , we will need to find its second moment.
 \begin_inset Formula 
 \begin{flalign*}
-\mbox{E}\left[Y^{2}\right] & =\int_{0}^{\theta}y^{2}\cdot f_{Y}\left(y\right)\mbox{d}y\\
+\E\left[Y^{2}\right] & =\int_{0}^{\theta}y^{2}\cdot f_{Y}\left(y\right)\mbox{d}y\\
  & =\int_{0}^{\theta}y^{2}\frac{2y}{\theta^{2}}\mbox{d}y\\
  & =\frac{1}{2\theta^{2}}y^{4}\Big\rvert_{0}^{\theta}\\
  & =\frac{\theta^{4}}{2\theta^{2}}-0\\
@@ -15031,7 +15311,7 @@ mean squared error
 \end_inset
 
  defined by 
-\begin_inset Formula $\mbox{E}_{\theta}\left[\left(W-\theta\right)^{2}\right]$
+\begin_inset Formula $\E_{\theta}\left[\left(W-\theta\right)^{2}\right]$
 \end_inset
 
 .
@@ -15356,7 +15636,7 @@ Let
  be any estimator satisfying
 \begin_inset Formula 
 \[
-\frac{\mbox{d}}{\mbox{d}\theta}\E_{\theta}\left[W\left(\mathbf{X}\right)\right]=\int_{\mathcal{X}}\frac{\partial}{\partial\theta}\left[W\left(\mathbf{x}\right)f\left(\mathbf{x}|\theta\right)\right]\mbox{d}x\quad\mbox{and}\quad\Var_{\theta}\left(W\left(\mathbf{X}\right)\right)<\infty.
+\frac{\text{d}}{\text{d}\theta}\E_{\theta}\left[W\left(\mathbf{X}\right)\right]=\int_{\mathcal{X}}\frac{\partial}{\partial\theta}\left[W\left(\mathbf{x}\right)f\left(\mathbf{x}|\theta\right)\right]\mbox{d}\mathbf{x}\quad\mbox{and}\quad\Var_{\theta}\left(W\left(\mathbf{X}\right)\right)<\infty.
 \]
 
 \end_inset
@@ -15389,11 +15669,92 @@ name "thm:cramér-rao"
 \end_layout
 
 \begin_layout Proof
-[proof goes here]
+Let 
+\begin_inset Formula 
+\[
+U=W\left(\mathbf{X}\right)\quad\text{and}\quad V=\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right).
+\]
+
+\end_inset
+
+Then, from the definition of correlation, we have
+\begin_inset Formula 
+\[
+\Corr\left(U,V\right)=\frac{\Cov\left(U,V\right)}{\sqrt{\Var\left(U\right)}\sqrt{\Var\left(V\right)}}.
+\]
+
+\end_inset
+
+From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:correlation-values"
+
+\end_inset
+
+, it follows that
+\begin_inset Formula 
+\[
+0\leq\left[\Corr\left(U,V\right)\right]^{2}=\frac{\left[\Cov\left(U,V\right)\right]^{2}}{\Var\left(U\right)\Var\left(V\right)}\leq1,
+\]
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\[
+\left[\Cov\left(U,V\right)\right]^{2}\leq\Var\left(U\right)\Var\left(V\right)\Leftrightarrow\Var\left(U\right)\geq\frac{\left[\Cov\left(U,V\right)\right]^{2}}{\Var\left(V\right)}.
+\]
+
+\end_inset
+
+Then,
+\begin_inset Formula 
+\begin{flalign*}
+\Cov\left(U,V\right) & =\E\left[\left(U-\mu_{U}\right)\left(V-\mu_{V}\right)\right]\\
+ & =\E\left[UV-\mu_{V}U-\mu_{U}V+\mu_{U}\mu_{V}\right]\\
+ & =\E\left[UV\right]-\mu_{V}\E\left[U\right]-\mu_{U}\E\left[V\right]+\mu_{U}\mu_{V}\\
+ & =\E\left[UV\right]-\E\left[V\right]\E\left[U\right]-\E\left[U\right]\E\left[V\right]+\E\left[U\right]\E\left[V\right]\\
+ & =\E\left[UV\right]-\E\left[V\right]\E\left[U\right]\\
+ & =\E\left[W\left(\mathbf{X}\right)\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right]-\E\left[W\left(\mathbf{X}\right)\right]\E\left[\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right]\\
+ & =\int_{\mathcal{X}}W\left(\mathbf{X}\right)\left[\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right]f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}-\E\left[W\left(\mathbf{X}\right)\right]\int_{\mathcal{X}}\left[\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right]f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}\\
+ & =\int_{\mathcal{X}}W\left(\mathbf{X}\right)\left[\frac{1}{f\left(\mathbf{x}|\theta\right)}\frac{\partial}{\partial\theta}f\left(\mathbf{x}|\theta\right)\right]f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}-\E\left[W\left(\mathbf{X}\right)\right]\int_{\mathcal{X}}\left[\frac{1}{f\left(\mathbf{x}|\theta\right)}\frac{\partial}{\partial\theta}f\left(\mathbf{x}|\theta\right)\right]f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}\\
+ & =\int_{\mathcal{X}}W\left(\mathbf{X}\right)\left[\frac{\partial}{\partial\theta}f\left(\mathbf{x}|\theta\right)\right]\text{d}\mathbf{x}-\E\left[W\left(\mathbf{X}\right)\right]\int_{\mathcal{X}}\left[\frac{\partial}{\partial\theta}f\left(\mathbf{x}|\theta\right)\right]\text{d}\mathbf{x}\\
+ & =\frac{\partial}{\partial\theta}\int_{\mathcal{X}}W\left(\mathbf{X}\right)f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}-\E\left[W\left(\mathbf{X}\right)\right]\frac{\partial}{\partial\theta}\int_{\mathcal{X}}f\left(\mathbf{x}|\theta\right)\text{d}\mathbf{x}\\
+ & =\frac{\partial}{\partial\theta}\E\left[W\left(\mathbf{X}\right)\right]-\E\left[W\left(\mathbf{X}\right)\right]\frac{\partial}{\partial\theta}1\\
+ & =\frac{\partial}{\partial\theta}\E\left[W\left(\mathbf{X}\right)\right]-\E\left[W\left(\mathbf{X}\right)\right]\cdot0\\
+ & =\frac{\partial}{\partial\theta}\E\left[W\left(\mathbf{X}\right)\right]\\
+ & =\tau'\left(\theta\right).
+\end{flalign*}
+
+\end_inset
+
+Then, we have
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(V\right) & =\Var\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)\\
+ & =\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]-\left(\E\left[\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right]\right)^{2}\\
+ & =\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]-0\\
+ & =\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right],
+\end{flalign*}
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\Var\left(W\left(\mathbf{X}\right)\right)\geq\frac{\left[\tau'\left(\theta\right)\right]^{2}}{\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]}.
+\]
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
-Under independence, 
+The Cramér-Rao lower bound gives the smallest variance that can be attained
+ for an unbiased estimator provided the conditions of the theorem are met.
+ Under independence, 
 \begin_inset Formula $f\left(\mathbf{x}|\theta\right)=\prod_{i=1}^{n}f_{i}\left(x_{i}|\theta\right)$
 \end_inset
 
@@ -15448,5 +15809,1507 @@ for all estimators
 .
 \end_layout
 
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim\text{Exp}\left(\theta\right)$
+\end_inset
+
+, i.e.,
+\begin_inset Formula 
+\[
+f\left(x|\theta\right)=\theta e^{-\theta x},\quad x>0,\quad\theta>0.
+\]
+
+\end_inset
+
+Give the Cramér-Rao lower bound for any unbiased estimator of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+, where
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\tau\left(\theta\right)=\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:minimal-sufficient-exp-rv"
+
+\end_inset
+
+, the joint density of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+f\left(\mathbf{x}|\theta\right)=\theta^{n}e^{-\theta\sum_{i=1}^{n}x_{i}},
+\]
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\[
+\log f\left(\mathbf{x}|\theta\right)=\log\theta^{n}e^{-\theta\sum_{i=1}^{n}x_{i}}=n\log\theta-\theta\sum_{i=1}^{n}x_{i}.
+\]
+
+\end_inset
+
+Taking the derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right) & =\frac{n}{\theta}-\sum_{i=1}^{n}x_{i},
+\end{flalign*}
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right] & =\E\left[\frac{n^{2}}{\theta^{2}}-2\frac{n}{\theta}\sum_{i=1}^{n}x_{i}+\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right]\\
+ & =\E\left[\frac{n^{2}}{\theta^{2}}\right]-\E\left[2\frac{n}{\theta}\sum_{i=1}^{n}x_{i}\right]+\E\left[\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right]\\
+ & =\frac{n^{2}}{\theta^{2}}-\frac{2n}{\theta}\E\left[\sum_{i=1}^{n}x_{i}\right]+\E\left[\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right].
+\end{flalign*}
+
+\end_inset
+
+An exponential random variable with parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is a gamma random variable with parameters 
+\begin_inset Formula $\left(1,\lambda\right)$
+\end_inset
+
+.
+ The sum of 
+\begin_inset Formula $n$
+\end_inset
+
+ independent gamma random variables 
+\begin_inset Formula $W_{i}\sim\Gamma\left(k_{i},\lambda\right)$
+\end_inset
+
+ has the distribution of a 
+\begin_inset Formula $\Gamma\left(\sum_{i=1}^{n}k_{i},\lambda\right)$
+\end_inset
+
+ random variable.
+ We have 
+\begin_inset Formula $X_{i}\sim\text{Exp}\left(\theta\right)$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $X_{i}\sim\Gamma\left(1,\theta\right)$
+\end_inset
+
+ and that 
+\begin_inset Formula $\sum_{i=1}^{n}X_{i}\sim\Gamma\left(n,\theta\right)$
+\end_inset
+
+.
+ The expectation of a 
+\begin_inset Formula $\Gamma\left(\alpha,\beta\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $\alpha/\beta$
+\end_inset
+
+ , so it follows that 
+\begin_inset Formula 
+\[
+\E\left[\sum_{i=1}^{n}x_{i}\right]=\frac{n}{\theta}.
+\]
+
+\end_inset
+
+The variance of a 
+\begin_inset Formula $\Gamma\left(\alpha,\beta\right)$
+\end_inset
+
+ random variable is given by 
+\begin_inset Formula $\alpha/\beta^{2}$
+\end_inset
+
+, so it follows that
+\begin_inset Formula 
+\begin{flalign*}
+\frac{n}{\theta^{2}} & =\Var\left(\sum_{i=1}^{n}x_{i}\right)\\
+ & =\E\left[\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right]-\E\left[\sum_{i=1}^{n}x_{i}\right]^{2}\\
+ & =\E\left[\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right]-\left(\frac{n}{\theta}\right)^{2}\\
+\Leftrightarrow\E\left[\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right] & =\frac{n}{\theta^{2}}+\frac{n^{2}}{\theta^{2}}\\
+ & =\frac{n+n^{2}}{\theta^{2}}.
+\end{flalign*}
+
+\end_inset
+
+Then, we have
+\begin_inset Formula 
+\[
+\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]=\frac{n^{2}}{\theta^{2}}-\frac{2n}{\theta}\cdot\frac{n}{\theta}+\frac{n+n^{2}}{\theta^{2}}=\frac{n}{\theta^{2}}.
+\]
+
+\end_inset
+
+We could also have taken the second derivative of 
+\begin_inset Formula $\ln f\left(x|\theta\right)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ to obtain
+\begin_inset Formula 
+\[
+\E\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(x|\theta\right)\right]=\E\left[\frac{\partial}{\partial\theta}\left(\frac{n}{\theta}-\sum_{i=1}^{n}x_{i}\right)\right]=\E\left[-\frac{n}{\theta^{2}}\right]=-\frac{n}{\theta^{2}}.
+\]
+
+\end_inset
+
+Then, using the fact that 
+\begin_inset Formula 
+\[
+\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(x|\theta\right)\right)^{2}\right]=-\E\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(x|\theta\right)\right],
+\]
+
+\end_inset
+
+we have
+\begin_inset Formula 
+\[
+\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(x|\theta\right)\right)^{2}\right]=-\left(-\frac{n}{\theta^{2}}\right)=\frac{n}{\theta^{2}}.
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula $\tau\left(\theta\right)=\theta$
+\end_inset
+
+, so that 
+\begin_inset Formula $\tau'\left(\theta\right)=1$
+\end_inset
+
+.
+ Then, the Cramér-Rao lower bound is given by
+\begin_inset Formula 
+\[
+\frac{\left[\tau'\left(\theta\right)\right]^{2}}{\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]}=\frac{1^{2}}{\dfrac{n}{\theta^{2}}}=\frac{\theta^{2}}{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\tau\left(\theta\right)=\frac{1}{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We have 
+\begin_inset Formula $\tau'\left(\theta\right)=-\theta^{-2}$
+\end_inset
+
+, so the Cramér-Rao lower bound is given by
+\begin_inset Formula 
+\[
+\frac{\left[\tau'\left(\theta\right)\right]^{2}}{\E\left[\left(\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)\right)^{2}\right]}=\frac{\left(-\theta^{-2}\right)^{2}}{n\theta^{-2}}=\frac{\theta^{-4}}{n\theta^{-2}}=\frac{1}{n\theta^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "exa:mle-exp-rv"
+
+\end_inset
+
+, we found that the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ was given by 
+\begin_inset Formula $\hat{\theta}=\bar{X}$
+\end_inset
+
+.
+ Using the parameterization for 
+\begin_inset Formula $f\left(x|\theta\right)$
+\end_inset
+
+ given here, we have 
+\begin_inset Formula $\hat{\theta}=1/\bar{X}$
+\end_inset
+
+.
+ Is 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ a best unbiased estimator for 
+\begin_inset Formula $\tau\left(\theta\right)=1/\theta$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We must first show that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is unbiased.
+ From 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:invariance-mle"
+
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\widehat{\tau\left(\theta\right)}=\frac{1}{\hat{\theta}}=\frac{1}{\frac{1}{\bar{X}}}=\bar{X},
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\E\left[\bar{X}\right]=\E\left[\frac{1}{n}\sum_{i=1}^{n}X_{i}\right]=\frac{1}{n}\E\left[\sum_{i=1}^{n}X_{i}\right]=\frac{1}{n}\left(\frac{n}{\theta}\right)=\frac{1}{\theta}=\tau\left(\theta\right).
+\]
+
+\end_inset
+
+It follows that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is an unbiased estimator for 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+.
+ Then, the variance of 
+\begin_inset Formula $\widehat{\tau\left(\theta\right)}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\Var\left(\bar{X}\right)=\Var\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)=\frac{1}{n^{2}}\Var\left(\sum_{i=1}^{n}X_{i}\right)=\frac{1}{n^{2}}\sum_{i=1}^{n}\Var\left(X_{i}\right)=\frac{1}{n^{2}}\sum_{i=1}^{n}\frac{1}{\theta^{2}}=\frac{1}{n^{2}}\left(\frac{n}{\theta^{2}}\right)=\frac{1}{n\theta^{2}},
+\]
+
+\end_inset
+
+where the third equality follows from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:variance-of-ind-rvs"
+
+\end_inset
+
+.
+ We see that the variance of 
+\begin_inset Formula $\widehat{\tau\left(\theta\right)}$
+\end_inset
+
+ is equal to the Cramér-Rao lower bound found above, so it follows that
+ 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is a best unbiased estimator (UMVUE) for 
+\begin_inset Formula $\tau\left(\theta\right)=1/\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Is the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ a best unbiased estimator for 
+\begin_inset Formula $\tau\left(\theta\right)=\theta$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We have 
+\begin_inset Formula $\widehat{\tau\left(\theta\right)}=\hat{\theta}=1/\bar{X}$
+\end_inset
+
+, so that the variance of 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(\hat{\theta}\right) & =\E\left[\hat{\theta}^{2}\right]-\left(\E\left[\hat{\theta}\right]\right)^{2}\\
+ & =\E\left[\left(\frac{1}{\bar{X}}\right)^{2}\right]-\left(\E\left[\frac{1}{\bar{X}}\right]\right)^{2}\\
+ & =\E\left[\frac{1}{\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)^{2}}\right]-\left(\E\left[\frac{1}{\frac{1}{n}\sum_{i=1}^{n}X_{i}}\right]\right)^{2}\\
+ & =\E\left[\frac{n^{2}}{\left(\sum_{i=1}^{n}X_{i}\right)^{2}}\right]-\left(\E\left[\frac{n}{\sum_{i=1}^{n}X_{i}}\right]\right)^{2}\\
+ & =n^{2}\E\left[\frac{1}{\left(\sum_{i=1}^{n}X_{i}\right)^{2}}\right]-\left(n\E\left[\frac{1}{\sum_{i=1}^{n}X_{i}}\right]\right)^{2}\\
+ & =n^{2}\E\left[\frac{1}{\left(\sum_{i=1}^{n}X_{i}\right)^{2}}\right]-n^{2}\left(\E\left[\frac{1}{\sum_{i=1}^{n}X_{i}}\right]\right)^{2}.
+\end{flalign*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $U=\sum_{i=1}^{n}X_{i}\sim\Gamma\left(n,\theta\right)$
+\end_inset
+
+, so that the pdf of 
+\begin_inset Formula $U$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+f_{U}\left(u|n,\theta\right)=\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\qquad u>0,
+\]
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\[
+\E\left[\frac{1}{\bar{X}}\right]=n\E\left[\frac{1}{U}\right]\quad\text{and}\quad\E\left[\left(\frac{1}{\bar{X}^{2}}\right)\right]=n^{2}\E\left[\frac{1}{U^{2}}\right].
+\]
+
+\end_inset
+
+Noting that 
+\begin_inset Formula $\Gamma\left(n\right)=\left(n-1\right)\Gamma\left(n-1\right)$
+\end_inset
+
+, the expected value of 
+\begin_inset Formula $1/U$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\frac{1}{U}\right] & =\int_{0}^{\infty}\frac{1}{u}\cdot f_{U}\left(u|n,\theta\right)\text{d}u\\
+ & =\int_{0}^{\infty}\frac{1}{u}\cdot\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\text{d}u\\
+ & =\int_{0}^{\infty}\frac{\theta^{n}}{\Gamma\left(n\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u\\
+ & =\int_{0}^{\infty}\frac{\theta\cdot\theta^{n-1}}{\left(n-1\right)\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u\\
+ & =\frac{\theta}{n-1}\int_{0}^{\infty}\frac{\theta^{n-1}}{\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the pdf of a 
+\begin_inset Formula $\Gamma\left(n-1,\theta\right)$
+\end_inset
+
+ random variable, so that we have
+\begin_inset Formula 
+\[
+\E\left[\frac{1}{U}\right]=\frac{\theta}{n-1}\int_{0}^{\infty}\frac{\theta^{n-1}}{\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u=\frac{\theta}{n-1}\cdot1=\frac{\theta}{n-1}.
+\]
+
+\end_inset
+
+Then, the expected value of 
+\begin_inset Formula $1/U^{2}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\frac{1}{U^{2}}\right] & =\int_{0}^{\infty}\frac{1}{u^{2}}\cdot f_{U}\left(u|n\theta\right)\text{d}u\\
+ & =\int_{0}^{\infty}\frac{1}{u^{2}}\cdot\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\text{d}u\\
+ & =\int_{0}^{\infty}\frac{\theta^{2}\cdot\theta^{n-2}}{\left(n-1\right)\Gamma\left(n-1\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u\\
+ & =\int_{0}^{\infty}\frac{\theta^{2}\cdot\theta^{n-2}}{\left(n-1\right)\left(n-2\right)\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u\\
+ & =\frac{\theta^{2}}{\left(n-1\right)\left(n-2\right)}\int_{0}^{\infty}\frac{\theta^{n-2}}{\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the pdf of a 
+\begin_inset Formula $\Gamma\left(n-2,\theta\right)$
+\end_inset
+
+ random variable, so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\frac{1}{U^{2}}\right] & =\frac{\theta^{2}}{\left(n-1\right)\left(n-2\right)}\int_{0}^{\infty}\frac{\theta^{n-2}}{\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u\\
+ & =\frac{\theta^{2}}{\left(n-1\right)\left(n-2\right)}\cdot1\\
+ & =\frac{\theta^{2}}{\left(n-1\right)\left(n-2\right)}.
+\end{flalign*}
+
+\end_inset
+
+Then, the variance of 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(\hat{\theta}\right) & =n^{2}\E\left(\frac{1}{U^{2}}\right)-n^{2}\left(\E\left[\frac{1}{U}\right]\right)^{2}\\
+ & =n^{2}\left(\frac{\theta^{2}}{\left(n-1\right)\left(n-2\right)}\right)-n^{2}\left(\frac{\theta}{n-1}\right)^{2}\\
+ & =\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}-\frac{n^{2}\theta^{2}}{\left(n-1\right)^{2}}\\
+ & =\frac{n^{2}\theta^{2}\left(n-1\right)-n^{2}\theta^{2}\left(n-2\right)}{\left(n-1\right)^{2}\left(n-2\right)}\\
+ & =\frac{n^{2}\theta^{2}\left[\left(n-1\right)-\left(n-2\right)\right]}{\left(n-1\right)^{2}\left(n-2\right)}\\
+ & =\frac{n^{2}\theta^{2}\left(n-1-n+2\right)}{\left(n-1\right)^{2}\left(n-2\right)}\\
+ & =\frac{n^{2}\theta^{2}}{\left(n-1\right)^{2}\left(n-2\right)}.
+\end{flalign*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will check whether the variance of 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ attains the Cramér-Rao Lower Bound for the variance of an estimator of
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+, which we found above to be 
+\begin_inset Formula $\theta^{2}/n$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(\hat{\theta}\right) & >\frac{\theta^{2}}{n}\\
+\Leftrightarrow\frac{n^{2}\theta^{2}}{\left(n-1\right)^{2}\left(n-2\right)}-\frac{\theta^{2}}{n} & >0\\
+\Leftrightarrow\frac{n^{2}}{\left(n-1\right)^{2}\left(n-2\right)}-\frac{1}{n} & >0\\
+\Leftrightarrow\frac{n^{3}-\left(n-1\right)^{2}\left(n-2\right)}{n\left(n-1\right)^{2}\left(n-2\right)} & >0
+\end{flalign*}
+
+\end_inset
+
+We will expand the expression 
+\begin_inset Formula $\left(n-1\right)^{2}\left(n-2\right)$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{flalign*}
+\left(n-1\right)^{2}\left(n-2\right) & =\left(n^{2}-2n+1\right)\left(n-2\right)\\
+ & =\left(n^{2}-\left(2n-1\right)\right)\left(n-2\right)\\
+ & =n^{3}-2n^{2}-n\left(2n-1\right)+2\left(2n-1\right)\\
+ & =n^{3}-2n^{2}-2n^{2}+n+4n-2\\
+ & =n^{3}-4n^{2}+5n-2,
+\end{flalign*}
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\frac{n^{3}-\left(n^{3}-4n^{2}+5n-2\right)}{n\left(n^{3}-4n^{2}+5n-2\right)} & >0\\
+\frac{4n^{2}-5n+2}{n\left(n-1\right)^{2}\left(n-2\right)} & >0.
+\end{flalign*}
+
+\end_inset
+
+This expression will be defined if and only if the denominator is non-zero.
+ By definition, we have 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+ In the case that 
+\begin_inset Formula $n=1$
+\end_inset
+
+ or 
+\begin_inset Formula $n=2$
+\end_inset
+
+, the denominator will be equal to zero, so the expression will be defined
+ if and only if 
+\begin_inset Formula $n>2\Leftrightarrow n\geq3$
+\end_inset
+
+.
+ In the case that 
+\begin_inset Formula $n=3$
+\end_inset
+
+, the numerator is equal to 
+\begin_inset Formula $36-15+2=23>0$
+\end_inset
+
+, and as 
+\begin_inset Formula $n$
+\end_inset
+
+ increases, we see that 
+\begin_inset Formula $4n^{2}-5n+2>0$
+\end_inset
+
+, so that the numerator is positive.
+ Thus, we conclude that the variance of 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is greater than the Cramér-Rao Lower Bound, so 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is not a best unbiased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ denote a random sample of size 
+\begin_inset Formula $n>2$
+\end_inset
+
+ from a 
+\begin_inset Formula $\text{Beta}\left(\theta,1\right)$
+\end_inset
+
+ distribution, i.e., 
+\begin_inset Formula 
+\[
+f\left(x|\theta\right)=\theta x^{\theta-1},\quad0<x<1,\quad\theta>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The joint density of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+f_{\mathbf{X}}\left(\mathbf{x}|\theta\right)=\prod_{i=1}^{n}f\left(x_{i}|\theta\right)=\prod_{i=1}^{n}\theta x_{i}^{\theta-1}=\theta^{n}\prod_{i=1}^{n}x_{i}^{\theta-1},
+\]
+
+\end_inset
+
+so that the log-likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+\log L\left(\theta|\mathbf{x}\right) & =\log\theta^{n}\prod_{i=1}^{n}x_{i}^{\theta-1}\\
+ & =n\log\theta+\log\prod_{i=1}^{n}x_{i}^{\theta-1}\\
+ & =n\log\theta+\sum_{i=1}^{n}\log x_{i}^{\theta-1}\\
+ & =n\log\theta+\left(\theta-1\right)\sum_{i=1}^{n}\log x_{i}.
+\end{flalign*}
+
+\end_inset
+
+Taking the derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ gives
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta}\log L\left(\theta|\mathbf{x}\right)=\frac{\partial}{\partial\theta}\left[n\log\theta+\left(\theta-1\right)\sum_{i=1}^{n}\log x_{i}\right]=\frac{n}{\theta}+\sum_{i=1}^{n}\log x_{i}.
+\]
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\[
+\frac{n}{\hat{\theta}}=-\sum_{i=1}^{n}\log x_{i}\quad\Leftrightarrow\quad\hat{\theta}=-\frac{n}{\sum_{i=1}^{n}\log x_{i}}.
+\]
+
+\end_inset
+
+We will evaluate the second derivative of the log-likelihood at 
+\begin_inset Formula $\theta=\hat{\theta}$
+\end_inset
+
+ to verify that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is a maximum.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial^{2}}{\partial\theta}\log L\left(\theta|\mathbf{x}\right)\Bigr\rvert_{\theta=\hat{\theta}} & =\frac{\partial}{\partial\theta}\left[\frac{n}{\theta}+\sum_{i=1}^{n}\log x_{i}\right|_{\theta=\hat{\theta}}\\
+ & =\left[-\frac{n}{\theta^{2}}\right|_{\theta=\hat{\theta}}\\
+ & =-\frac{n}{\left(-\frac{n}{\sum_{i=1}^{n}\log x_{i}}\right)^{2}}\\
+ & =-\frac{n}{\frac{n^{2}}{\left(\sum_{i=1}^{n}\log x_{i}\right)^{2}}}\\
+ & =-\frac{\left(\sum_{i=1}^{n}\log x_{i}\right)^{2}}{n}
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+, so that the denominator is positive.
+ We have 
+\begin_inset Formula $0<x<1$
+\end_inset
+
+, so that 
+\begin_inset Formula $\log x<0$
+\end_inset
+
+, so that 
+\begin_inset Formula $\sum_{i=1}^{n}\log x_{i}<0$
+\end_inset
+
+, so that 
+\begin_inset Formula $\left(\sum_{i=1}^{n}\log x_{i}\right)^{2}>0$
+\end_inset
+
+.
+ Both the numerator and the denominator are positive, so it follows that
+ the expression is negative, so that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is the MLE.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Find an unbiased estimator based on the MLE.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\[
+\E\left[\hat{\theta}\right]=\E\left[-\frac{n}{\sum_{i=1}^{n}\log X_{i}}\right]=\E\left[\frac{n}{\sum_{i=1}^{n}-\log X_{i}}\right].
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $Y=-\log X$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\[
+Y=-\log X\Leftrightarrow-Y=\log X\Leftrightarrow e^{-Y}=e^{\log X}\Leftrightarrow X=e^{-Y}.
+\]
+
+\end_inset
+
+Noting that 
+\begin_inset Formula $Y=-\log X$
+\end_inset
+
+ is monotone, we will find a pdf for 
+\begin_inset Formula $Y$
+\end_inset
+
+ using 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:pdf-of-function-of-rv"
+
+\end_inset
+
+.
+ We have 
+\begin_inset Formula 
+\[
+\mathcal{Y}=\left\{ y:y=-\log x,0<x<1\right\} =\left\{ y:y>0\right\} 
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+f_{Y}\left(y\right)=f_{X}\left(e^{-y}\right)\left|\frac{\text{d}}{\text{d}y}e^{-y}\right|=\theta\left(e^{-y}\right)^{\theta-1}\left|-e^{-y}\right|=\theta e^{y-\theta y}e^{-y}=\theta e^{-\theta y},
+\]
+
+\end_inset
+
+which is the pdf of an 
+\begin_inset Formula $\text{Exp}\left(\theta\right)$
+\end_inset
+
+ random variable, i.e., 
+\begin_inset Formula $Y\sim\text{Exp}\left(\theta\right)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula 
+\[
+U=\sum_{i=1}^{n}-\log X_{i}=\sum_{i=1}^{n}Y_{i}\sim\Gamma\left(n,\theta\right),
+\]
+
+\end_inset
+
+i.e., 
+\begin_inset Formula $U$
+\end_inset
+
+ is a 
+\begin_inset Formula $\text{Gamma}\left(n,\theta\right)$
+\end_inset
+
+ random variable with pdf
+\begin_inset Formula 
+\[
+f_{U}\left(u|n,\theta\right)=\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\qquad u>0.
+\]
+
+\end_inset
+
+Noting that 
+\begin_inset Formula $\Gamma\left(n\right)=\left(n-1\right)\Gamma\left(n-1\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\hat{\theta}\right] & =\E\left[\frac{n}{\sum_{i=1}^{n}-\log X_{i}}\right]\\
+ & =\E\left[\frac{n}{U}\right]\\
+ & =n\E\left[\frac{1}{U}\right]\\
+ & =n\int_{0}^{\infty}\frac{1}{u}\cdot f_{U}\left(u|n,\theta\right)\text{d}u\\
+ & =n\int_{0}^{\infty}\frac{1}{u}\cdot\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\text{d}u\\
+ & =n\int_{0}^{\infty}\frac{\theta\cdot\theta^{n-1}}{\left(n-1\right)\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u\\
+ & =\frac{n\theta}{n-1}\int_{0}^{\infty}\frac{\theta^{n-1}}{\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the pdf of a 
+\begin_inset Formula $\Gamma\left(n-1,\theta\right)$
+\end_inset
+
+ random variable, so that we have
+\begin_inset Formula 
+\[
+\E\left[\hat{\theta}\right]=\frac{n\theta}{n-1}\int_{0}^{\infty}\frac{\theta^{n-1}}{\Gamma\left(n-1\right)}u^{\left(n-1\right)-1}e^{-\theta u}\text{d}u=\frac{n\theta}{n-1}.
+\]
+
+\end_inset
+
+It follows that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is a biased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ We can construct an unbiased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ based on 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ by multiplying 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ by 
+\begin_inset Formula $\left(n-1\right)/n$
+\end_inset
+
+, i.e., let 
+\begin_inset Formula 
+\[
+\tilde{\theta}=\frac{n-1}{n}\hat{\theta},\quad\text{so that}\quad\E\left[\tilde{\theta}\right]=\E\left[\frac{n-1}{n}\hat{\theta}\right]=\frac{n-1}{n}\E\left[\hat{\theta}\right]=\frac{n-1}{n}\cdot\frac{n\theta}{n-1}=\theta.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Does the unbiased estimator from (b) attain the Cramér-Rao Lower Bound?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The Cramér-Rao Lower Bound for the variance of an estimator 
+\begin_inset Formula $W\left(\mathbf{X}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\Var\left(W\left(\mathbf{X}\right)\right)\geq\frac{\left[\tau'\left(\theta\right)\right]^{2}}{-\E_{\theta}\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(\mathbf{X}|\theta\right)\right]}.
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula $\tau\left(\theta\right)=\theta$
+\end_inset
+
+, so that 
+\begin_inset Formula $\tau'\left(\theta\right)=1$
+\end_inset
+
+.
+ Then, we have
+\begin_inset Formula 
+\[
+\E\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(\mathbf{X}|\theta\right)\right]=\E\left[-\frac{n}{\theta^{2}}\right]=-\frac{n}{\theta^{2}},
+\]
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\[
+\Var\left(W\left(\mathbf{X}\right)\right)\geq\frac{1}{-\left(-\frac{n}{\theta^{2}}\right)}=\frac{\theta^{2}}{n}.
+\]
+
+\end_inset
+
+The variance of 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\Var\left(\tilde{\theta}\right)=\Var\left(\frac{n-1}{n}\hat{\theta}\right)=\left(\frac{n-1}{n}\right)^{2}\Var\left(\hat{\theta}\right)=\frac{\left(n-1\right)^{2}}{n^{2}}\left(\E\left[\hat{\theta}^{2}\right]-\left(\E\left[\hat{\theta}\right]\right)^{2}\right).
+\]
+
+\end_inset
+
+The expected value of 
+\begin_inset Formula $\hat{\theta}^{2}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[\hat{\theta}^{2}\right] & =\E\left[\left(-\frac{n}{\sum_{i=1}^{n}\log X_{i}}\right)^{2}\right]\\
+ & =\E\left[\left(\frac{n}{\sum_{i=1}^{n}-\log X_{i}}\right)^{2}\right]\\
+ & =n^{2}\E\left[\frac{1}{U^{2}}\right]\\
+ & =n^{2}\int_{0}^{\infty}\frac{1}{u^{2}}\cdot f_{U}\left(u|n,\theta\right)\text{d}u\\
+ & =n^{2}\int_{0}^{\infty}\frac{1}{u^{2}}\cdot\frac{\theta^{n}}{\Gamma\left(n\right)}u^{n-1}e^{-\theta u}\text{d}u\\
+ & =n^{2}\int_{0}^{\infty}\frac{\theta^{2}\cdot\theta^{n-2}}{\left(n-1\right)\Gamma\left(n-1\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u\\
+ & =n^{2}\int_{0}^{\infty}\frac{\theta^{2}\cdot\theta^{n-2}}{\left(n-1\right)\left(n-2\right)\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u\\
+ & =\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}\int_{0}^{\infty}\frac{\theta^{n-2}}{\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u.
+\end{flalign*}
+
+\end_inset
+
+We recognize the integrand as the pdf of a 
+\begin_inset Formula $\Gamma\left(n-2,\theta\right)$
+\end_inset
+
+ random variable, so that we have
+\begin_inset Formula 
+\[
+\E\left[\hat{\theta}^{2}\right]=\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}\int_{0}^{\infty}\frac{\theta^{n-2}}{\Gamma\left(n-2\right)}u^{\left(n-2\right)-1}e^{-\theta u}\text{d}u=\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}.
+\]
+
+\end_inset
+
+Then, we have
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(\tilde{\theta}\right) & =\frac{\left(n-1\right)^{2}}{n^{2}}\left(\E\left[\hat{\theta}^{2}\right]-\left(\E\left[\hat{\theta}\right]\right)^{2}\right)\\
+ & =\frac{\left(n-1\right)^{2}}{n^{2}}\left(\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}-\left(\frac{n\theta}{n-1}\right)^{2}\right)\\
+ & =\frac{\left(n-1\right)^{2}}{n^{2}}\left(\frac{n^{2}\theta^{2}}{\left(n-1\right)\left(n-2\right)}-\frac{n^{2}\theta^{2}}{\left(n-1\right)^{2}}\right)\\
+ & =\frac{\left(n-1\right)^{2}}{n^{2}}\left(\frac{n^{2}\theta^{2}\left(n-1\right)-n^{2}\theta^{2}\left(n-2\right)}{\left(n-1\right)^{2}\left(n-2\right)}\right)\\
+ & =\frac{1}{n^{2}}\left(\frac{n^{2}\theta^{2}\left[\left(n-1\right)-\left(n-2\right)\right]}{n-2}\right)\\
+ & =\frac{\theta^{2}\left(n-1-n+2\right)}{n-2}\\
+ & =\frac{\theta^{2}}{n-2}.
+\end{flalign*}
+
+\end_inset
+
+We will check whether the variance of 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ attains the Cramér-Rao Lower Bound.
+ Noting that 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{flalign*}
+\Var\left(\tilde{\theta}\right) & >\frac{\theta^{2}}{n}\\
+\Leftrightarrow\frac{\theta^{2}}{n-2} & >\frac{\theta^{2}}{n}\\
+\Leftrightarrow\frac{1}{n-2} & >\frac{1}{n}.
+\end{flalign*}
+
+\end_inset
+
+By definition, we have 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+ In the case that 
+\begin_inset Formula $n=1$
+\end_inset
+
+, the inequality will be false.
+ In the case that 
+\begin_inset Formula $n=2$
+\end_inset
+
+, the denominator will be equal to zero, so the expression will be defined
+ (and true) if and only if 
+\begin_inset Formula $n>2\Leftrightarrow n\geq3$
+\end_inset
+
+.
+ Thus, we conclude that the variance of 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is greater than the Cramér-Rao Lower Bound, so 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ is not a best unbiased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+The corollary below gives a way to find a UMVUE by giving an estimator that
+ attains the Cramér-Rao Lower Bound.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Attainment]
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ be iid 
+\begin_inset Formula $f\left(x|\theta\right)$
+\end_inset
+
+ , where 
+\begin_inset Formula $f\left(x|\theta\right)$
+\end_inset
+
+ satisfies the conditions of the Cramér-Rao Theorem.
+ Let 
+\begin_inset Formula $L\left(\theta|\mathbf{x}\right)=\prod_{i=1}^{n}f\left(x_{i}|\theta\right)$
+\end_inset
+
+ denote the likelihood function.
+ If 
+\begin_inset Formula $W\left(\mathbf{X}\right)=W\left(X_{1},\ldots,X_{n}\right)$
+\end_inset
+
+ is any unbiased estimator of 
+\begin_inset Formula $\tau\left(\theta\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $W\left(\mathbf{X}\right)$
+\end_inset
+
+ attains the Cramér-Rao Lower Bound if and only if
+\begin_inset Formula 
+\[
+a\left(\theta\right)\left[W\left(\mathbf{x}\right)-\tau\left(\theta\right)\right]=\frac{\partial}{\partial\theta}\log L\left(\theta|\mathbf{x}\right)
+\]
+
+\end_inset
+
+for some function 
+\begin_inset Formula $a\left(\theta\right)$
+\end_inset
+
+.
+ (This is Corollary 7.3.15 from Casella & Berger; the following proof is given
+ there.)
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:cramér-rao-attainment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+As shown in the proof of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:cramér-rao"
+
+\end_inset
+
+, the Cramér-Rao Inequality can be written as
+\begin_inset Formula 
+\[
+\left[\Cov\left(U,V\right)\right]^{2}\leq\Var\left(U\right)\Var\left(V\right),
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+U=W\left(\mathbf{X}\right)\quad\text{and}\quad V=\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right),
+\]
+
+\end_inset
+
+i.e., 
+\begin_inset Formula 
+\[
+\left[\Cov_{\theta}\left(W\left(\mathbf{X}\right),\frac{\partial}{\partial\theta}\log\prod_{i=1}^{n}f\left(X_{i}|\theta\right)\right)\right]^{2}\leq\Var_{\theta}\left(W\left(\mathbf{X}\right)\right)\Var_{\theta}\left(\frac{\partial}{\partial\theta}\log\prod_{i=1}^{n}f\left(X_{i}|\theta\right)\right).
+\]
+
+\end_inset
+
+Recalling that 
+\begin_inset Formula $\E_{\theta}\left[W\left(\mathbf{X}\right)\right]=\tau\left(\theta\right)$
+\end_inset
+
+ and that 
+\begin_inset Formula 
+\[
+\E_{\theta}\left[\frac{\partial}{\partial\theta}\log\prod_{i=1}^{n}f\left(X_{i}|\theta\right)\right]=0,
+\]
+
+\end_inset
+
+and using the results of 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:correlation-values"
+
+\end_inset
+
+, we can have equality if and only if 
+\begin_inset Formula $W\left(\mathbf{x}\right)-\tau\left(\theta\right)$
+\end_inset
+
+ is proportional to 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\log\prod_{i=1}^{n}f\left(x_{i}|\theta\right)$
+\end_inset
+
+.
+ That is exactly what is expressed in the corollary above.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ be iid with pdf
+\begin_inset Formula 
+\[
+f\left(x|\theta\right)=\frac{\theta}{\left(1+x\right)^{1+\theta}},\quad x>0,\quad\theta>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The joint density of 
+\begin_inset Formula $\mathbf{X}=X_{1},\ldots,X_{n}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+f_{\mathbf{X}}\left(\mathbf{x}|\theta\right)=\prod_{i=1}^{n}f\left(x_{i}|\theta\right)=\prod_{i=1}^{n}\frac{\theta}{\left(1+x_{i}\right)^{1+\theta}}=\theta^{n}\prod_{i=1}^{n}\frac{1}{\left(1+x_{i}\right)^{1+\theta}},
+\]
+
+\end_inset
+
+so that the log-likelihood is given by
+\begin_inset Formula 
+\begin{flalign*}
+\log L\left(\theta|\mathbf{x}\right) & =\log\theta^{n}\prod_{i=1}^{n}\frac{1}{\left(1+x_{i}\right)^{1+\theta}}\\
+ & =n\log\theta+\log\prod_{i=1}^{n}\frac{1}{\left(1+x_{i}\right)^{1+\theta}}\\
+ & =n\log\theta+\sum_{i=1}^{n}\log\left(1+x_{i}\right)^{-\left(1+\theta\right)}\\
+ & =n\log\theta-\left(1+\theta\right)\sum_{i=1}^{n}\log\left(1+x_{i}\right).
+\end{flalign*}
+
+\end_inset
+
+Taking the derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ gives
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial}{\partial\theta}\log L\left(\theta|\mathbf{x}\right) & =\frac{\partial}{\partial\theta}\left[n\log\theta-\left(1+\theta\right)\sum_{i=1}^{n}\log\left(1+x_{i}\right)\right]\\
+ & =\frac{n}{\theta}-\sum_{i=1}^{n}\log\left(1+x_{i}\right).
+\end{flalign*}
+
+\end_inset
+
+Setting this equal to zero, we have
+\begin_inset Formula 
+\[
+\frac{n}{\hat{\theta}}=\sum_{i=1}^{n}\log\left(1+x_{i}\right)\Leftrightarrow\hat{\theta}=\frac{n}{\sum_{i=1}^{n}\log\left(1+x_{i}\right)}.
+\]
+
+\end_inset
+
+We will evaluate the second derivative of the log-likelihood at 
+\begin_inset Formula $\theta=\hat{\theta}$
+\end_inset
+
+ to verify that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is a maximum.
+\begin_inset Formula 
+\begin{flalign*}
+\frac{\partial^{2}}{\partial\theta^{2}}\log L\left(\theta|\mathbf{x}\right)\Bigr\rvert_{\theta=\hat{\theta}} & =\frac{\partial}{\partial\theta}\left[\frac{n}{\theta}-\sum_{i=1}^{n}\log\left(1+x_{i}\right)\right|_{\theta=\hat{\theta}}\\
+ & =\left[-\frac{n}{\theta^{2}}\right|_{\theta=\hat{\theta}}\\
+ & =-\frac{n}{\left(\frac{n}{\sum_{i=1}^{n}\log\left(1+x_{i}\right)}\right)^{2}}\\
+ & =-\frac{n}{\frac{n^{2}}{\left(\sum_{i=1}^{n}\log\left(1+x_{i}\right)\right)^{2}}}\\
+ & =-\frac{\left(\sum_{i=1}^{n}\log\left(1+x_{i}\right)\right)^{2}}{n}
+\end{flalign*}
+
+\end_inset
+
+We have 
+\begin_inset Formula $x>0$
+\end_inset
+
+, so that 
+\begin_inset Formula $1+x>1$
+\end_inset
+
+, so that 
+\begin_inset Formula $\log\left(1+x\right)>0$
+\end_inset
+
+, so that the numerator is positive.
+ We have 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+, so that the denominator is positive.
+ It follows that the expression will be negative, so that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is the MLE.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Find the Cramér-Rao Lower Bound for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The Cramér-Rao Lower Bound for the variance of an estimator 
+\begin_inset Formula $W\left(\mathbf{X}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+\Var\left(W\left(\mathbf{X}\right)\right)\geq\frac{\left[\tau'\left(\theta\right)\right]^{2}}{-\E_{\theta}\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(\mathbf{X}|\theta\right)\right]}.
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula $\tau\left(\theta\right)=\theta$
+\end_inset
+
+, so that 
+\begin_inset Formula $\tau'\left(\theta\right)=1$
+\end_inset
+
+.
+ Then, we have
+\begin_inset Formula 
+\[
+\E\left[\frac{\partial^{2}}{\partial\theta^{2}}\log f\left(\mathbf{X}|\theta\right)\right]=\E\left[-\frac{n}{\theta^{2}}\right]=-\frac{n}{\theta^{2}},
+\]
+
+\end_inset
+
+so that we have 
+\begin_inset Formula 
+\[
+\Var\left(W\left(\mathbf{X}\right)\right)\geq\frac{1}{-\left(-\frac{n}{\theta^{2}}\right)}=\frac{\theta^{2}}{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Find the UMVUE of 
+\begin_inset Formula $1/\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We found above that
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta}\log L\left(\theta|\mathbf{x}\right)=\frac{n}{\theta}-\sum_{i=1}^{n}\log\left(1+x_{i}\right),
+\]
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta}\log f\left(\mathbf{x}|\theta\right)=-n\left(-\frac{1}{\theta}+\frac{1}{n}\sum_{i=1}^{n}\log\left(1+x_{i}\right)\right)=\underbrace{-n}_{a\left(\theta\right)}\left(\underbrace{\frac{1}{n}\sum_{i=1}^{n}\log\left(1+x_{i}\right)}_{W\left(\mathbf{x}\right)}-\underbrace{\frac{1}{\theta}}_{\tau\left(\theta\right)}\right).
+\]
+
+\end_inset
+
+We will now check whether 
+\begin_inset Formula $W\left(\mathbf{X}\right)=\frac{1}{n}\sum_{i=1}^{n}\log\left(1+X_{i}\right)$
+\end_inset
+
+ is unbiased for 
+\begin_inset Formula $1/\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[W\left(\mathbf{X}\right)\right] & =\E\left[\frac{1}{n}\sum_{i=1}^{n}\log\left(1+X_{i}\right)\right]\\
+ & =\frac{1}{n}\E\left[\sum_{i=1}^{n}\log\left(1+X_{i}\right)\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\E\left[\log\left(1+X_{i}\right)\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\int_{0}^{\infty}\log\left(1+x_{i}\right)\cdot f\left(x_{i}|\theta\right)\text{d}x_{i}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\int_{0}^{\infty}\log\left(1+x_{i}\right)\cdot\frac{\theta}{\left(1+x_{i}\right)^{1+\theta}}\text{d}x_{i}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\lim_{c\rightarrow\infty}\int_{0}^{c}\log\left(1+x_{i}\right)\cdot\frac{\theta}{\left(1+x_{i}\right)^{1+\theta}}\text{d}x_{i}
+\end{flalign*}
+
+\end_inset
+
+Let 
+\begin_inset Formula 
+\[
+u=\log\left(1+x\right),\quad\text{so that}\quad\text{d}u=\frac{1}{1+x}\text{d}x
+\]
+
+\end_inset
+
+and let 
+\begin_inset Formula 
+\[
+\text{d}v=\frac{\theta}{\left(1+x\right)^{1+\theta}}\text{d}x=\theta\left(1+x\right)^{-\left(1+\theta\right)}\text{d}x=\theta\left(1+x\right)^{-\theta-1},
+\]
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\[
+v=-\left(1+x\right)^{-\theta}=-\frac{1}{\left(1+x\right)^{\theta}}.
+\]
+
+\end_inset
+
+Then, integration by parts gives
+\begin_inset Formula 
+\begin{flalign*}
+\int_{a}^{b}u\text{d}v & =\left[uv\right|_{a}^{b}-\int_{a}^{b}v\text{d}u\\
+\Leftrightarrow\int_{0}^{c}\log\left(1+x\right)\cdot\frac{\theta}{\left(1+x\right)^{1+\theta}}\text{d}x & =\left[\log\left(1+x\right)\cdot\left(-\frac{1}{\left(1+x\right)^{\theta}}\right)\right|_{0}^{c}-\int_{0}^{c}\left(-\frac{1}{\left(1+x\right)^{\theta}}\right)\frac{1}{1+x}\text{d}x\\
+ & =\left[-\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}-\left(-\frac{\log\left(1+0\right)}{\left(1+0\right)^{\theta}}\right)\right]+\int_{0}^{c}\frac{1}{\left(1+x\right)^{\theta+1}}\text{d}x\\
+ & =\left[-\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}+\log1\right]+\left[-\frac{1}{\theta\left(1+x\right)^{\theta}}\right|_{0}^{c}\\
+ & =-\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}+0+\left[-\frac{1}{\theta\left(1+c\right)^{\theta}}-\left(-\frac{1}{\theta\left(1+0\right)^{\theta}}\right)\right]\\
+ & =-\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}-\frac{1}{\theta\left(1+c\right)^{\theta}}+\frac{1}{\theta},
+\end{flalign*}
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\begin{flalign*}
+\E\left[W\left(\mathbf{X}\right)\right] & =\frac{1}{n}\sum_{i=1}^{n}\lim_{c\rightarrow\infty}\left[-\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}-\frac{1}{\theta\left(1+c\right)^{\theta}}+\frac{1}{\theta}\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\left[-\lim_{c\rightarrow\infty}\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}-\lim_{c\rightarrow\infty}\frac{1}{\theta\left(1+c\right)^{\theta}}+\lim_{c\rightarrow\infty}\frac{1}{\theta}\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\left[-\lim_{c\rightarrow\infty}\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}-0+\frac{1}{\theta}\right].
+\end{flalign*}
+
+\end_inset
+
+Using L'Hôpital's rule to evaluate this limit gives
+\begin_inset Formula 
+\[
+\lim_{c\rightarrow\infty}\frac{\log\left(1+c\right)}{\left(1+c\right)^{\theta}}=\lim_{c\rightarrow\infty}\frac{\left(1+c\right)^{-1}}{\theta\left(1+c\right)^{\theta-1}}=\lim_{c\rightarrow\infty}\frac{1}{\theta\left(1+c\right)^{\theta}}=0,
+\]
+
+\end_inset
+
+so that we have
+\begin_inset Formula 
+\[
+\E\left[W\left(\mathbf{X}\right)\right]=\frac{1}{n}\sum_{i=1}^{n}\left[0+\frac{1}{\theta}\right]=\frac{1}{n}\left(n\frac{1}{\theta}\right)=\frac{1}{\theta}.
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula $\E\left[W\left(\mathbf{X}\right)\right]=1/\theta$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $W\left(\mathbf{X}\right)$
+\end_inset
+
+ is an unbiased estimator for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Then, by 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "cor:cramér-rao-attainment"
+
+\end_inset
+
+, 
+\begin_inset Formula $W\left(\mathbf{X}\right)$
+\end_inset
+
+ attains the Cramér-Rao Lower Bound, and it follows that 
+\begin_inset Formula $W\left(\mathbf{X}\right)=\frac{1}{n}\sum_{i=1}^{n}\log\left(1+X_{i}\right)$
+\end_inset
+
+ is the UMVUE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
 \end_body
 \end_document
